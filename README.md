@@ -21,9 +21,16 @@ Chauffeurs moeten snel toegang hebben tot:
 4. Groups & Chat
 5. Knowledge
 
-## Voorbeeldwebsite
+## Voorbeeldwebsites
 
-Deze repository bevat een voorbeeldwebsite voor RoadMaat. De pagina is gebouwd als een statische GitHub Pages-site en kan direct worden gepubliceerd op GitHub.
+Deze repository bevat twee statische voorbeeldpagina's, geschikt voor GitHub Pages:
+
+- `index.html` — de introductie- en marktpagina voor bedrijven.
+- `chauffeur.html` — een interactieve demo van RoadMaat zoals een chauffeur die kan zien en gebruiken.
+
+De chauffeursdemo bevat voorbeeldberichten, een ritoverzicht, een kaartillustratie met handige plekken, groepen en hulp van Helpers. De demo gebruikt geen echte chauffeursgegevens of backend. Likes, het plaatsen van een bericht en het stellen van een vraag werken alleen tijdelijk in de browser.
+
+Beide pagina's zijn bereikbaar via de navigatie op de site.
 
 ## Snel starten
 
@@ -60,6 +67,9 @@ https://<jouw-gebruikersnaam>.github.io/<repositorynaam>/
 ├── index.html
 ├── styles.css
 ├── script.js
+├── chauffeur.html
+├── chauffeur.css
+├── chauffeur.js
 ├── README.md
 ├── .gitignore
 └── .github/
