@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="RoadMaat chauffeursdemo met RoadMap, handige locaties en chauffeurschats." />
-    <meta name="theme-color" content="#f4f6f2" />
+    <meta name="theme-color" content="#0a1210" />
     <title>RoadMaat voor chauffeurs | Demo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,11 +46,11 @@
             <div class="page-heading">
               <div><p class="eyebrow" id="today-label">VANDAAG</p><h1>Goedemorgen, Jan <span>☀️</span></h1><p>Alles voor onderweg op één plek.</p></div>
             </div>
-            <div class="overview-journey">
-              <div class="journey-title"><span class="journey-icon">↗</span><div><span class="eyebrow">JOUW RIT VANDAAG</span><strong>Oudeschild <span>→</span> Barneveld</strong></div></div>
-              <div class="journey-time"><strong>± 1u 45m</strong><small>Vertrek 06:30 · Aankomst ± 08:15</small></div>
-              <a class="text-link" href="#roadmap" data-view="roadmap">Bekijk route <span>→</span></a>
-            </div>
+            <section class="weather-card" aria-label="Lokaal weer">
+              <span class="weather-icon" id="weather-icon" aria-hidden="true">☀</span>
+              <span class="weather-copy"><strong id="weather-temperature">Lokaal weer</strong><small id="weather-description">Deel je locatie om het weer bij jou te zien.</small><small class="weather-credit">Weergegevens: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a></small></span>
+              <button class="weather-button" id="weather-button" type="button">Toon weer</button>
+            </section>
             <h2 class="section-heading">Snel naar</h2>
             <div class="quick-grid">
               <a class="quick-card" href="#roadmap" data-view="roadmap"><span class="quick-icon map-icon">⌖</span><strong>RoadMap</strong><small>Locaties langs je route</small><span class="quick-arrow">→</span></a>
@@ -61,40 +61,28 @@
           </section>
 
           <section class="view" id="view-roadmap" data-panel="roadmap" hidden>
-            <div class="page-heading"><div><p class="eyebrow">HANDIGE PLEKKEN ONDERWEG</p><h1>RoadMap</h1><p>Vind restaurants, fabrieken en parkings onderweg.</p></div></div>
+            <div class="page-heading">            <div><p class="eyebrow">HANDIGE PLEKKEN ONDERWEG</p><h1>RoadMap</h1><p>Vind truckstops, fabrieken en hulp voor je truck onderweg.</p></div></div>
             <div class="map-layout">
               <div class="map-column">
                 <div class="map-filters" role="group" aria-label="Filter locaties">
                   <button class="filter-button active" type="button" data-filter="all">Alles</button>
-                  <button class="filter-button" type="button" data-filter="restaurant">Restaurants</button>
+                  <button class="filter-button" type="button" data-filter="truckstop">Truckstops</button>
                   <button class="filter-button" type="button" data-filter="factory">Fabrieken</button>
-                  <button class="filter-button" type="button" data-filter="parking">Parkings</button>
+                  <button class="filter-button" type="button" data-filter="tire">Bandenservice</button>
+                  <button class="filter-button" type="button" data-filter="workshop">Werkplaatsen on the road</button>
                 </div>
                 <div class="map-frame">
                   <iframe id="google-map" title="Google Maps met RoadMaat-locaties" src="https://maps.google.com/maps?q=Bruchem%2C%20Nederland&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
                   <span class="map-caption">Kaart via Google Maps</span>
                 </div>
                 <div class="locations-panel">
-                  <div class="list-heading"><strong>Locaties onderweg</strong><span id="location-count">4 plekken</span></div>
-                  <div id="location-list" class="location-list">
-                    <button class="location-card selected" type="button" data-category="parking" data-name="Truckstop De Lucht" data-query="Truckstop De Lucht Bruchem" data-kind="Parking · A2, Bruchem" data-description="Ruime truckparking met restaurant, toiletten en douches. Geschikt voor een korte of langere rustpauze." data-details="★ 4,6 · 24 uur open">
-                      <span class="location-symbol parking-symbol">P</span><span class="location-copy"><strong>Truckstop De Lucht</strong><small>Parking · Restaurant · Douche</small></span><span class="location-rating">★ 4,6</span>
-                    </button>
-                    <button class="location-card" type="button" data-category="restaurant" data-name="Restaurant De Lucht" data-query="Restaurant De Lucht Bruchem" data-kind="Restaurant · Bruchem" data-description="Eetgelegenheid bij verzorgingsplaats De Lucht. Handig voor een warme maaltijd tijdens je rit." data-details="★ 4,2 · Vandaag open">
-                      <span class="location-symbol restaurant-symbol">R</span><span class="location-copy"><strong>Restaurant De Lucht</strong><small>Restaurant · Bruchem</small></span><span class="location-rating">★ 4,2</span>
-                    </button>
-                    <button class="location-card" type="button" data-category="factory" data-name="AB Texel Feed" data-query="AB Texel Feed Barneveld" data-kind="Fabriek · Barneveld" data-description="Voorbeeldlocatie voor laden en lossen. Controleer de aanwijzingen van je planning voor aankomst." data-details="Chauffeursingang · Barneveld">
-                      <span class="location-symbol factory-symbol">F</span><span class="location-copy"><strong>AB Texel Feed</strong><small>Fabriek · Barneveld</small></span><span class="location-rating">⌖ Route</span>
-                    </button>
-                    <button class="location-card" type="button" data-category="parking" data-name="Verzorgingsplaats Lingehorst" data-query="Verzorgingsplaats Lingehorst A15" data-kind="Parking · A15" data-description="Verzorgingsplaats langs de A15 met plek om te stoppen en voorzieningen voor onderweg." data-details="Parking · Koffie · Toilet">
-                      <span class="location-symbol parking-symbol">P</span><span class="location-copy"><strong>Verzorgingsplaats Lingehorst</strong><small>Parking · A15</small></span><span class="location-rating">⌖ A15</span>
-                    </button>
-                  </div>
+                  <div class="list-heading"><strong>Locaties onderweg</strong><span id="location-count">Locaties laden…</span></div>
+                  <div id="location-list" class="location-list"></div>
                 </div>
               </div>
               <aside class="location-detail" id="location-detail" aria-live="polite">
-                <div class="detail-placeholder"><span class="location-symbol parking-symbol" id="detail-symbol">P</span><p class="eyebrow" id="detail-kind">PARKING · A2, BRUCHEM</p><h2 id="detail-name">Truckstop De Lucht</h2><p id="detail-description">Ruime truckparking met restaurant, toiletten en douches. Geschikt voor een korte of langere rustpauze.</p><div class="detail-info" id="detail-info">★ 4,6 · 24 uur open</div><a class="button button-dark map-open" id="maps-link" href="https://www.google.com/maps/search/?api=1&query=Truckstop%20De%20Lucht%20Bruchem" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a></div>
-                <p class="demo-note">Locatie-informatie is een voorbeeld en kan afwijken. Controleer altijd de actuele situatie.</p>
+                <div class="detail-placeholder"><span class="location-symbol parking-symbol" id="detail-symbol">P</span><p class="eyebrow" id="detail-kind">KIES EEN LOCATIE</p><h2 id="detail-name">Locatiegegevens</h2><p id="detail-description">Kies een plek uit de lijst om informatie en de kaart te bekijken.</p><div class="detail-info" id="detail-info">Controleer actuele openingstijden en bereikbaarheid.</div><a class="button button-dark map-open" id="maps-link" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a></div>
+                <p class="demo-note">Locaties zijn zoekverwijzingen naar Google Maps. Controleer trucktoegang, openingstijden en bereikbaarheid voor vertrek.</p>
               </aside>
             </div>
           </section>
@@ -133,8 +121,8 @@
     <nav class="mobile-nav" aria-label="Mobiele navigatie">
       <a class="active" href="#overview" data-view="overview"><span>⌂</span>Overzicht</a>
       <a href="#roadmap" data-view="roadmap"><span>⌖</span>RoadMap</a>
-      <a href="#chats" data-view="chats"><span>♡</span>Hulp</a>
-      <a href="#groups" data-view="groups"><span>▧</span>Groepen</a>
+      <a href="#chats" data-view="chats"><span>♡</span>Vragen chat/mentor</a>
+      <a href="#groups" data-view="groups"><span>▧</span>Chat-groepen</a>
     </nav>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="chauffeur.js"></script>

@@ -28,7 +28,7 @@ Deze repository bevat twee statische voorbeeldpagina's, geschikt voor GitHub Pag
 - `index.html` — de introductie- en marktpagina voor bedrijven.
 - `chauffeur.html` — een compacte chauffeursdemo met vier schermen: Mijn overzicht, RoadMap, Hulp & Mentor en Mijn groepen.
 
-De RoadMap gebruikt een Google Maps-kaart met selecteerbare voorbeeldlocaties en filters voor restaurants, fabrieken en parkings. Hulp & Mentor bevat een Mentor-chat, twee privéchats en een groepschat. Chatberichten werken tijdelijk in de browser; er is geen backend of echte chauffeursdata.
+De RoadMap gebruikt Google Maps-zoekresultaten met filters voor truckstops, fabrieken, bandenservice en werkplaatsen. Onder Bandenservice staat de gedeelde Google My Maps-kaart Tyreservice AB Texel met 756 bandenservicepunten. De fabriekslocaties zijn Lamb Weston in Kruiningen, Bergen op Zoom en Oosterbierum, Aviko in Steenderen en Agristo in Tilburg. Locaties zijn zoekverwijzingen: controleer trucktoegang, openingstijden en laad-/losinstructies voor vertrek. Lokaal weer wordt opgehaald via [Open-Meteo](https://open-meteo.com/) nadat de gebruiker toestemming geeft voor locatie. Hulp & Mentor bevat een Mentor-chat, twee privéchats en een groepschat. Chatberichten werken tijdelijk in de browser; er is geen backend of echte chauffeursdata.
 
 Beide pagina's zijn bereikbaar via de navigatie op de site.
 
