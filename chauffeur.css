@@ -344,10 +344,35 @@ body { background: radial-gradient(ellipse at 68% 0, #f8fcff 0, var(--paper) 62%
 .conversation-header #conversation-avatar { overflow: hidden; }
 .conversation-header #conversation-avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .welcome-quote { color: #55778d !important; }
+.weather-card { max-width: 465px; min-height: 56px; margin: 15px 0 21px; padding: 8px 10px; gap: 8px; }
+.weather-icon { width: 31px; height: 31px; font-size: 17px; }
+.weather-copy strong { font-size: 10px; }
+.weather-copy small { font-size: 8px; }
+.weather-copy .weather-credit { font-size: 7px; }
+.wind-flag { min-width: 120px; gap: 5px; padding: 4px 6px; }
+.wind-flag svg { width: 21px; height: 21px; }
+.weather-button { min-height: 28px; padding: 0 8px; font-size: 8px; }
+.quick-icon svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.factory-info-editor { margin-top: 14px; padding: 12px; border: 1px solid #d7e7ef; border-radius: 9px; background: #f3f9fd; }
+.factory-info-editor[hidden] { display: none; }
+.factory-info-editor h3 { margin: 0; color: #203f55; font: 800 12px "Manrope", sans-serif; }
+.factory-info-notice { margin: 5px 0 10px; color: #8a631d; font-size: 8px; line-height: 1.5; }
+.factory-info-form { display: grid; gap: 8px; }
+.factory-field { min-width: 0; display: grid; gap: 3px; }
+.factory-field > span { color: #526f83; font-size: 8px; font-weight: 700; }
+.factory-field input, .factory-field select { width: 100%; min-height: 33px; padding: 5px 8px; border: 1px solid #cbdfea; border-radius: 6px; background: #fff; color: #18364b; font: 9px "DM Sans", sans-serif; }
+.factory-info-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 2px; }
+.factory-info-actions .button { min-height: 32px; font-size: 9px; cursor: pointer; }
+.factory-save-status { color: #42677f; font-size: 8px; }
+.daf-avatar { padding: 6px; border: 1px solid #d5e3eb; background: #fff; object-fit: contain; }
+.conversation-header #conversation-avatar img.daf-avatar { padding: 5px; object-fit: contain; }
 @media (max-width: 560px) {
   .account-selector { margin-top: 11px; }
   .inbox-row { min-height: 68px; padding: 9px 11px; gap: 9px; }
   .inbox-avatar { width: 40px; height: 40px; }
+  .weather-card { max-width: 390px; min-height: 0; margin: 13px 0 18px; gap: 7px; padding: 8px; }
+  .weather-icon { width: 29px; height: 29px; }
+  .wind-flag { padding: 3px 5px; }
 }
 
 @media (max-width: 760px) {
@@ -355,4 +380,55 @@ body { background: radial-gradient(ellipse at 68% 0, #f8fcff 0, var(--paper) 62%
 }
 @media (max-width: 560px) {
   .mobile-nav { border-color: #cbdfea; background: rgba(250, 253, 255, .98); }
+}
+
+.dashboard-selectors { margin-top: 13px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.dashboard-selectors .account-selector { margin-top: 0; min-height: 45px; }
+.weather-card { width: min(100%, 310px); max-width: 310px; min-height: 45px; margin: 0; padding: 5px 8px; gap: 7px; border-color: #cbdfea; border-radius: 9px; background: rgba(250,253,255,.9); }
+.weather-icon { width: 27px; height: 27px; border-radius: 7px; background: #e0f1f9; font-size: 15px; }
+.weather-copy { flex: 1; }
+.weather-copy strong { color: #18364b; font-size: 9px; }
+.weather-copy small { color: #688195; font-size: 7px; }
+.weather-copy .weather-credit { font-size: 7px; }
+.weather-credit a { color: #0876ad; }
+.wind-flag { min-width: 0; padding: 3px 5px; gap: 4px; border-color: #cbdfea; background: #eef7fc; }
+.wind-flag svg { width: 17px; height: 17px; }
+.wind-flag strong { color: #244961; font-size: 7px; }
+.wind-flag small { color: #607c90; font-size: 6px; }
+.weather-button { min-height: 27px; padding: 0 6px; display: inline-flex; align-items: center; gap: 4px; border-color: #cbdfea; border-radius: 6px; background: #e2f2fa; color: #075b89; font-size: 7px; white-space: nowrap; }
+.weather-button:hover { background: #d0eaf6; }
+.weather-button .account-check { font-size: 9px; }
+.location-list-actions { display: flex; align-items: center; gap: 8px; }
+.show-factories { min-height: 26px; padding: 0 8px; border: 1px solid #9fc9df; border-radius: 6px; background: #e2f2fa; color: #075b89; font-size: 8px; font-weight: 700; cursor: pointer; }
+.show-factories:hover { background: #d0eaf6; }
+.factory-instructions { margin-top: 3px; border: 1px solid #cbdfea; border-radius: 8px; background: #fafdff; }
+.factory-instructions summary { padding: 9px 10px; color: #075b89; font-size: 9px; font-weight: 700; cursor: pointer; }
+.factory-instructions[open] summary { border-bottom: 1px solid #dce9f0; }
+.factory-instructions h3, .factory-instructions > p, .factory-instructions > form { margin-right: 10px; margin-left: 10px; }
+.factory-instructions h3 { margin-top: 10px; }
+.factory-instructions > form { margin-bottom: 10px; }
+.conversation.whatsapp-chat { border-color: #d1e2d5; }
+.whatsapp-chat .conversation-header { border-color: #d1e2d5; background: #f0f7f3; }
+.whatsapp-chat .conversation-header strong { color: #075e54; }
+.whatsapp-chat .conversation-header small { color: #5d7b73; }
+.whatsapp-chat .conversation-header small i { background: #25a56a; }
+.whatsapp-chat .conversation-menu { color: #52796d; }
+.whatsapp-chat .messages { background: #efeae2; }
+.whatsapp-chat .message { border-color: #e2ddd5; border-radius: 3px 10px 10px 10px; background: #fff; }
+.whatsapp-chat .message.mine { border-color: #c8e9be; border-radius: 10px 3px 10px 10px; background: #d9fdd3; }
+.whatsapp-chat .message strong { color: #008069; }
+.whatsapp-chat .message p { color: #26332e; }
+.whatsapp-chat .message time { color: #718078; }
+.whatsapp-chat .message-form { border-color: #d1e2d5; background: #f0f7f3; }
+.whatsapp-chat .message-form input { border-color: #d7e3db; border-radius: 18px; outline-color: #25a56a; }
+.whatsapp-chat .message-form button { border-radius: 50%; background: #008069; }
+.whatsapp-chat .chat-note { background: #f0f7f3; }
+@media (max-width: 560px) {
+  .dashboard-selectors { gap: 7px; }
+  .dashboard-selectors .account-selector { min-width: 175px; min-height: 42px; padding: 7px 9px; }
+  .weather-card { width: auto; max-width: 100%; min-height: 42px; margin: 0; padding: 4px 6px; display: flex; grid-template-columns: initial; gap: 4px; }
+  .weather-icon { width: 23px; height: 23px; grid-column: auto; grid-row: auto; }
+  .weather-copy { min-width: 66px; grid-column: auto; grid-row: auto; }
+  .wind-flag { display: flex; }
+  .weather-button { min-height: 25px; grid-column: auto; grid-row: auto; justify-self: auto; }
 }

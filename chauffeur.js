@@ -22,11 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
     { category: "truckstop", name: "Verzorgingsplaats Aalscholver", location: "A4 · Leiderdorp", query: "Verzorgingsplaats Aalscholver A4", description: "Verzorgingsplaats aan de A4. Bekijk actuele informatie en bereikbaarheid op Google Maps.", details: "Verzorgingsplaats · A4", symbol: "T" },
     { category: "truckstop", name: "Verzorgingsplaats Kloosters", location: "A1 · Deventer", query: "Verzorgingsplaats Kloosters A1", description: "Verzorgingsplaats langs de A1. Raadpleeg de kaart voor actuele locatie-informatie.", details: "Verzorgingsplaats · A1", symbol: "T" },
     { category: "truckstop", name: "Verzorgingsplaats De Paal", location: "A50 · Ekkersrijt", query: "Verzorgingsplaats De Paal A50", description: "Verzorgingsplaats aan de A50. Controleer de actuele toegang en beschikbare voorzieningen.", details: "Verzorgingsplaats · A50", symbol: "T" },
-    { category: "factory", name: "Lamb Weston · Kruiningen", location: "Fabriek · Kruiningen", query: "Lamb Weston Kruiningen", description: "Opgegeven laad-/loslocatie. Controleer het juiste terrein en de aanmeldinstructies met je planning.", details: "Fabriek · Kruiningen", symbol: "F" },
-    { category: "factory", name: "Lamb Weston · Bergen op Zoom", location: "Fabriek · Bergen op Zoom", query: "Lamb Weston Bergen op Zoom", description: "Opgegeven laad-/loslocatie. Controleer het juiste terrein en de aanmeldinstructies met je planning.", details: "Fabriek · Bergen op Zoom", symbol: "F" },
-    { category: "factory", name: "Lamb Weston · Oosterbierum", location: "Fabriek · Oosterbierum", query: "Lamb Weston Oosterbierum", description: "Opgegeven laad-/loslocatie. Controleer het juiste terrein en de aanmeldinstructies met je planning.", details: "Fabriek · Oosterbierum", symbol: "F" },
-    { category: "factory", name: "Aviko · Steenderen", location: "Fabriek · Steenderen", query: "Aviko Steenderen", description: "Opgegeven laad-/loslocatie. Controleer het juiste terrein en de aanmeldinstructies met je planning.", details: "Fabriek · Steenderen", symbol: "F" },
-    { category: "factory", name: "Agristo · Tilburg", location: "Fabriek · Tilburg", query: "Agristo Tilburg", description: "Opgegeven laad-/loslocatie. Controleer het juiste terrein en de aanmeldinstructies met je planning.", details: "Fabriek · Tilburg", symbol: "F" },
+    { category: "factory", name: "Lamb Weston · Kruiningen", location: "Fabriek · Kruiningen", query: "Lamb Weston Kruiningen", description: "Opgegeven laad-/loslocatie. Controleer het juiste terrein en de aanmeldinstructies met je planning.", details: "Fabriek · Kruiningen", symbol: "F", factoryInfo: { weighIn: "yes", gateCode: "2233#", portier: "Ja, melden bij deur 5", trailer: "dock" } },
+    { category: "factory", name: "Lamb Weston · Bergen op Zoom", location: "Fabriek · Bergen op Zoom", query: "Lamb Weston Bergen op Zoom", description: "Opgegeven laad-/loslocatie. Controleer het juiste terrein en de aanmeldinstructies met je planning.", details: "Fabriek · Bergen op Zoom", symbol: "F", factoryInfo: { weighIn: "yes", gateCode: "4821#", portier: "Ja, melden bij de hoofdingang", trailer: "parking" } },
+    { category: "factory", name: "Lamb Weston · Oosterbierum", location: "Fabriek · Oosterbierum", query: "Lamb Weston Oosterbierum", description: "Opgegeven laad-/loslocatie. Controleer het juiste terrein en de aanmeldinstructies met je planning.", details: "Fabriek · Oosterbierum", symbol: "F", factoryInfo: { weighIn: "yes", gateCode: "7310#", portier: "Ja, melden bij de portiersloge", trailer: "dock" } },
+    { category: "factory", name: "Aviko · Steenderen", location: "Fabriek · Steenderen", query: "Aviko Steenderen", description: "Opgegeven laad-/loslocatie. Controleer het juiste terrein en de aanmeldinstructies met je planning.", details: "Fabriek · Steenderen", symbol: "F", factoryInfo: { weighIn: "yes", gateCode: "4407#", portier: "Ja, aanmelden bij deur 3", trailer: "parking" } },
+    { category: "factory", name: "Agristo · Tilburg", location: "Fabriek · Tilburg", query: "Agristo Tilburg", description: "Opgegeven laad-/loslocatie. Controleer het juiste terrein en de aanmeldinstructies met je planning.", details: "Fabriek · Tilburg", symbol: "F", factoryInfo: { weighIn: "no", gateCode: "6154#", portier: "Ja, melden bij de portier", trailer: "dock" } },
     { category: "tire", name: "Tyreservice AB Texel · gedeelde kaart", location: "756 bandenservicepunten · Google My Maps", query: "Tyreservice AB Texel", mapUrl: "https://www.google.com/maps/d/embed?mid=1KOBUnpQTcD1p5bZD33YAsXwhLPoPh5E&ll=51.48709030058969%2C4.922573800000025&z=7", mapsUrl: "https://www.google.com/maps/d/viewer?mid=1KOBUnpQTcD1p5bZD33YAsXwhLPoPh5E&ll=51.48709030058969%2C4.922573800000025&z=7", description: "De gedeelde kaart met 756 bandenservicepunten van AB Texel. Tik op een marker in de kaart om de locatiegegevens te bekijken.", details: "756 kaartpunten · Bron: gedeelde Google My Maps-kaart", symbol: "B" },
     { category: "tire", name: "Heuver Truck Tyres", location: "Bandenservice · landelijk netwerk", query: "Heuver Truck Tyres Nederland", description: "Zoek vestigingen en services voor truckbanden. Bel de gekozen locatie om beschikbaarheid en eventuele pechhulp te bevestigen.", details: "Truckbanden · Controleer service per vestiging", symbol: "B" },
     { category: "tire", name: "Profile Truck", location: "Bandenservice · landelijk netwerk", query: "Profile Truck bandenservice Nederland", description: "Zoek een Profile Truck-bandenspecialist. Informeer de vestiging vooraf over voertuig, bandenmaat en beschikbaarheid.", details: "Truckbanden · Controleer service per vestiging", symbol: "B" },
@@ -39,16 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const chats = {
-    abMentors: {
-      name: "AB Texel BV - Mentors",
+    abQuestion: {
+      name: "AB Texel B.V. - Vraagbaak",
       avatar: "AB",
       avatarClass: "mentor-avatar",
-      status: "Groepschat · 3 Mentors",
+      status: "Groepschat · Mentors online",
       messages: [
-        { author: "Monique · Mentor", text: "Goedemorgen Jan! Welkom in de mentorchat. Waar kunnen we je mee helpen?", time: "09:12" },
+        { author: "Monique · Vraagbaak", text: "Hoi Jan! Welkom bij de AB Texel Vraagbaak. Waar kan ik je vandaag mee helpen? 🙂", time: "09:12" },
         { author: "Jan", text: "Ik moet morgen voor het eerst lossen bij een nieuwe klant. Waar kan ik het beste terecht met vragen?", time: "09:14", mine: true },
-        { author: "Monique · Mentor", text: "Stuur de naam of locatie maar door, dan kijken we met je mee. Je kunt ook de RoadMap raadplegen voor tips van collega’s.", time: "09:15" },
-        { author: "Peter · Mentor", text: "Geen vraag is te klein, Jan. We helpen je graag op weg!", time: "09:16" },
+        { author: "Monique · Vraagbaak", text: "Goed dat je het vraagt! Stuur de klant of locatie maar door, dan denken we met je mee.", time: "09:15" },
+        { author: "Peter · Chauffeur", text: "Kijk ook even in de RoadMap. Daar vind je handige aankomst- en losinformatie van collega’s.", time: "09:16" },
       ],
     },
     pieter: {
@@ -61,14 +61,16 @@ document.addEventListener("DOMContentLoaded", () => {
         { author: "Jan", text: "Dank je, dat helpt!", time: "08:51", mine: true },
       ],
     },
-    monique: {
-      name: "Monique Smit",
-      avatar: "MS",
-      avatarClass: "monique-avatar",
+    klaas: {
+      name: "Klaas Smit",
+      avatar: "",
+      avatarClass: "daf-avatar",
+      avatarImage: "https://upload.wikimedia.org/wikipedia/commons/1/12/DAF_logo.svg",
+      avatarAlt: "DAF-logo",
       status: "Privéchat · Helper",
       messages: [
         { author: "Jan", text: "Bedankt voor je tip over de chauffeursingang.", time: "Gisteren", mine: true },
-        { author: "Monique", text: "Graag gedaan! Tot bij de volgende stop 👋", time: "Gisteren" },
+        { author: "Klaas", text: "Graag gedaan! Tot bij de volgende stop 👋", time: "Gisteren" },
       ],
     },
     frisian: {
@@ -92,6 +94,149 @@ document.addEventListener("DOMContentLoaded", () => {
     toastTimer = window.setTimeout(() => toast.classList.remove("visible"), 2600);
   }
 
+  let activeLocationFilter = "all";
+  let selectedFactoryName = null;
+
+  function updateLocationVisibility() {
+    const cards = [...document.querySelectorAll(".location-card")];
+    cards.forEach((card) => {
+      const location = locationDataForCard(card);
+      const filteredOut = activeLocationFilter !== "all" && card.dataset.category !== activeLocationFilter;
+      const anotherFactory = selectedFactoryName && card.dataset.category === "factory" && location?.name !== selectedFactoryName;
+      card.hidden = Boolean(filteredOut || anotherFactory);
+    });
+    const count = cards.filter((card) => !card.hidden).length;
+    document.getElementById("location-count").textContent = `${count} ${count === 1 ? "locatie" : "locaties"}`;
+    document.getElementById("show-factories").hidden = !selectedFactoryName;
+  }
+
+  function showFactoryOverview() {
+    const map = document.getElementById("google-map");
+    map.src = factoryMapUrl;
+    map.title = "Google Maps met alle vijf fabriekslocaties";
+    document.getElementById("maps-link").href = factoryDirectionsUrl;
+    document.querySelector(".map-caption").textContent = "Alle 5 fabrieken · Google Maps";
+    document.getElementById("detail-symbol").textContent = "F";
+    document.getElementById("detail-symbol").className = "location-symbol factory-symbol";
+    document.getElementById("detail-name").textContent = "Alle fabrieken";
+    document.getElementById("detail-kind").textContent = "FABRIEKEN";
+    document.getElementById("detail-description").textContent = "Selecteer een fabriek uit de lijst voor de aankomst- en losinstructies.";
+    document.getElementById("detail-info").textContent = "Kruiningen · Bergen op Zoom · Oosterbierum · Steenderen · Tilburg";
+    document.getElementById("factory-info-editor").hidden = true;
+  }
+
+  document.getElementById("show-factories").addEventListener("click", () => {
+    selectedFactoryName = null;
+    document.querySelectorAll(".location-card").forEach((card) => card.classList.remove("selected"));
+    updateLocationVisibility();
+    showFactoryOverview();
+  });
+
+  const factoryInfoStorageKey = "roadmaat-factory-info-v1";
+  let savedFactoryInfo = {};
+  try {
+    const storedFactoryInfo = window.localStorage.getItem(factoryInfoStorageKey);
+    if (storedFactoryInfo) {
+      const parsedFactoryInfo = JSON.parse(storedFactoryInfo);
+      if (!parsedFactoryInfo || typeof parsedFactoryInfo !== "object" || Array.isArray(parsedFactoryInfo)) {
+        throw new Error("Saved factory information has an invalid format");
+      }
+      savedFactoryInfo = parsedFactoryInfo;
+    }
+  } catch (error) {
+    console.error("Opgeslagen fabrieksinformatie kon niet worden geladen.", error);
+  }
+
+  function factoryInfoFor(location) {
+    const saved = savedFactoryInfo[location.name];
+    if (!saved || typeof saved !== "object" || Array.isArray(saved)) return location.factoryInfo;
+    return {
+      weighIn: saved.weighIn === "yes" || saved.weighIn === "no" ? saved.weighIn : location.factoryInfo.weighIn,
+      gateCode: typeof saved.gateCode === "string" ? saved.gateCode : location.factoryInfo.gateCode,
+      portier: typeof saved.portier === "string" ? saved.portier : location.factoryInfo.portier,
+      trailer: saved.trailer === "dock" || saved.trailer === "parking" ? saved.trailer : location.factoryInfo.trailer,
+    };
+  }
+
+  function addFactoryField(form, labelText, name, value, options) {
+    const field = document.createElement("label");
+    field.className = "factory-field";
+    const label = document.createElement("span");
+    label.textContent = labelText;
+    const input = options
+      ? document.createElement("select")
+      : document.createElement("input");
+    input.name = name;
+    if (options) {
+      options.forEach(([optionValue, optionLabel]) => {
+        const option = document.createElement("option");
+        option.value = optionValue;
+        option.textContent = optionLabel;
+        option.selected = optionValue === value;
+        input.append(option);
+      });
+    } else {
+      input.type = "text";
+      input.value = value;
+    }
+    field.append(label, input);
+    form.append(field);
+  }
+
+  function renderFactoryInfo(location, editor) {
+    editor.replaceChildren();
+    const info = factoryInfoFor(location);
+    const dropdown = document.createElement("details");
+    dropdown.className = "factory-instructions";
+    const summary = document.createElement("summary");
+    summary.textContent = "Bekijk los- en aankomstinstructies";
+    const heading = document.createElement("h3");
+    heading.textContent = "Praktische losinformatie";
+    const notice = document.createElement("p");
+    notice.className = "factory-info-notice";
+    notice.textContent = "Voorbeeldgegevens — controleer de actuele instructies altijd bij de planning.";
+    const form = document.createElement("form");
+    form.className = "factory-info-form";
+    addFactoryField(form, "Inwegen", "weighIn", info.weighIn, [["yes", "Ja"], ["no", "Nee"]]);
+    addFactoryField(form, "Hekcode", "gateCode", info.gateCode);
+    addFactoryField(form, "Melden portier", "portier", info.portier);
+    addFactoryField(form, "Trailer na aanmelden", "trailer", info.trailer, [["dock", "Afkoppelen bij het dok"], ["parking", "Trailer afkoppelen op de parking"]]);
+    const actions = document.createElement("div");
+    actions.className = "factory-info-actions";
+    const saveButton = document.createElement("button");
+    saveButton.className = "button";
+    saveButton.type = "submit";
+    saveButton.textContent = "Bewaar informatie";
+    const status = document.createElement("span");
+    status.className = "factory-save-status";
+    status.setAttribute("role", "status");
+    actions.append(saveButton, status);
+    form.append(actions);
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const info = {
+        weighIn: formData.get("weighIn"),
+        gateCode: formData.get("gateCode").trim(),
+        portier: formData.get("portier").trim(),
+        trailer: formData.get("trailer"),
+      };
+      const updatedFactoryInfo = { ...savedFactoryInfo, [location.name]: info };
+      try {
+        window.localStorage.setItem(factoryInfoStorageKey, JSON.stringify(updatedFactoryInfo));
+        savedFactoryInfo = updatedFactoryInfo;
+        status.textContent = "Opgeslagen op dit apparaat.";
+        showToast("Fabrieksinformatie opgeslagen.");
+      } catch (error) {
+        console.error("Fabrieksinformatie kon niet worden opgeslagen.", error);
+        status.textContent = "Opslaan is niet gelukt. Probeer het opnieuw.";
+        showToast("Opslaan is niet gelukt.");
+      }
+    });
+    dropdown.append(summary, heading, notice, form);
+    editor.append(dropdown);
+  }
+
   function iconClass(category) {
     return category === "truckstop" ? "parking-symbol"
       : category === "factory" ? "factory-symbol"
@@ -100,11 +245,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function selectLocation(location, card) {
+    if (location.category === "factory") {
+      selectedFactoryName = location.name;
+      updateLocationVisibility();
+    } else if (selectedFactoryName) {
+      selectedFactoryName = null;
+      updateLocationVisibility();
+    }
     document.querySelectorAll(".location-card").forEach((item) => item.classList.toggle("selected", item === card));
     document.getElementById("detail-name").textContent = location.name;
     document.getElementById("detail-kind").textContent = location.location.toLocaleUpperCase("nl-NL");
     document.getElementById("detail-description").textContent = location.description;
     document.getElementById("detail-info").textContent = location.details;
+    const factoryEditor = document.getElementById("factory-info-editor");
+    factoryEditor.hidden = location.category !== "factory";
+    if (location.category === "factory") renderFactoryInfo(location, factoryEditor);
     const symbol = document.getElementById("detail-symbol");
     symbol.textContent = location.symbol;
     symbol.className = `location-symbol ${iconClass(location.category)}`;
@@ -136,14 +291,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const category = document.createElement("span");
       category.className = "location-rating";
       category.textContent = location.category === "truckstop" ? "Stop"
-        : location.category === "factory" ? "Fabriek"
+        : location.category === "factory" ? "Info"
           : location.category === "tire" ? "Banden"
             : "Service";
       card.append(symbol, copy, category);
-      card.addEventListener("click", () => selectLocation(location, card));
+      card.addEventListener("click", () => {
+        selectLocation(location, card);
+        if (location.category === "factory" && window.matchMedia("(max-width: 760px)").matches) {
+          document.getElementById("location-detail").scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
       list.append(card);
     });
-    document.getElementById("location-count").textContent = `${locations.length} locaties`;
+    updateLocationVisibility();
     selectLocation(locations[0], list.firstElementChild);
   }
 
@@ -171,7 +331,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (chat.avatarImage) {
       const image = document.createElement("img");
       image.src = chat.avatarImage;
-      image.alt = "Friese vlag";
+      image.alt = chat.avatarAlt || chat.name;
+      image.className = chat.avatarClass;
       avatar.append(image);
     } else {
       avatar.textContent = chat.avatar;
@@ -216,12 +377,12 @@ document.addEventListener("DOMContentLoaded", () => {
     filter.addEventListener("click", () => {
       document.querySelectorAll(".filter-button").forEach((button) => button.classList.toggle("active", button === filter));
       const category = filter.dataset.filter;
+      activeLocationFilter = category;
+      selectedFactoryName = null;
+      document.querySelectorAll(".location-card").forEach((card) => card.classList.remove("selected"));
+      document.getElementById("factory-info-editor").hidden = true;
+      updateLocationVisibility();
       const locationCards = [...document.querySelectorAll(".location-card")];
-      locationCards.forEach((location) => {
-        location.hidden = category !== "all" && location.dataset.category !== category;
-      });
-      const count = locationCards.filter((location) => !location.hidden).length;
-      document.getElementById("location-count").textContent = `${count} ${count === 1 ? "locatie" : "locaties"}`;
 
       const map = document.getElementById("google-map");
       const mapLink = document.getElementById("maps-link");
@@ -236,14 +397,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("detail-description").textContent = "De volledige gedeelde kaart met bandenservicepunten staat nu direct in beeld. Tik op een markering voor de locatiegegevens.";
         document.getElementById("detail-info").textContent = "Bron: Tyreservice AB Texel";
       } else if (category === "factory") {
-        map.src = factoryMapUrl;
-        map.title = "Google Maps met alle vijf fabriekslocaties";
-        mapLink.href = factoryDirectionsUrl;
-        document.querySelector(".map-caption").textContent = "Alle 5 fabrieken · Google Maps";
-        document.getElementById("detail-name").textContent = "Alle 5 fabriekslocaties";
-        document.getElementById("detail-kind").textContent = "FABRIEKEN";
-        document.getElementById("detail-description").textContent = "Google Maps toont de vijf opgegeven fabrieken als routepunten. Selecteer een locatie in de lijst voor de aparte kaartweergave.";
-        document.getElementById("detail-info").textContent = "Kruiningen · Bergen op Zoom · Oosterbierum · Steenderen · Tilburg";
+        showFactoryOverview();
       } else {
         const firstVisible = locationCards.find((location) => !location.hidden);
         const location = locationDataForCard(firstVisible);
@@ -260,11 +414,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadLocalWeather() {
     const button = document.getElementById("weather-button");
+    const buttonLabel = document.getElementById("weather-button-label");
     const temperature = document.getElementById("weather-temperature");
     const description = document.getElementById("weather-description");
     const icon = document.getElementById("weather-icon");
     button.disabled = true;
-    button.textContent = "Locatie ophalen…";
+    buttonLabel.textContent = "Locatie ophalen…";
     temperature.textContent = "Lokaal weer ophalen…";
     description.textContent = "Je locatie wordt alleen gebruikt voor de weeropvraag.";
 
@@ -272,7 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
       temperature.textContent = "Locatie niet beschikbaar";
       description.textContent = "Deze browser biedt geen locatiefunctie aan.";
       button.disabled = false;
-      button.textContent = "Opnieuw proberen";
+      buttonLabel.textContent = "Probeer opnieuw";
       return;
     }
 
@@ -322,14 +477,15 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("wind-direction").textContent = `Wind uit ${compassPoints[directionIndex]} · vlagen ${Math.round(windGusts)} km/u`;
         document.getElementById("wind-flag-icon").style.transform = `rotate(${(windDirection + 180) % 360}deg)`;
         document.querySelector(".wind-flag").setAttribute("aria-label", `Windkracht ${windForce} Beaufort, wind uit ${compassPoints[directionIndex]}, ${Math.round(windSpeed)} kilometer per uur`);
-        button.textContent = "Vernieuwen";
+        description.textContent = "Lokaal weer · Open-Meteo";
+        buttonLabel.textContent = "Vernieuwen";
       } catch (error) {
         console.error("Lokaal weer kon niet worden opgehaald.", error);
         temperature.textContent = "Weer niet beschikbaar";
         description.textContent = "Controleer je internet en probeer het opnieuw.";
         document.getElementById("wind-strength").textContent = "Windkracht —";
         document.getElementById("wind-direction").textContent = "Wind niet beschikbaar";
-        button.textContent = "Opnieuw proberen";
+        buttonLabel.textContent = "Probeer opnieuw";
       } finally {
         button.disabled = false;
       }
@@ -341,7 +497,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("wind-strength").textContent = "Windkracht —";
       document.getElementById("wind-direction").textContent = "Sta locatie toe voor wind";
       button.disabled = false;
-      button.textContent = "Toon weer";
+      buttonLabel.textContent = "Toon weer";
     }, { enableHighAccuracy: false, maximumAge: 600000, timeout: 12000 });
   }
 
@@ -376,7 +532,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const today = new Intl.DateTimeFormat("nl-NL", { weekday: "long", day: "numeric", month: "long" }).format(new Date());
   document.getElementById("today-label").textContent = today.toLocaleUpperCase("nl-NL");
   renderLocations();
-  renderChat("abMentors");
+  renderChat("abQuestion");
   const initialView = window.location.hash.slice(1);
   openView(initialView === "roadmap" || initialView === "chats" || initialView === "groups" ? initialView : "overview");
 });
