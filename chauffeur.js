@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const navigation = [...document.querySelectorAll("[data-view]")];
   const toast = document.getElementById("toast");
   let toastTimer;
+  const factoryMapUrl = "https://www.google.com/maps/dir/?api=1&origin=Lamb+Weston+Kruiningen&destination=Agristo+Tilburg&waypoints=Lamb+Weston+Bergen+op+Zoom%7CLamb+Weston+Oosterbierum%7CAviko+Steenderen&output=embed";
+  const factoryDirectionsUrl = "https://www.google.com/maps/dir/?api=1&origin=Lamb+Weston+Kruiningen&destination=Agristo+Tilburg&waypoints=Lamb+Weston+Bergen+op+Zoom%7CLamb+Weston+Oosterbierum%7CAviko+Steenderen";
 
   const locations = [
     { category: "truckstop", name: "Truckstop De Lucht", location: "A2 · Bruchem", query: "Truckstop De Lucht Bruchem", description: "Verzorgingsplaats en stop langs de A2. Bekijk de actuele plek, voorzieningen en toegang voor vrachtwagens op de kaart.", details: "Verzorgingsplaats · A2", symbol: "T" },
@@ -106,6 +108,10 @@ document.addEventListener("DOMContentLoaded", () => {
     symbol.className = `location-symbol ${iconClass(location.category)}`;
     document.getElementById("google-map").src = location.mapUrl || `https://maps.google.com/maps?q=${encodeURIComponent(location.query)}&output=embed`;
     document.getElementById("maps-link").href = location.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.query)}`;
+    document.querySelector(".map-caption").textContent = location.category === "tire" && location.mapUrl
+      ? "756 bandenservicepunten · AB Texel"
+      : location.category === "factory" ? "Fabriekslocatie"
+        : "Kaart via Google Maps";
   }
 
   function renderLocations() {
@@ -200,14 +206,47 @@ document.addEventListener("DOMContentLoaded", () => {
     filter.addEventListener("click", () => {
       document.querySelectorAll(".filter-button").forEach((button) => button.classList.toggle("active", button === filter));
       const category = filter.dataset.filter;
-      const locations = [...document.querySelectorAll(".location-card")];
-      locations.forEach((location) => {
+      const locationCards = [...document.querySelectorAll(".location-card")];
+      locationCards.forEach((location) => {
         location.hidden = category !== "all" && location.dataset.category !== category;
       });
-      const count = locations.filter((location) => !location.hidden).length;
+      const count = locationCards.filter((location) => !location.hidden).length;
       document.getElementById("location-count").textContent = `${count} ${count === 1 ? "locatie" : "locaties"}`;
+
+      const map = document.getElementById("google-map");
+      const mapLink = document.getElementById("maps-link");
+      if (category === "tire") {
+        const tyreMap = locations.find((location) => location.category === "tire");
+        map.src = tyreMap.mapUrl;
+        map.title = "Google My Maps met 756 bandenservicepunten van AB Texel";
+        mapLink.href = tyreMap.mapsUrl;
+        document.querySelector(".map-caption").textContent = "756 bandenservicepunten · AB Texel";
+        document.getElementById("detail-name").textContent = "756 bandenservicepunten";
+        document.getElementById("detail-kind").textContent = "GEDEELDE GOOGLE MY MAPS-KAART";
+        document.getElementById("detail-description").textContent = "De volledige gedeelde kaart met bandenservicepunten staat nu direct in beeld. Tik op een markering voor de locatiegegevens.";
+        document.getElementById("detail-info").textContent = "Bron: Tyreservice AB Texel";
+      } else if (category === "factory") {
+        map.src = factoryMapUrl;
+        map.title = "Google Maps met alle vijf fabriekslocaties";
+        mapLink.href = factoryDirectionsUrl;
+        document.querySelector(".map-caption").textContent = "Alle 5 fabrieken · Google Maps";
+        document.getElementById("detail-name").textContent = "Alle 5 fabriekslocaties";
+        document.getElementById("detail-kind").textContent = "FABRIEKEN";
+        document.getElementById("detail-description").textContent = "Google Maps toont de vijf opgegeven fabrieken als routepunten. Selecteer een locatie in de lijst voor de aparte kaartweergave.";
+        document.getElementById("detail-info").textContent = "Kruiningen · Bergen op Zoom · Oosterbierum · Steenderen · Tilburg";
+      } else {
+        const firstVisible = locationCards.find((location) => !location.hidden);
+        const location = locationDataForCard(firstVisible);
+        if (location) selectLocation(location, firstVisible);
+      }
     });
   });
+
+  function locationDataForCard(card) {
+    if (!card) return undefined;
+    const name = card.querySelector(".location-copy strong").textContent;
+    return locations.find((location) => location.name === name);
+  }
 
   function loadLocalWeather() {
     const button = document.getElementById("weather-button");
@@ -234,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
         url.search = new URLSearchParams({
           latitude: String(latitude),
           longitude: String(longitude),
-          current: "temperature_2m,apparent_temperature,weather_code",
+          current: "temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m",
           timezone: "auto",
         }).toString();
         const response = await fetch(url);
@@ -258,12 +297,28 @@ document.addEventListener("DOMContentLoaded", () => {
         const [weatherIcon, weatherText] = weatherCodes[result.current.weather_code] || ["☁", "Weer opgehaald"];
         icon.textContent = weatherIcon;
         temperature.textContent = `${Math.round(result.current.temperature_2m)}°C · ${weatherText}`;
-        description.textContent = `Bij jou in de buurt · voelt als ${Math.round(result.current.apparent_temperature)}°C`;
+        const windSpeed = result.current.wind_speed_10m;
+        const windDirection = result.current.wind_direction_10m;
+        const windGusts = result.current.wind_gusts_10m;
+        if (typeof windSpeed !== "number" || typeof windDirection !== "number" || typeof windGusts !== "number") {
+          throw new Error("Weather response did not include wind conditions");
+        }
+        const beaufortThresholds = [1, 6, 12, 20, 29, 39, 50, 62, 75, 89, 103, 118];
+        const beaufort = beaufortThresholds.findIndex((threshold) => windSpeed < threshold);
+        const windForce = beaufort === -1 ? 12 : beaufort;
+        const compassPoints = ["N", "NNO", "NO", "ONO", "O", "OZO", "ZO", "ZZO", "Z", "ZZW", "ZW", "WZW", "W", "WNW", "NW", "NNW"];
+        const directionIndex = Math.round(windDirection / 22.5) % compassPoints.length;
+        document.getElementById("wind-strength").textContent = `Windkracht ${windForce} Bft · ${Math.round(windSpeed)} km/u`;
+        document.getElementById("wind-direction").textContent = `Wind uit ${compassPoints[directionIndex]} · vlagen ${Math.round(windGusts)} km/u`;
+        document.getElementById("wind-flag-icon").style.transform = `rotate(${(windDirection + 180) % 360}deg)`;
+        document.querySelector(".wind-flag").setAttribute("aria-label", `Windkracht ${windForce} Beaufort, wind uit ${compassPoints[directionIndex]}, ${Math.round(windSpeed)} kilometer per uur`);
         button.textContent = "Vernieuwen";
       } catch (error) {
         console.error("Lokaal weer kon niet worden opgehaald.", error);
         temperature.textContent = "Weer niet beschikbaar";
         description.textContent = "Controleer je internet en probeer het opnieuw.";
+        document.getElementById("wind-strength").textContent = "Windkracht —";
+        document.getElementById("wind-direction").textContent = "Wind niet beschikbaar";
         button.textContent = "Opnieuw proberen";
       } finally {
         button.disabled = false;
@@ -273,6 +328,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description.textContent = error.code === error.PERMISSION_DENIED
         ? "Sta locatie toe in je browser om het weer bij jou te tonen."
         : "Je locatie kon niet worden bepaald. Controleer je instellingen.";
+      document.getElementById("wind-strength").textContent = "Windkracht —";
+      document.getElementById("wind-direction").textContent = "Sta locatie toe voor wind";
       button.disabled = false;
       button.textContent = "Toon weer";
     }, { enableHighAccuracy: false, maximumAge: 600000, timeout: 12000 });
