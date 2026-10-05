@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     toastTimer = window.setTimeout(() => toast.classList.remove("visible"), 2600);
   }
 
-  let activeLocationFilter = "abtexel";
+  let activeLocationFilter = "all";
   let selectedFactoryName = null;
   let leafletMap;
   const abLocationMarkers = new Map();
@@ -127,20 +127,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const googleMap = document.getElementById("google-map");
     const locationMap = document.getElementById("roadmap-map");
     const mapUnavailable = document.getElementById("map-unavailable");
-    const showAbMap = mode === "abtexel";
-    googleMap.hidden = showAbMap;
-    locationMap.hidden = !showAbMap || !window.L;
-    mapUnavailable.hidden = !showAbMap || Boolean(window.L);
-    if (showAbMap && !window.L) {
+    const showLocationMap = mode === "all" || mode === "abtexel";
+    googleMap.hidden = showLocationMap;
+    locationMap.hidden = !showLocationMap || !window.L;
+    mapUnavailable.hidden = !showLocationMap || Boolean(window.L);
+    if (showLocationMap && !window.L) {
       mapUnavailable.textContent = "De kaart kan niet laden. Bekijk alle actuele vestigingen op de officiële AB Texel-website.";
     }
-    if (showAbMap && leafletMap) window.setTimeout(() => leafletMap.invalidateSize(), 0);
+    if (showLocationMap && leafletMap) window.setTimeout(() => leafletMap.invalidateSize(), 0);
   }
 
   function initializeAbTexelMap() {
     if (!window.L) return;
     const mapElement = document.getElementById("roadmap-map");
-    leafletMap = window.L.map(mapElement, { scrollWheelZoom: false }).setView([52.1, 5.5], 7);
+    leafletMap = window.L.map(mapElement, { scrollWheelZoom: false }).setView([52.2, 5.3], 7);
     window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -171,9 +171,28 @@ document.addEventListener("DOMContentLoaded", () => {
       markers.push(marker);
     });
 
-    if (markers.length) {
-      leafletMap.fitBounds(window.L.featureGroup(markers).getBounds().pad(0.12), { maxZoom: 7 });
+    if (markers.length) window.L.featureGroup(markers).addTo(leafletMap);
+  }
+
+  function showAllOverview() {
+    setMapMode("all");
+    if (leafletMap) {
+      window.setTimeout(() => {
+        leafletMap.invalidateSize();
+        leafletMap.setView([52.2, 5.3], 7);
+      }, 0);
     }
+    document.getElementById("map-caption").textContent = "Alle locaties · start Nederland · OpenStreetMap";
+    document.getElementById("maps-link").href = "https://www.google.com/maps/search/?api=1&query=Netherlands";
+    document.getElementById("source-link").hidden = false;
+    document.getElementById("source-link").href = "https://abtexel.com/locaties";
+    document.getElementById("detail-symbol").textContent = "A";
+    document.getElementById("detail-symbol").className = "location-symbol abtexel-symbol";
+    document.getElementById("detail-name").textContent = "Nederland";
+    document.getElementById("detail-kind").textContent = "ALLE LOCATIES";
+    document.getElementById("detail-description").textContent = "RoadMap opent met alle locatietypen in de lijst en de kaart ingezoomd op Nederland. Kies een tab om alleen dat type locaties te bekijken.";
+    document.getElementById("detail-info").textContent = "AB Texel-vestigingen in West-Europa zijn als kaartmarkeringen weergegeven.";
+    document.getElementById("factory-info-editor").hidden = true;
   }
 
   function showAbTexelOverview() {
@@ -439,7 +458,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const map = document.getElementById("google-map");
     const mapLink = document.getElementById("maps-link");
-    if (category === "abtexel") {
+    if (category === "all") {
+      showAllOverview();
+    } else if (category === "abtexel") {
       showAbTexelOverview();
     } else if (category === "tire") {
       const tyreMap = locations.find((location) => location.category === "tire");
@@ -473,7 +494,7 @@ document.addEventListener("DOMContentLoaded", () => {
       panel.classList.toggle("active", active);
     });
     navigation.forEach((link) => link.classList.toggle("active", link.dataset.view === validName));
-    if (validName === "roadmap") setLocationFilter("abtexel");
+    if (validName === "roadmap") setLocationFilter("all");
     history.replaceState(null, "", `#${validName === "overview" ? "overview" : validName}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }

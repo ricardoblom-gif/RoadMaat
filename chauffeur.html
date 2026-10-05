@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="chauffeur.css?v=abtexel-locaties-chat-green" />
+    <link rel="stylesheet" href="chauffeur.css?v=roadmap-all-netherlands" />
   </head>
   <body>
     <a class="skip-link" href="#main">Ga naar de inhoud</a>
@@ -72,8 +72,8 @@
             <div class="map-layout">
               <div class="map-column">
                 <div class="map-filters" role="group" aria-label="Filter locaties">
-                  <button class="filter-button active" type="button" data-filter="abtexel">AB Texel-locaties</button>
-                  <button class="filter-button" type="button" data-filter="all">Alles</button>
+                  <button class="filter-button active" type="button" data-filter="all">Alles</button>
+                  <button class="filter-button" type="button" data-filter="abtexel">AB Texel-locaties</button>
                   <button class="filter-button" type="button" data-filter="truckstop">Truckstops</button>
                   <button class="filter-button" type="button" data-filter="factory">Fabrieken</button>
                   <button class="filter-button" type="button" data-filter="tire">Bandenservice</button>
@@ -83,7 +83,7 @@
                   <iframe id="google-map" title="Google Maps met RoadMaat-locaties" src="https://maps.google.com/maps?q=Netherlands&z=7&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen hidden></iframe>
                   <div id="roadmap-map" class="roadmap-map" role="region" aria-label="Kaart met AB Texel-vestigingen in West-Europa"></div>
                   <p class="map-unavailable" id="map-unavailable" hidden></p>
-                  <span class="map-caption" id="map-caption">AB Texel-locaties · OpenStreetMap</span>
+                  <span class="map-caption" id="map-caption">Alle locaties · Nederland · OpenStreetMap</span>
                 </div>
                 <div class="locations-panel">
                   <div class="list-heading"><strong>Locaties onderweg</strong><span class="location-list-actions"><span id="location-count">Locaties laden…</span><button class="show-factories" id="show-factories" type="button" hidden>Toon alle fabrieken</button></span></div>
@@ -91,7 +91,7 @@
                 </div>
               </div>
               <aside class="location-detail" id="location-detail" aria-live="polite">
-                <div class="detail-placeholder"><span class="location-symbol abtexel-symbol" id="detail-symbol">A</span><p class="eyebrow" id="detail-kind">AB TEXEL-LOCATIES</p><h2 id="detail-name">Vestigingen in West-Europa</h2><p id="detail-description">De kaart toont AB Texel-vestigingen in Nederland, België, Duitsland, Frankrijk en het Verenigd Koninkrijk. Kies een locatie voor adres en route.</p><div class="detail-info" id="detail-info">Kaartpins kunnen bij benadering op plaatsniveau staan.</div><section class="factory-info-editor" id="factory-info-editor" aria-label="Fabrieksinstructies" hidden></section><a class="button button-dark map-open" id="maps-link" href="https://www.google.com/maps/search/?api=1&amp;query=AB+Texel+vestigingen" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a><a class="source-link" id="source-link" href="https://abtexel.com/locaties" target="_blank" rel="noopener noreferrer" hidden>Bron en actuele adressen: AB Texel ↗</a></div>
+                <div class="detail-placeholder"><span class="location-symbol abtexel-symbol" id="detail-symbol">A</span><p class="eyebrow" id="detail-kind">ALLE LOCATIES</p><h2 id="detail-name">Nederland</h2><p id="detail-description">RoadMap opent met alle locatietypen in de lijst en de kaart ingezoomd op Nederland. Kies een tab om alleen dat type locaties te bekijken.</p><div class="detail-info" id="detail-info">AB Texel-vestigingen in West-Europa zijn als kaartmarkeringen weergegeven.</div><section class="factory-info-editor" id="factory-info-editor" aria-label="Fabrieksinstructies" hidden></section><a class="button button-dark map-open" id="maps-link" href="https://www.google.com/maps/search/?api=1&amp;query=Netherlands" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a><a class="source-link" id="source-link" href="https://abtexel.com/locaties" target="_blank" rel="noopener noreferrer">Bron en actuele adressen: AB Texel ↗</a></div>
                 <p class="demo-note">Controleer fabrieksgegevens bij de planning en check trucktoegang en openingstijden voor vertrek.</p>
               </aside>
             </div>
@@ -137,6 +137,6 @@
     </nav>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="chauffeur.js?v=abtexel-locaties-map"></script>
+    <script src="chauffeur.js?v=roadmap-all-netherlands"></script>
   </body>
 </html>
