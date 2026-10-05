@@ -12,7 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="chauffeur.css?v=roadmaat-brand-nl-start" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="chauffeur.css?v=abtexel-locaties-chat-green" />
   </head>
   <body>
     <a class="skip-link" href="#main">Ga naar de inhoud</a>
@@ -29,7 +30,7 @@
           <a class="nav-link active" href="#overview" data-view="overview"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span>Mijn overzicht</a>
           <a class="nav-link" href="#roadmap" data-view="roadmap"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>RoadMap</a>
           <a class="nav-link chat-nav-link" href="#chats" data-view="chats"><span class="nav-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Vragen en advies <b>3</b></a>
-          <a class="nav-link group-nav-link" href="#groups" data-view="groups"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-1.5A4.5 4.5 0 0 1 8 13h2a4.5 4.5 0 0 1 4.5 4.5V19ZM16 5.3a3 3 0 0 1 0 5.8M17 13h.5a4 4 0 0 1 4 4v2h-4"/></svg></span>Chat-groepen</a>
+          <a class="nav-link group-nav-link" href="#groups" data-view="groups"><span class="nav-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Chat-groepen <b>CHAT</b></a>
         </nav>
         <div class="sidebar-bottom">
           <div class="profile"><span class="avatar avatar-jan">JD</span><span><strong>Jan de Vries</strong><small>Chauffeur · AB Texel B.V.</small></span></div>
@@ -61,25 +62,28 @@
             <h2 class="section-heading">Snel naar</h2>
             <div class="quick-grid">
               <a class="quick-card" href="#roadmap" data-view="roadmap"><span class="quick-icon map-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><strong>RoadMap</strong><small>Locaties langs je route</small><span class="quick-arrow">→</span></a>
-              <a class="quick-card chat-quick-card" href="#chats" data-view="chats"><span class="quick-icon help-icon chat-quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span><strong>Vragen en advies</strong><small>Vraagbaak, privéchat en chauffeursgroepen</small><span class="chat-feature-tag">4 chats</span><span class="quick-arrow">→</span></a>
-              <a class="quick-card group-quick-card" href="#groups" data-view="groups"><span class="quick-icon group-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-1.5A4.5 4.5 0 0 1 8 13h2a4.5 4.5 0 0 1 4.5 4.5V19ZM16 5.3a3 3 0 0 1 0 5.8M17 13h.5a4 4 0 0 1 4 4v2h-4"/></svg></span><strong>Chat-groepen</strong><small>Jouw gesprekken met chauffeurs</small><span class="quick-arrow">→</span></a>
+              <a class="quick-card chat-quick-card" href="#chats" data-view="chats"><span class="quick-icon help-icon chat-quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span><strong>Vragen en advies</strong><small>Vraagbaak, privéchat en chauffeursgroepen</small><span class="chat-feature-tag">VRAAGBAAK · CHAT</span><span class="quick-arrow">→</span></a>
+              <a class="quick-card group-quick-card" href="#groups" data-view="groups"><span class="quick-icon group-icon chat-quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span><strong>Chat-groepen</strong><small>Groepsgesprekken met collega-chauffeurs</small><span class="chat-feature-tag">GROEPSCHAT</span><span class="quick-arrow">→</span></a>
             </div>
           </section>
 
           <section class="view" id="view-roadmap" data-panel="roadmap" hidden>
-            <div class="page-heading">            <div><p class="eyebrow">HANDIGE PLEKKEN ONDERWEG</p><h1>RoadMap</h1><p>Vind truckstops, fabrieken en hulp voor je truck onderweg.</p></div></div>
+            <div class="page-heading"><div><p class="eyebrow">HANDIGE PLEKKEN ONDERWEG</p><h1>RoadMap</h1><p>Bekijk AB Texel-vestigingen in West-Europa of kies een andere locatietab.</p></div></div>
             <div class="map-layout">
               <div class="map-column">
                 <div class="map-filters" role="group" aria-label="Filter locaties">
-                  <button class="filter-button active" type="button" data-filter="all">Alles</button>
+                  <button class="filter-button active" type="button" data-filter="abtexel">AB Texel-locaties</button>
+                  <button class="filter-button" type="button" data-filter="all">Alles</button>
                   <button class="filter-button" type="button" data-filter="truckstop">Truckstops</button>
                   <button class="filter-button" type="button" data-filter="factory">Fabrieken</button>
                   <button class="filter-button" type="button" data-filter="tire">Bandenservice</button>
                   <button class="filter-button" type="button" data-filter="workshop">Werkplaatsen on the road</button>
                 </div>
                 <div class="map-frame">
-                  <iframe id="google-map" title="Google Maps met RoadMaat-locaties in Nederland" src="https://maps.google.com/maps?q=Netherlands&z=7&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-                  <span class="map-caption">Nederland · Google Maps</span>
+                  <iframe id="google-map" title="Google Maps met RoadMaat-locaties" src="https://maps.google.com/maps?q=Netherlands&z=7&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen hidden></iframe>
+                  <div id="roadmap-map" class="roadmap-map" role="region" aria-label="Kaart met AB Texel-vestigingen in West-Europa"></div>
+                  <p class="map-unavailable" id="map-unavailable" hidden></p>
+                  <span class="map-caption" id="map-caption">AB Texel-locaties · OpenStreetMap</span>
                 </div>
                 <div class="locations-panel">
                   <div class="list-heading"><strong>Locaties onderweg</strong><span class="location-list-actions"><span id="location-count">Locaties laden…</span><button class="show-factories" id="show-factories" type="button" hidden>Toon alle fabrieken</button></span></div>
@@ -87,7 +91,7 @@
                 </div>
               </div>
               <aside class="location-detail" id="location-detail" aria-live="polite">
-                <div class="detail-placeholder"><span class="location-symbol parking-symbol" id="detail-symbol">N</span><p class="eyebrow" id="detail-kind">STARTWEERGAVE</p><h2 id="detail-name">Nederland</h2><p id="detail-description">De kaart toont Nederland. Kies een locatie om de route en praktische informatie te bekijken.</p><div class="detail-info" id="detail-info">Kaartstartpunt · Nederland</div><section class="factory-info-editor" id="factory-info-editor" aria-label="Fabrieksinstructies" hidden></section><a class="button button-dark map-open" id="maps-link" href="https://www.google.com/maps/search/?api=1&amp;query=Netherlands" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a></div>
+                <div class="detail-placeholder"><span class="location-symbol abtexel-symbol" id="detail-symbol">A</span><p class="eyebrow" id="detail-kind">AB TEXEL-LOCATIES</p><h2 id="detail-name">Vestigingen in West-Europa</h2><p id="detail-description">De kaart toont AB Texel-vestigingen in Nederland, België, Duitsland, Frankrijk en het Verenigd Koninkrijk. Kies een locatie voor adres en route.</p><div class="detail-info" id="detail-info">Kaartpins kunnen bij benadering op plaatsniveau staan.</div><section class="factory-info-editor" id="factory-info-editor" aria-label="Fabrieksinstructies" hidden></section><a class="button button-dark map-open" id="maps-link" href="https://www.google.com/maps/search/?api=1&amp;query=AB+Texel+vestigingen" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a><a class="source-link" id="source-link" href="https://abtexel.com/locaties" target="_blank" rel="noopener noreferrer" hidden>Bron en actuele adressen: AB Texel ↗</a></div>
                 <p class="demo-note">Controleer fabrieksgegevens bij de planning en check trucktoegang en openingstijden voor vertrek.</p>
               </aside>
             </div>
@@ -129,9 +133,10 @@
       <a class="active" href="#overview" data-view="overview"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span>Mijn overzicht</a>
       <a href="#roadmap" data-view="roadmap"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>RoadMap</a>
       <a class="mobile-chat-link" href="#chats" data-view="chats"><span class="mobile-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Vragen en advies</a>
-      <a class="mobile-group-link" href="#groups" data-view="groups"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-1.5A4.5 4.5 0 0 1 8 13h2a4.5 4.5 0 0 1 4.5 4.5V19ZM16 5.3a3 3 0 0 1 0 5.8M17 13h.5a4 4 0 0 1 4 4v2h-4"/></svg></span>Chat-groepen</a>
+      <a class="mobile-group-link" href="#groups" data-view="groups"><span class="mobile-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Chat-groepen</a>
     </nav>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <script src="chauffeur.js?v=roadmaat-brand-nl-start"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="chauffeur.js?v=abtexel-locaties-map"></script>
   </body>
 </html>

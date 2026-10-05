@@ -7,6 +7,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const factoryDirectionsUrl = "https://www.google.com/maps/dir/?api=1&origin=Lamb+Weston+Kruiningen&destination=Agristo+Tilburg&waypoints=Lamb+Weston+Bergen+op+Zoom%7CLamb+Weston+Oosterbierum%7CAviko+Steenderen";
 
   const locations = [
+    { category: "abtexel", name: "AB Texel · Oudeschild", location: "Nederland · hoofdkantoor", query: "AB Texel Schilderweg 263 Oudeschild Netherlands", address: "Schilderweg 263, 1792 CJ Oudeschild", mapCoords: [53.0417498, 4.8468636], sourceUrl: "https://abtexel.com/locaties/7/ab-texel-nederland", description: "Hoofdkantoor en vestiging van AB Texel Nederland. AB Texel meldt dat het bedrijf vanuit vestigingen in Nederland, België, Duitsland, Frankrijk en Groot-Brittannië werkt.", details: "Officieel adres · AB Texel Nederland", symbol: "A" },
+    { category: "abtexel", name: "AB Texel · 't Zand", location: "Nederland · Distribution", query: "AB Texel Distribution Kanaalkade 68 t Zand Netherlands", address: "Kanaalkade 68, 1756 AD 't Zand", mapCoords: [52.8436923, 4.7575617], sourceUrl: "https://abtexel.com/locaties/122/ab-texel-distribution", description: "AB Texel Distribution. De kaartpin is bij benadering op plaatsniveau; controleer het adres en de toegang via de officiële vestigingsinformatie.", details: "Officieel adres · AB Texel Distribution", symbol: "A" },
+    { category: "abtexel", name: "AB Texel · Heerenveen", location: "Nederland · Liquid Food en Silo", query: "AB Texel Mercurius 6 Heerenveen Netherlands", address: "Mercurius 6, 8448 GX Heerenveen", mapCoords: [52.9666222, 5.9364466], sourceUrl: "https://abtexel.com/locaties/2/ab-texel-liquid-food", description: "Vestigingsadres voor AB Texel Liquid Food en Silo. De kaartpin is bij benadering op plaatsniveau; volg voor bezoek de officiële adres- en routegegevens.", details: "Officieel adres · AB Texel Liquid Food / Silo", symbol: "A" },
+    { category: "abtexel", name: "AB Texel Fresh · 's-Hertogenbosch", location: "Nederland · Fresh", query: "AB Texel Fresh Graaf van Solmsweg 52B s-Hertogenbosch Netherlands", address: "Graaf van Solmsweg 52B, 5222 BP 's-Hertogenbosch", mapCoords: [51.6889387, 5.303116], sourceUrl: "https://abtexel.com/locaties/13/ab-texel-fresh", description: "AB Texel Fresh. De kaartpin is bij benadering op plaatsniveau; controleer de exacte locatie en bezoekinstructies vooraf.", details: "Officieel adres · AB Texel Fresh", symbol: "A" },
+    { category: "abtexel", name: "Bosman Transport · Nisse", location: "Nederland · werkplaats", query: "Bosman Transport Drieweg 7 Nisse Netherlands", address: "Drieweg 7, 4443 RD Nisse", mapCoords: [51.4560564, 3.8569573], sourceUrl: "https://abtexel.com/locaties/5/bosman-transport", facilityType: "garage", description: "Bosman Transport vermeldt dat de werkplaats op dezelfde locatie zit als de andere bedrijfsafdelingen. Kaartpin bij benadering op plaatsniveau; controleer de actuele toegang vooraf.", details: "Officieel adres · Werkplaats volgens Bosman Transport", symbol: "G" },
+    { category: "abtexel", name: "AB Texel Special Transport · Eastermar", location: "Nederland · Special Transport", query: "AB Texel Special Transport Mounekamp 4 Eastermar Netherlands", address: "Mounekamp 4, 9261 XC Eastermar", mapCoords: [53.1742132, 6.0620458], sourceUrl: "https://abtexel.com/locaties/136/ab-texel-special-transport", description: "Nederlandse vestiging van AB Texel Special Transport. Kaartpin bij benadering op plaatsniveau; controleer de officiële route- en toegangsinformatie.", details: "Officieel adres · AB Texel Special Transport", symbol: "A" },
+    { category: "abtexel", name: "AB Texel · Broekhuizenvorst", location: "Nederland · nevenvestiging", query: "AB Texel Broekhuizenvorst Netherlands", address: "Broekhuizenvorst", mapCoords: [51.4958387, 6.1566406], sourceUrl: "https://abtexel.com/locaties/40/ab-texel-nederland-broekhuizenvorst", description: "Nevenvestiging vermeld in het officiële AB Texel-locatieoverzicht. De kaartpin is bij benadering op plaatsniveau; controleer het precieze adres en toegang vooraf.", details: "AB Texel-vestiging · plaatsniveau, locatie bij benadering", symbol: "A" },
+    { category: "abtexel", name: "AB Texel Special Transport · Schoonoord", location: "Nederland · Special Transport", query: "AB Texel Special Transport Schoonoord Netherlands", address: "Schoonoord", mapCoords: [52.8478546, 6.7556906], sourceUrl: "https://abtexel.com/locaties/191/ab-texel-special-transport-schoonoord", description: "Vestiging opgenomen in het officiële AB Texel-locatieoverzicht. De kaartpin is bij benadering op plaatsniveau; controleer voor bezoek de actuele adresgegevens online.", details: "AB Texel-vestiging · plaatsniveau, locatie bij benadering", symbol: "A" },
+    { category: "abtexel", name: "AB Texel Special Transport · Milsbeek", location: "Nederland · Special Transport", query: "AB Texel Special Transport Milsbeek Netherlands", address: "Milsbeek", mapCoords: [51.7243615, 5.9499476], sourceUrl: "https://abtexel.com/locaties/183/ab-texel-special-transport-milsbeek", description: "Vestiging opgenomen in het officiële AB Texel-locatieoverzicht. De kaartpin is bij benadering op plaatsniveau; controleer voor bezoek de actuele adresgegevens online.", details: "AB Texel-vestiging · plaatsniveau, locatie bij benadering", symbol: "A" },
+    { category: "abtexel", name: "AB Texel Special Transport · Zevenbergen", location: "Nederland · Zevenbergen-Moerdijk", query: "AB Texel Special Transport Zevenbergen Moerdijk Netherlands", address: "Zevenbergen-Moerdijk", mapCoords: [51.6450443, 4.6061538], sourceUrl: "https://abtexel.com/locaties/187/ab-texel-special-transport-zevenbergen-moerdijk", description: "Vestiging opgenomen in het officiële AB Texel-locatieoverzicht. De kaartpin is bij benadering op plaatsniveau; controleer voor bezoek de actuele adresgegevens online.", details: "AB Texel-vestiging · plaatsniveau, locatie bij benadering", symbol: "A" },
+    { category: "abtexel", name: "AB Texel · Wehe-den Hoorn", location: "Nederland · vestiging", query: "AB Texel Wehe-den Hoorn Netherlands", address: "Wehe-den Hoorn", mapCoords: [53.3610112, 6.4170762], sourceUrl: "https://abtexel.com/locaties/43/ab-texel-wehe-den-hoorn", description: "Vestiging opgenomen in het officiële AB Texel-locatieoverzicht. De kaartpin is bij benadering op plaatsniveau; controleer voor bezoek de actuele adresgegevens online.", details: "AB Texel-vestiging · plaatsniveau, locatie bij benadering", symbol: "A" },
+    { category: "abtexel", name: "AB Texel Distribution · Andijk", location: "Nederland · Distribution", query: "AB Texel Distribution Andijk Netherlands", address: "Andijk", mapCoords: [52.7467338, 5.2217929], sourceUrl: "https://abtexel.com/locaties/156/ab-texel-distribution-andijk", description: "Distribution-locatie opgenomen in het officiële AB Texel-locatieoverzicht. De kaartpin is bij benadering op plaatsniveau; controleer de actuele adresgegevens online.", details: "AB Texel-vestiging · plaatsniveau, locatie bij benadering", symbol: "A" },
+    { category: "abtexel", name: "AB Texel Distribution · Swifterbant", location: "Nederland · Distribution", query: "AB Texel Distribution Swifterbant Netherlands", address: "Swifterbant", mapCoords: [52.5696313, 5.6385192], sourceUrl: "https://abtexel.com/locaties/155/ab-texel-distribution-swifterbant", description: "Distribution-locatie opgenomen in het officiële AB Texel-locatieoverzicht. De kaartpin is bij benadering op plaatsniveau; controleer de actuele adresgegevens online.", details: "AB Texel-vestiging · plaatsniveau, locatie bij benadering", symbol: "A" },
+    { category: "abtexel", name: "AB Texel Distribution · Utrecht", location: "Nederland · warehouse", query: "AB Texel Distribution Utrecht warehouse Netherlands", address: "Utrecht", mapCoords: [52.0907006, 5.1215634], sourceUrl: "https://abtexel.com/locaties/157/ab-texel-distribution-utrecht-warehouse", description: "Warehouse-locatie opgenomen in het officiële AB Texel-locatieoverzicht. De kaartpin is bij benadering op plaatsniveau; controleer de actuele adresgegevens online.", details: "AB Texel-vestiging · plaatsniveau, locatie bij benadering", symbol: "A" },
+    { category: "abtexel", name: "AB Texel Distribution · Emmer-Compascuum", location: "Nederland · Distribution", query: "AB Texel Distribution Emmer-Compascuum Netherlands", address: "Emmer-Compascuum", mapCoords: [52.8115315, 7.046206], sourceUrl: "https://abtexel.com/locaties/164/ab-texel-distribution-emmer-compascuum", description: "Distribution-locatie opgenomen in het officiële AB Texel-locatieoverzicht. De kaartpin is bij benadering op plaatsniveau; controleer de actuele adresgegevens online.", details: "AB Texel-vestiging · plaatsniveau, locatie bij benadering", symbol: "A" },
+    { category: "abtexel", name: "AB Texel Distribution · 's-Heerenberg", location: "Nederland · Distribution", query: "AB Texel Distribution s-Heerenberg Netherlands", address: "'s-Heerenberg", mapCoords: [51.8779448, 6.2548363], sourceUrl: "https://abtexel.com/locaties/172/ab-texel-distribution-s-heerenberg", description: "Distribution-locatie opgenomen in het officiële AB Texel-locatieoverzicht. De kaartpin is bij benadering op plaatsniveau; controleer de actuele adresgegevens online.", details: "AB Texel-vestiging · plaatsniveau, locatie bij benadering", symbol: "A" },
+    { category: "abtexel", name: "AB Texel Fresh · Barendrecht", location: "Nederland · Fresh", query: "AB Texel Fresh Barendrecht Netherlands", address: "Barendrecht", mapCoords: [51.851938, 4.5293835], sourceUrl: "https://abtexel.com/locaties/179/ab-texel-fresh-barendrecht", description: "Fresh-locatie opgenomen in het officiële AB Texel-locatieoverzicht. De kaartpin is bij benadering op plaatsniveau; controleer de actuele adresgegevens online.", details: "AB Texel-vestiging · plaatsniveau, locatie bij benadering", symbol: "A" },
+    { category: "abtexel", name: "AB Texel GmbH · Helmstedt", location: "Duitsland · hoofdkantoor", query: "AB Texel GmbH Industriestraße 2a Helmstedt Germany", address: "Industriestraße 2a, 38350 Helmstedt", mapCoords: [52.238556, 10.9965411], sourceUrl: "https://abtexel.com/locaties/3/ab-texel-gmbh", description: "Duitse AB Texel-vestiging; ook AB Texel Feed Deutschland wordt vermeld op dit adres. Kaartpin bij benadering op plaatsniveau; controleer de route voor vertrek.", details: "Officieel adres · AB Texel GmbH / Feed Deutschland", symbol: "A" },
+    { category: "abtexel", name: "AB Texel Spezialtransporte · Rheinböllen", location: "Duitsland · Special Transport", query: "AB Texel Spezialtransporte Industriepark Soonwald 26-28 Rheinböllen Germany", address: "Industriepark Soonwald 26-28, 55494 Rheinböllen", mapCoords: [49.9947755, 7.6815483], sourceUrl: "https://abtexel.com/locaties/137/ab-texel-spezialtransporte", description: "Duitse vestiging van AB Texel Special Transport. Kaartpin bij benadering op plaatsniveau; controleer de exacte route- en toegangsgegevens vooraf.", details: "Officieel adres · AB Texel Spezialtransporte", symbol: "A" },
+    { category: "abtexel", name: "AB Texel UK · Whittlesey", location: "Verenigd Koninkrijk · werkplaats", query: "AB Texel UK 300 Eastrea Road Whittlesey PE7 2AR United Kingdom", address: "300 Eastrea Road, PE7 2AR Whittlesey, Cambridgeshire", mapCoords: [52.5569101, -0.1068751], sourceUrl: "https://abtexel.com/locaties/6/ab-texel-uk", facilityType: "garage", description: "AB Texel UK vermeldt dat de werkplaats zich op de Whittlesey-vestiging bevindt. Kaartpin bij benadering op plaatsniveau; raadpleeg de officiële adresgegevens voor de actuele route.", details: "Officieel adres · Werkplaats volgens AB Texel UK", symbol: "G" },
+    { category: "abtexel", name: "AB Texel UK · Greetham", location: "Verenigd Koninkrijk · vestiging", query: "AB Texel UK Greetham United Kingdom", address: "Greetham", mapCoords: [52.7197281, -0.6295232], sourceUrl: "https://abtexel.com/locaties/126/ab-texel-uk-greetham", description: "Vestigingsvermelding in het officiële AB Texel-locatieoverzicht. De kaartpin is bij benadering op plaatsniveau; controleer voor bezoek de actuele adresgegevens online.", details: "AB Texel-vestiging · plaatsniveau, locatie bij benadering", symbol: "A" },
+    { category: "abtexel", name: "AB Texel France · Neuville-en-Ferrain", location: "Frankrijk · hoofdkantoor", query: "AB Texel France 17a Rue du Vertuquet 59960 Neuville-en-Ferrain France", address: "17a Rue du Vertuquet, 59960 Neuville-en-Ferrain", mapCoords: [50.756398, 3.162879], sourceUrl: "https://abtexel.com/locaties/8/ab-texel-france", description: "Franse vestiging van AB Texel. Kaartpin bij benadering op plaatsniveau; controleer de actuele adres- en routegegevens op de officiële website.", details: "Officieel adres · AB Texel France", symbol: "A" },
+    { category: "abtexel", name: "AB Texel France · Péronne", location: "Frankrijk · vestiging", query: "AB Texel France Peronne France", address: "Péronne", mapCoords: [49.9290847, 2.9323535], sourceUrl: "https://abtexel.com/locaties/176/ab-texel-france-peronne", description: "Vestigingsvermelding in het officiële AB Texel-locatieoverzicht. De kaartpin is bij benadering op plaatsniveau; controleer voor bezoek de actuele adresgegevens online.", details: "AB Texel-vestiging · plaatsniveau, locatie bij benadering", symbol: "A" },
+    { category: "abtexel", name: "AB Texel België · Wielsbeke", location: "België · vestiging", query: "AB Texel België Vaartstraat 51 Wielsbeke Belgium", address: "Vaartstraat 51, 8710 Wielsbeke (Ooigem)", mapCoords: [50.9094776, 3.3190923], sourceUrl: "https://abtexel.com/locaties/10/ab-texel-belgie", description: "Belgische vestiging; AB Texel Liquid Food België en AB Texel Feed België gebruiken volgens het openbare locatieoverzicht hetzelfde adres. Kaartpin bij benadering op plaatsniveau.", details: "Officieel adres · AB Texel België / Feed / Liquid Food", symbol: "A" },
     { category: "truckstop", name: "Truckstop De Lucht", location: "A2 · Bruchem", query: "Truckstop De Lucht Bruchem", description: "Verzorgingsplaats en stop langs de A2. Bekijk de actuele plek, voorzieningen en toegang voor vrachtwagens op de kaart.", details: "Verzorgingsplaats · A2", symbol: "T" },
     { category: "truckstop", name: "Verzorgingsplaats Lingehorst", location: "A15 · Wadenoijen", query: "Verzorgingsplaats Lingehorst A15", description: "Verzorgingsplaats langs de A15. Controleer de actuele voorzieningen en trucktoegang via Google Maps.", details: "Verzorgingsplaats · A15", symbol: "T" },
     { category: "truckstop", name: "Truckstop Hazeldonk", location: "A16 · Breda/Belgische grens", query: "Truckstop Hazeldonk", description: "Truckstop bij de grensovergang Hazeldonk. Bekijk actuele informatie en bereikbaarheid op Google Maps.", details: "Truckstop · A16", symbol: "T" },
@@ -94,8 +118,84 @@ document.addEventListener("DOMContentLoaded", () => {
     toastTimer = window.setTimeout(() => toast.classList.remove("visible"), 2600);
   }
 
-  let activeLocationFilter = "all";
+  let activeLocationFilter = "abtexel";
   let selectedFactoryName = null;
+  let leafletMap;
+  const abLocationMarkers = new Map();
+
+  function setMapMode(mode) {
+    const googleMap = document.getElementById("google-map");
+    const locationMap = document.getElementById("roadmap-map");
+    const mapUnavailable = document.getElementById("map-unavailable");
+    const showAbMap = mode === "abtexel";
+    googleMap.hidden = showAbMap;
+    locationMap.hidden = !showAbMap || !window.L;
+    mapUnavailable.hidden = !showAbMap || Boolean(window.L);
+    if (showAbMap && !window.L) {
+      mapUnavailable.textContent = "De kaart kan niet laden. Bekijk alle actuele vestigingen op de officiële AB Texel-website.";
+    }
+    if (showAbMap && leafletMap) window.setTimeout(() => leafletMap.invalidateSize(), 0);
+  }
+
+  function initializeAbTexelMap() {
+    if (!window.L) return;
+    const mapElement = document.getElementById("roadmap-map");
+    leafletMap = window.L.map(mapElement, { scrollWheelZoom: false }).setView([52.1, 5.5], 7);
+    window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(leafletMap);
+
+    const markers = [];
+    locations.filter((location) => location.category === "abtexel").forEach((location) => {
+      const marker = window.L.circleMarker(location.mapCoords, {
+        radius: location.facilityType === "garage" ? 9 : 7,
+        color: "#ffffff",
+        weight: 2,
+        fillColor: location.facilityType === "garage" ? "#dc8a1d" : "#087b68",
+        fillOpacity: 1,
+      }).addTo(leafletMap);
+      const popup = document.createElement("div");
+      const name = document.createElement("strong");
+      name.textContent = location.name;
+      const address = document.createElement("span");
+      address.textContent = location.address;
+      const directions = document.createElement("a");
+      directions.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.query)}`;
+      directions.target = "_blank";
+      directions.rel = "noopener noreferrer";
+      directions.textContent = "Route en locatie openen ↗";
+      popup.append(name, address, directions);
+      marker.bindPopup(popup);
+      abLocationMarkers.set(location.name, marker);
+      markers.push(marker);
+    });
+
+    if (markers.length) {
+      leafletMap.fitBounds(window.L.featureGroup(markers).getBounds().pad(0.12), { maxZoom: 7 });
+    }
+  }
+
+  function showAbTexelOverview() {
+    setMapMode("abtexel");
+    if (leafletMap && abLocationMarkers.size) {
+      window.setTimeout(() => {
+        leafletMap.invalidateSize();
+        leafletMap.fitBounds(window.L.featureGroup([...abLocationMarkers.values()]).getBounds().pad(0.12), { maxZoom: 7 });
+      }, 0);
+    }
+    document.getElementById("map-caption").textContent = "AB Texel-locaties · OpenStreetMap";
+    document.getElementById("maps-link").href = "https://www.google.com/maps/search/?api=1&query=AB+Texel+vestigingen";
+    document.getElementById("source-link").hidden = false;
+    document.getElementById("source-link").href = "https://abtexel.com/locaties";
+    document.getElementById("detail-symbol").textContent = "A";
+    document.getElementById("detail-symbol").className = "location-symbol abtexel-symbol";
+    document.getElementById("detail-name").textContent = "AB Texel-locaties";
+    document.getElementById("detail-kind").textContent = "NEDERLAND · BELGIË · DUITSLAND · FRANKRIJK · VERENIGD KONINKRIJK";
+    document.getElementById("detail-description").textContent = "De kaart toont vestigingen en locaties uit de openbare AB Texel-locatielijst. Oranje markeringen tonen werkplaatsen die expliciet op de vestigingspagina's worden genoemd. Kies een locatie voor adres en route.";
+    document.getElementById("detail-info").textContent = `${locations.filter((location) => location.category === "abtexel").length} vestigings- en locatiepunten · plaatsmarkers kunnen bij benadering zijn`;
+    document.getElementById("factory-info-editor").hidden = true;
+  }
 
   function updateLocationVisibility() {
     const cards = [...document.querySelectorAll(".location-card")];
@@ -112,10 +212,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showFactoryOverview() {
     const map = document.getElementById("google-map");
+    setMapMode("google");
     map.src = factoryMapUrl;
     map.title = "Google Maps met alle vijf fabriekslocaties";
     document.getElementById("maps-link").href = factoryDirectionsUrl;
-    document.querySelector(".map-caption").textContent = "Alle 5 fabrieken · Google Maps";
+    document.getElementById("map-caption").textContent = "Alle 5 fabrieken · Google Maps";
+    document.getElementById("source-link").hidden = true;
     document.getElementById("detail-symbol").textContent = "F";
     document.getElementById("detail-symbol").className = "location-symbol factory-symbol";
     document.getElementById("detail-name").textContent = "Alle fabrieken";
@@ -238,7 +340,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function iconClass(category) {
-    return category === "truckstop" ? "parking-symbol"
+    return category === "abtexel" ? "abtexel-symbol"
+      : category === "truckstop" ? "parking-symbol"
       : category === "factory" ? "factory-symbol"
         : category === "tire" ? "tire-symbol"
           : "workshop-symbol";
@@ -256,16 +359,32 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("detail-name").textContent = location.name;
     document.getElementById("detail-kind").textContent = location.location.toLocaleUpperCase("nl-NL");
     document.getElementById("detail-description").textContent = location.description;
-    document.getElementById("detail-info").textContent = location.details;
+    document.getElementById("detail-info").textContent = location.category === "abtexel"
+      ? `${location.address} · ${location.details}`
+      : location.details;
     const factoryEditor = document.getElementById("factory-info-editor");
     factoryEditor.hidden = location.category !== "factory";
     if (location.category === "factory") renderFactoryInfo(location, factoryEditor);
     const symbol = document.getElementById("detail-symbol");
     symbol.textContent = location.symbol;
     symbol.className = `location-symbol ${iconClass(location.category)}`;
-    document.getElementById("google-map").src = location.mapUrl || `https://maps.google.com/maps?q=${encodeURIComponent(location.query)}&output=embed`;
+    const isAbLocation = location.category === "abtexel";
+    setMapMode(isAbLocation ? "abtexel" : "google");
+    if (!isAbLocation) {
+      document.getElementById("google-map").src = location.mapUrl || `https://maps.google.com/maps?q=${encodeURIComponent(location.query)}&output=embed`;
+    } else {
+      const marker = abLocationMarkers.get(location.name);
+      if (marker && leafletMap) {
+        leafletMap.setView(marker.getLatLng(), 13);
+        marker.openPopup();
+      }
+    }
     document.getElementById("maps-link").href = location.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.query)}`;
-    document.querySelector(".map-caption").textContent = location.category === "tire" && location.mapUrl
+    document.getElementById("source-link").hidden = !isAbLocation;
+    if (isAbLocation) document.getElementById("source-link").href = "https://abtexel.com/locaties";
+    document.getElementById("map-caption").textContent = isAbLocation
+      ? "AB Texel-locaties · OpenStreetMap"
+      : location.category === "tire" && location.mapUrl
       ? "756 bandenservicepunten · AB Texel"
       : location.category === "factory" ? "Fabriekslocatie"
         : "Kaart via Google Maps";
@@ -290,7 +409,9 @@ document.addEventListener("DOMContentLoaded", () => {
       copy.append(name, description);
       const category = document.createElement("span");
       category.className = "location-rating";
-      category.textContent = location.category === "truckstop" ? "Stop"
+      category.textContent = location.facilityType === "garage" ? "Garage"
+        : location.category === "abtexel" ? "AB"
+          : location.category === "truckstop" ? "Stop"
         : location.category === "factory" ? "Info"
           : location.category === "tire" ? "Banden"
             : "Service";
@@ -306,6 +427,44 @@ document.addEventListener("DOMContentLoaded", () => {
     updateLocationVisibility();
   }
 
+  function setLocationFilter(category) {
+    document.querySelectorAll(".filter-button").forEach((button) => {
+      button.classList.toggle("active", button.dataset.filter === category);
+    });
+    activeLocationFilter = category;
+    selectedFactoryName = null;
+    document.querySelectorAll(".location-card").forEach((card) => card.classList.remove("selected"));
+    document.getElementById("factory-info-editor").hidden = true;
+    updateLocationVisibility();
+
+    const map = document.getElementById("google-map");
+    const mapLink = document.getElementById("maps-link");
+    if (category === "abtexel") {
+      showAbTexelOverview();
+    } else if (category === "tire") {
+      const tyreMap = locations.find((location) => location.category === "tire");
+      setMapMode("google");
+      document.getElementById("source-link").hidden = true;
+      map.src = tyreMap.mapUrl;
+      map.title = "Google My Maps met 756 bandenservicepunten van AB Texel";
+      mapLink.href = tyreMap.mapsUrl;
+      document.getElementById("map-caption").textContent = "756 bandenservicepunten · AB Texel";
+      document.getElementById("detail-name").textContent = "756 bandenservicepunten";
+      document.getElementById("detail-kind").textContent = "GEDEELDE GOOGLE MY MAPS-KAART";
+      document.getElementById("detail-description").textContent = "De volledige gedeelde kaart met bandenservicepunten staat nu direct in beeld. Tik op een markering voor de locatiegegevens.";
+      document.getElementById("detail-info").textContent = "Bron: Tyreservice AB Texel";
+      document.getElementById("detail-symbol").textContent = "B";
+      document.getElementById("detail-symbol").className = "location-symbol tire-symbol";
+    } else if (category === "factory") {
+      showFactoryOverview();
+    } else {
+      const firstVisible = [...document.querySelectorAll(".location-card")].find((card) =>
+        !card.hidden && (category !== "all" || card.dataset.category !== "abtexel"));
+      const location = locationDataForCard(firstVisible);
+      if (location) selectLocation(location, firstVisible);
+    }
+  }
+
   function openView(name) {
     const validName = panels.some((panel) => panel.dataset.panel === name) ? name : "overview";
     panels.forEach((panel) => {
@@ -314,6 +473,7 @@ document.addEventListener("DOMContentLoaded", () => {
       panel.classList.toggle("active", active);
     });
     navigation.forEach((link) => link.classList.toggle("active", link.dataset.view === validName));
+    if (validName === "roadmap") setLocationFilter("abtexel");
     history.replaceState(null, "", `#${validName === "overview" ? "overview" : validName}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -374,34 +534,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".filter-button").forEach((filter) => {
     filter.addEventListener("click", () => {
-      document.querySelectorAll(".filter-button").forEach((button) => button.classList.toggle("active", button === filter));
-      const category = filter.dataset.filter;
-      activeLocationFilter = category;
-      selectedFactoryName = null;
-      document.querySelectorAll(".location-card").forEach((card) => card.classList.remove("selected"));
-      document.getElementById("factory-info-editor").hidden = true;
-      updateLocationVisibility();
-      const locationCards = [...document.querySelectorAll(".location-card")];
-
-      const map = document.getElementById("google-map");
-      const mapLink = document.getElementById("maps-link");
-      if (category === "tire") {
-        const tyreMap = locations.find((location) => location.category === "tire");
-        map.src = tyreMap.mapUrl;
-        map.title = "Google My Maps met 756 bandenservicepunten van AB Texel";
-        mapLink.href = tyreMap.mapsUrl;
-        document.querySelector(".map-caption").textContent = "756 bandenservicepunten · AB Texel";
-        document.getElementById("detail-name").textContent = "756 bandenservicepunten";
-        document.getElementById("detail-kind").textContent = "GEDEELDE GOOGLE MY MAPS-KAART";
-        document.getElementById("detail-description").textContent = "De volledige gedeelde kaart met bandenservicepunten staat nu direct in beeld. Tik op een markering voor de locatiegegevens.";
-        document.getElementById("detail-info").textContent = "Bron: Tyreservice AB Texel";
-      } else if (category === "factory") {
-        showFactoryOverview();
-      } else {
-        const firstVisible = locationCards.find((location) => !location.hidden);
-        const location = locationDataForCard(firstVisible);
-        if (location) selectLocation(location, firstVisible);
-      }
+      setLocationFilter(filter.dataset.filter);
     });
   });
 
@@ -531,6 +664,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const today = new Intl.DateTimeFormat("nl-NL", { weekday: "long", day: "numeric", month: "long" }).format(new Date());
   document.getElementById("today-label").textContent = today.toLocaleUpperCase("nl-NL");
   renderLocations();
+  initializeAbTexelMap();
   renderChat("abQuestion");
   const initialView = window.location.hash.slice(1);
   openView(initialView === "roadmap" || initialView === "chats" || initialView === "groups" ? initialView : "overview");
