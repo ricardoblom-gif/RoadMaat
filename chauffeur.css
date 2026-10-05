@@ -1,14 +1,14 @@
 :root {
-  color-scheme: light;
-  --ink: #243129;
-  --muted: #7c887f;
-  --paper: #f4f6f2;
-  --white: #fff;
-  --line: #e7ece6;
-  --green: #426c50;
-  --green-dark: #2d4c38;
-  --mint: #edf3ed;
-  --shadow: 0 5px 22px rgba(42, 57, 47, .045);
+  color-scheme: dark;
+  --ink: #edf4ef;
+  --muted: #a0afa4;
+  --paper: #0a1210;
+  --white: #101b17;
+  --line: #26352d;
+  --green: #72ad80;
+  --green-dark: #315d3e;
+  --mint: #1b2d22;
+  --shadow: 0 8px 26px rgba(0, 0, 0, .2);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -230,4 +230,92 @@ button { color: inherit; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* Dark interface surfaces */
+body { background: radial-gradient(ellipse at 68% 0, #14241b 0, var(--paper) 56%); }
+.demo-banner { color: #e8f0e9; background: #17251c; }
+.demo-banner a { color: #b6d2bb; }
+.sidebar, .topbar { background: rgba(15, 25, 21, .96); }
+.company { background: #121e18; }
+.company-avatar { background: #26382a; color: #b1d0ae; }
+.company small, .profile small, .topbar-company small { color: #97a69b; }
+.nav-link { color: #a1afa5; }
+.nav-link:hover { background: #19261e; color: #f0f5f1; }
+.nav-link.active { background: #1b3022; color: #c0e0c4; }
+.nav-link b { background: #24342a; color: #b6c6b9; }
+.helper-card, .welcome-card { border-color: #29392e; background: #141f18; }
+.helper-card > span, .journey-icon, .map-icon, .welcome-symbol { background: #223529; color: #a4d1aa; }
+.helper-card p, .welcome-card p { color: #a0afa4; }
+.profile { border-color: #29372f; }
+.topbar { border-color: #26352d; }
+.demo-label { border-color: #34443a; color: #bdc9bf; }
+.page-heading > div > p:last-child { color: #a0afa4; }
+.eyebrow { color: #91a397; }
+.overview-journey, .quick-card, .locations-panel, .location-detail, .chat-list, .conversation, .group-card {
+  border-color: #26352d;
+  background: #111c17;
+}
+.journey-icon { background: #213228; }
+.journey-title strong, .journey-time strong { color: #edf4ef; }
+.journey-title strong span, .journey-time small { color: #a0afa4; }
+.text-link, .quick-arrow, .group-arrow { color: #9acc9f; }
+.quick-card:hover, .group-card:hover { border-color: #496550; }
+.map-icon { background: #203127; color: #a9d3ad; }
+.help-icon { background: #352b1d; color: #e0b66e; }
+.group-icon { background: #1e3032; color: #9fc5c5; }
+.quick-card small { color: #a0afa4; }
+.welcome-card { background: #141f18; }
+.filter-button { border-color: #34443a; background: #121e18; color: #c0ccc2; }
+.filter-button:hover { border-color: #66826a; }
+.filter-button.active { border-color: #426c50; background: #315d3e; color: #f3fff4; }
+.map-frame { border-color: #34443a; background: #141e19; }
+.map-caption { background: #101a15; color: #d2ddd4; }
+.list-heading { color: #e0e9e2; }
+.list-heading > span { color: #a0afa4; }
+.location-card { border-color: #27362d; }
+.location-card:hover, .location-card.selected { background: #19271e; }
+.parking-symbol { background: #24372a; color: #a9d3ad; }
+.restaurant-symbol { background: #3a2d1d; color: #e3bd7a; }
+.factory-symbol { background: #203235; color: #a8d0d4; }
+.location-copy strong { color: #e6eee8; }
+.location-copy small, .detail-info, .demo-note { color: #9aa99f; }
+.location-rating { color: #d7b975; }
+.location-detail #detail-description { color: #b4c1b7; }
+.detail-info { border-color: #2a3930; }
+.button { background: #426f4d; color: #f4fff5; }
+.button:hover { background: #4d8059; }
+.chat-list > .list-heading { color: #9eada2; }
+.chat-choice:hover, .chat-choice.active { background: #1b2c21; }
+.chat-choice strong { color: #e5eee7; }
+.chat-choice small { color: #9eada2; }
+.mentor-avatar { background: #26392a; color: #b4d6b6; }
+.pieter-avatar { background: #203438; color: #b0d4d6; }
+.monique-avatar { background: #3b2d20; color: #e5c195; }
+.friends-avatar { background: #272c3a; color: #c0c9e2; }
+.conversation-header { border-color: #29372f; }
+.conversation-header small, .conversation-menu { color: #a0afa4; }
+.messages { background: #0e1813; }
+.message { border-color: #29382f; background: #17231c; }
+.message.mine { border-color: #31523a; background: #1d3323; }
+.message strong { color: #a5d1aa; }
+.message p { color: #e1eae3; }
+.message time { color: #9eaca1; }
+.message-form { border-color: #29372f; }
+.message-form input { border-color: #34443a; background: #0f1914; color: #edf4ef; }
+.message-form input::placeholder { color: #8f9e93; }
+.group-ab { background: #29372a; color: #b2d0a2; }
+.group-card small, .group-card p { color: #a0afa4; }
+.page-footer { border-color: #29372f; color: #95a399; }
+.mobile-nav { border-color: #29372f; background: rgba(15, 25, 21, .97); }
+.mobile-nav a { color: #a0afa4; }
+.mobile-nav a.active { color: #b7ddb9; }
+.toast { background: #294832; color: #f2fff4; }
+::selection { background: #426f4d; color: #fff; }
+
+@media (max-width: 760px) {
+  .mobile-nav { border-color: #29372f; background: rgba(15, 25, 21, .97); }
+}
+@media (max-width: 560px) {
+  .mobile-nav { border-color: #29372f; background: rgba(15, 25, 21, .97); }
 }
