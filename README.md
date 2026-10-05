@@ -26,9 +26,9 @@ Chauffeurs moeten snel toegang hebben tot:
 Deze repository bevat twee statische voorbeeldpagina's, geschikt voor GitHub Pages:
 
 - `index.html` — de introductie- en marktpagina voor bedrijven.
-- `chauffeur.html` — een interactieve demo van RoadMaat zoals een chauffeur die kan zien en gebruiken.
+- `chauffeur.html` — een compacte chauffeursdemo met vier schermen: Mijn overzicht, RoadMap, Hulp & Mentor en Mijn groepen.
 
-De chauffeursdemo bevat voorbeeldberichten, een ritoverzicht, een kaartillustratie met handige plekken, groepen en hulp van Helpers. De demo gebruikt geen echte chauffeursgegevens of backend. Likes, het plaatsen van een bericht en het stellen van een vraag werken alleen tijdelijk in de browser.
+De RoadMap gebruikt een Google Maps-kaart met selecteerbare voorbeeldlocaties en filters voor restaurants, fabrieken en parkings. Hulp & Mentor bevat een Mentor-chat, twee privéchats en een groepschat. Chatberichten werken tijdelijk in de browser; er is geen backend of echte chauffeursdata.
 
 Beide pagina's zijn bereikbaar via de navigatie op de site.
 
@@ -68,8 +68,8 @@ https://<jouw-gebruikersnaam>.github.io/<repositorynaam>/
 ├── styles.css
 ├── script.js
 ├── chauffeur.html
-├── chauffeur.css
 ├── chauffeur.js
+├── chauffeur.css
 ├── README.md
 ├── .gitignore
 └── .github/
