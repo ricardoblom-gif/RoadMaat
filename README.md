@@ -26,11 +26,11 @@ Chauffeurs moeten snel toegang hebben tot:
 Deze repository bevat twee statische voorbeeldpagina's, geschikt voor GitHub Pages:
 
 - `index.html` — de introductie- en marktpagina voor bedrijven.
-- `chauffeur.html` — een compacte chauffeursdemo met vier schermen: Mijn overzicht, RoadMap, Hulp & Mentor en Mijn groepen.
+- `chauffeur.html` — een compacte chauffeursdemo met vier schermen: Mijn overzicht, RoadMap, Vragen chat/mentor en Chats.
 
 Beide pagina's gebruiken een lichtblauw kleurenthema en bevatten geen logo-afbeeldingen of beeldmerken.
 
-De chauffeursdemo toont lokaal weer, windkracht in Beaufort en windrichting na toestemming voor locatie. In de RoadMap opent het filter Bandenservice direct de gedeelde kaart met 756 punten; Fabrieken toont alle vijf locaties als routepunten op Google Maps. De locaties zijn Lamb Weston in Kruiningen, Bergen op Zoom en Oosterbierum, Aviko in Steenderen en Agristo in Tilburg. Controleer exacte locatie, trucktoegang en openingstijden voordat je erheen rijdt. Weergegevens komen van [Open-Meteo](https://open-meteo.com/). Hulp & Mentor bevat een Mentor-chat, twee privéchats en een groepschat. Chatberichten werken tijdelijk in de browser; er is geen backend of echte chauffeursdata.
+De chauffeursdemo toont lokaal weer, windkracht in Beaufort en windrichting na toestemming voor locatie. In de RoadMap opent het filter Bandenservice direct de gedeelde kaart met 756 punten; Fabrieken toont alle vijf locaties als routepunten op Google Maps. De locaties zijn Lamb Weston in Kruiningen, Bergen op Zoom en Oosterbierum, Aviko in Steenderen en Agristo in Tilburg. Controleer exacte locatie, trucktoegang en openingstijden voordat je erheen rijdt. Weergegevens komen van [Open-Meteo](https://open-meteo.com/). De mentorweergave opent direct de voorbeeldgroep `AB Texel BV - Mentors`; Chats toont een WhatsApp-achtige lijst met chauffeurs en de groep `Fryse Pieper riiders` (met Friese vlag). De overzichtspagina toont het actieve account `AB Texel B.V.`. Chatberichten werken tijdelijk in de browser; er is geen backend of echte chauffeursdata.
 
 Beide pagina's zijn bereikbaar via de navigatie op de site.
 

@@ -39,15 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const chats = {
-    mentor: {
-      name: "Mentor chauffeurs",
-      avatar: "RM",
+    abMentors: {
+      name: "AB Texel BV - Mentors",
+      avatar: "AB",
       avatarClass: "mentor-avatar",
-      status: '<i></i> 3 Helpers beschikbaar',
+      status: "Groepschat · 3 Mentors",
       messages: [
-        { author: "Monique · RoadMaat Helper", text: "Hoi Jan! Welkom bij Mentor chauffeurs. Waar loop je tegenaan?", time: "09:12" },
+        { author: "Monique · Mentor", text: "Goedemorgen Jan! Welkom in de mentorchat. Waar kunnen we je mee helpen?", time: "09:12" },
         { author: "Jan", text: "Ik moet morgen voor het eerst lossen bij een nieuwe klant. Waar kan ik het beste terecht met vragen?", time: "09:14", mine: true },
-        { author: "Monique · RoadMaat Helper", text: "Stuur de naam of locatie maar door, dan kijken we met je mee. Je kunt ook de RoadMap raadplegen voor tips van collega’s.", time: "09:15" },
+        { author: "Monique · Mentor", text: "Stuur de naam of locatie maar door, dan kijken we met je mee. Je kunt ook de RoadMap raadplegen voor tips van collega’s.", time: "09:15" },
+        { author: "Peter · Mentor", text: "Geen vraag is te klein, Jan. We helpen je graag op weg!", time: "09:16" },
       ],
     },
     pieter: {
@@ -70,10 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
         { author: "Monique", text: "Graag gedaan! Tot bij de volgende stop 👋", time: "Gisteren" },
       ],
     },
-    friends: {
-      name: "Bevriende chauffeurs",
-      avatar: "👥",
-      avatarClass: "friends-avatar",
+    frisian: {
+      name: "Fryse Pieper riiders",
+      avatar: "",
+      avatarClass: "frisian-avatar",
+      avatarImage: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Frisian_flag.svg",
       status: "Groepschat · 8 chauffeurs",
       messages: [
         { author: "Klaas", text: "Wie rijdt er vandaag richting Utrecht?", time: "09:02" },
@@ -164,8 +166,16 @@ document.addEventListener("DOMContentLoaded", () => {
       choice.classList.toggle("active", choice.dataset.chat === chatId);
     });
     const avatar = document.getElementById("conversation-avatar");
-    avatar.textContent = chat.avatar;
+    avatar.replaceChildren();
     avatar.className = `avatar ${chat.avatarClass}`;
+    if (chat.avatarImage) {
+      const image = document.createElement("img");
+      image.src = chat.avatarImage;
+      image.alt = "Friese vlag";
+      avatar.append(image);
+    } else {
+      avatar.textContent = chat.avatar;
+    }
     document.getElementById("conversation-name").textContent = chat.name;
     document.getElementById("conversation-status").innerHTML = chat.status;
     const messageList = document.getElementById("messages");
@@ -366,7 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const today = new Intl.DateTimeFormat("nl-NL", { weekday: "long", day: "numeric", month: "long" }).format(new Date());
   document.getElementById("today-label").textContent = today.toLocaleUpperCase("nl-NL");
   renderLocations();
-  renderChat("mentor");
+  renderChat("abMentors");
   const initialView = window.location.hash.slice(1);
   openView(initialView === "roadmap" || initialView === "chats" || initialView === "groups" ? initialView : "overview");
 });
