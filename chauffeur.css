@@ -25,6 +25,7 @@ button { color: inherit; }
 .app-shell { min-height: calc(100vh - 36px); max-width: 1600px; margin: auto; display: grid; grid-template-columns: 238px minmax(0, 1fr); }
 .sidebar { position: sticky; top: 0; height: 100vh; padding: 26px 16px 15px; display: flex; flex-direction: column; background: var(--white); border-right: 1px solid var(--line); }
 .logo { display: flex; align-items: center; gap: 10px; padding: 0 9px; font: 800 20px "Manrope", sans-serif; letter-spacing: -1px; }
+.brand-mark { width: 30px; height: 30px; flex: 0 0 auto; border-radius: 8px; }
 .company { margin: 34px 0 22px; padding: 10px; display: flex; align-items: center; gap: 9px; border: 1px solid var(--line); border-radius: 10px; }
 .company strong, .company small, .profile strong, .profile small { display: block; }
 .company strong, .profile strong { font-size: 11px; }
@@ -58,6 +59,7 @@ button { color: inherit; }
 .demo-label { padding: 5px 9px; border: 1px solid var(--line); border-radius: 20px; color: #78857b; font-size: 9px; }
 .demo-label i { width: 6px; height: 6px; background: #71a17a; }
 .mobile-brand { display: none; align-items: center; gap: 8px; font: 800 15px "Manrope", sans-serif; }
+.mobile-brand .brand-mark { width: 25px; height: 25px; border-radius: 7px; }
 .content-wrap { width: min(1120px, calc(100% - 80px)); min-height: calc(100vh - 102px); margin: auto; padding: 37px 0 20px; }
 .view.active { display: block; }
 .page-heading { margin-bottom: 25px; }

@@ -26,11 +26,11 @@ Chauffeurs moeten snel toegang hebben tot:
 Deze repository bevat twee statische voorbeeldpagina's, geschikt voor GitHub Pages:
 
 - `index.html` — de introductie- en marktpagina voor bedrijven.
-- `chauffeur.html` — een compacte chauffeursdemo met vier schermen: Mijn overzicht, RoadMap, Vragen chat/mentor en Chats.
+- `chauffeur.html` — een compacte chauffeursdemo met vier schermen: Mijn overzicht, RoadMap, Vragen en advies en Chat-groepen.
 
-Beide pagina's gebruiken een lichtblauw kleurenthema en bevatten geen AB Texel-logo.
+Beide pagina's gebruiken een lichtblauw kleurenthema en bevatten geen AB Texel-logo. Het eenvoudige RoadMaat-beeldmerk staat in `roadmaat-icon.svg`; `roadmaat-touch-icon.png` is het 180 × 180 startschermicoon voor iPhone/iPad.
 
-De chauffeursdemo toont lokaal weer, windkracht in Beaufort en windrichting na toestemming voor locatie, naast het actieve bedrijfsaccount. Op mobiel en desktop hebben de account- en weerkaarten dezelfde afmetingen. In de RoadMap opent het filter Bandenservice direct de gedeelde kaart met 756 punten; Fabrieken toont alle vijf locaties als routepunten op Google Maps. Klik een fabriek aan om de andere fabrieken tijdelijk te verbergen en de aankomst- en losinstructies in een uitklapveld te bekijken. Met `Toon alle fabrieken` verschijnt de complete lijst weer. Je kunt inwegen, hekcode, portiermelding en trailer afkoppelen bij het dok of op de parking aanpassen; demo-instructies worden alleen lokaal in de browser opgeslagen en moeten voor echt gebruik bij de planning worden gecontroleerd. Weergegevens komen van [Open-Meteo](https://open-meteo.com/). De Vraagbaak opent direct de WhatsApp-groepschat `AB Texel B.V. - Vraagbaak`; Chat-groepen toont ook een WhatsApp-achtige lijst met chauffeurs en de groep `Fryse Pieper riiders` (met Friese vlag). De overzichtspagina gebruikt een quotevak met aanhalingstekens en herkenbare chatpictogrammen en chatkleuren. De labels `Mijn overzicht`, `RoadMap`, `Vragen & mentor chat` en `Chat-groepen` zijn gelijk op de snelkoppelingen, zijbalk en mobiele navigatie. De privéchat is met Klaas Smit en gebruikt een DAF-logo uit [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:DAF_logo.svg) als demo-avatar. Chatberichten werken tijdelijk in de browser; er is geen backend of echte chauffeursdata.
+De chauffeursdemo toont lokaal weer, windkracht in Beaufort en windrichting na toestemming voor locatie, naast het actieve bedrijfsaccount. In de RoadMap begint de kaart ingezoomd op Nederland; kies een locatie om details te openen. Het filter Bandenservice toont direct de gedeelde kaart met 756 punten; Fabrieken toont alle vijf locaties als routepunten op Google Maps. Klik een fabriek aan om de andere fabrieken tijdelijk te verbergen en de aankomst- en losinstructies in een uitklapveld te bekijken. Met `Toon alle fabrieken` verschijnt de complete lijst weer. Je kunt inwegen, hekcode, portiermelding en trailer afkoppelen bij het dok of op de parking aanpassen; demo-instructies worden alleen lokaal in de browser opgeslagen en moeten voor echt gebruik bij de planning worden gecontroleerd. Weergegevens komen van [Open-Meteo](https://open-meteo.com/). De Vraagbaak opent direct de WhatsApp-groepschat `AB Texel B.V. - Vraagbaak`; Chat-groepen toont ook een WhatsApp-achtige lijst met chauffeurs en de groep `Fryse Pieper riiders` (met Friese vlag). De overzichtspagina gebruikt een quotevak met aanhalingstekens en herkenbare chatpictogrammen en chatkleuren. De privéchat is met Klaas Smit en gebruikt een DAF-logo uit [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:DAF_logo.svg) als demo-avatar. Chatberichten werken tijdelijk in de browser; er is geen backend of echte chauffeursdata.
 
 Beide pagina's zijn bereikbaar via de navigatie op de site.
 
@@ -72,6 +72,8 @@ https://<jouw-gebruikersnaam>.github.io/<repositorynaam>/
 ├── chauffeur.html
 ├── chauffeur.js
 ├── chauffeur.css
+├── roadmaat-icon.svg
+├── roadmaat-touch-icon.png
 ├── README.md
 ├── .gitignore
 └── .github/

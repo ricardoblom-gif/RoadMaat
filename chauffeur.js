@@ -273,10 +273,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderLocations() {
     const list = document.getElementById("location-list");
-    locations.forEach((location, index) => {
+    locations.forEach((location) => {
       const card = document.createElement("button");
       card.type = "button";
-      card.className = `location-card${index === 0 ? " selected" : ""}`;
+      card.className = "location-card";
       card.dataset.category = location.category;
       const symbol = document.createElement("span");
       symbol.className = `location-symbol ${iconClass(location.category)}`;
@@ -304,7 +304,6 @@ document.addEventListener("DOMContentLoaded", () => {
       list.append(card);
     });
     updateLocationVisibility();
-    selectLocation(locations[0], list.firstElementChild);
   }
 
   function openView(name) {
