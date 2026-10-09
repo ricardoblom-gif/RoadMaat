@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="RoadMaat chauffeursdemo met RoadMap, handige locaties en chauffeurschats." />
+    <meta name="description" content="RoadMaat chauffeursdemo met RoadMap, activiteiten, handige locaties en chauffeurschats." />
     <meta name="theme-color" content="#eaf5fb" />
     <meta name="apple-mobile-web-app-title" content="RoadMaat" />
     <link rel="icon" type="image/svg+xml" href="roadmaat-icon.svg" />
@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="chauffeur.css?v=roadmap-all-netherlands" />
+    <link rel="stylesheet" href="chauffeur.css?v=truckertable-activities" />
   </head>
   <body>
     <a class="skip-link" href="#main">Ga naar de inhoud</a>
@@ -29,8 +29,10 @@
         <nav class="side-nav">
           <a class="nav-link active" href="#overview" data-view="overview"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span>Mijn overzicht</a>
           <a class="nav-link" href="#roadmap" data-view="roadmap"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>RoadMap</a>
+          <a class="nav-link activity-nav-link" href="#activities" data-view="activities"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>Activiteiten <b class="activity-count">7</b></a>
           <a class="nav-link chat-nav-link" href="#chats" data-view="chats"><span class="nav-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Vragen en advies <b>3</b></a>
           <a class="nav-link group-nav-link" href="#groups" data-view="groups"><span class="nav-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Chat-groepen <b>CHAT</b></a>
+          <a class="nav-link group-nav-link planning-nav-link" href="#planning" data-view="planning"><span class="nav-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Planning <b>CHAT</b></a>
         </nav>
         <div class="sidebar-bottom">
           <div class="profile"><span class="avatar avatar-jan">JD</span><span><strong>Jan de Vries</strong><small>Chauffeur · AB Texel B.V.</small></span></div>
@@ -97,6 +99,53 @@
             </div>
           </section>
 
+          <section class="view activities-view" id="view-activities" data-panel="activities" hidden>
+            <div class="activity-experience">
+              <div id="activities-map" class="activities-map" role="region" aria-label="Kaart met chauffeursactiviteiten in Nederland"></div>
+              <div class="activity-top-controls">
+                <label class="activity-search"><span aria-hidden="true">⌕</span><span class="visually-hidden">Zoek activiteiten of locaties</span><input id="activity-search" type="search" placeholder="Zoek activiteit of locatie" autocomplete="off" /></label>
+                <div class="activity-filter-row" role="group" aria-label="Filter activiteiten">
+                  <button class="activity-filter active" type="button" data-activity-filter="all" aria-pressed="true">Alles</button>
+                  <button class="activity-filter" type="button" data-activity-filter="outdoor" aria-pressed="false">🥾 Buiten</button>
+                  <button class="activity-filter" type="button" data-activity-filter="food" aria-pressed="false">🍲 Eten</button>
+                  <button class="activity-filter" type="button" data-activity-filter="social" aria-pressed="false">🎯 Sociaal</button>
+                </div>
+              </div>
+              <button class="activity-location-button" id="activity-location-button" type="button"><span aria-hidden="true">◎</span><span>Deel locatie</span></button>
+              <p class="activity-location-status" id="activity-location-status" role="status" aria-live="polite">Locatie wordt pas gebruikt als je daarvoor kiest.</p>
+              <div class="activity-card-rail" id="activity-card-rail" aria-label="Activiteiten op de kaart"></div>
+
+              <article class="activity-sheet" id="activity-sheet" aria-labelledby="activity-sheet-title" aria-live="polite" hidden>
+                <div class="activity-sheet-handle" aria-hidden="true"></div>
+                <div class="activity-sheet-tools">
+                  <button class="activity-tool" id="activity-report-button" type="button" aria-label="Meld activiteit">⚑</button>
+                  <button class="activity-tool" id="activity-share-button" type="button" aria-label="Deel activiteit">↗</button>
+                  <span class="activity-sheet-emoji" id="activity-sheet-emoji" aria-hidden="true">🥾</span>
+                  <button class="activity-sheet-close" id="activity-sheet-close" type="button" aria-label="Sluit activiteit">×</button>
+                </div>
+                <p class="activity-eyebrow" id="activity-sheet-type">ACTIVITEIT</p>
+                <h2 id="activity-sheet-title"></h2>
+                <p class="activity-sheet-host" id="activity-sheet-host"></p>
+                <p class="activity-sheet-place" id="activity-sheet-place"></p>
+                <p class="activity-sheet-time" id="activity-sheet-time"></p>
+                <p class="activity-distance" id="activity-distance"></p>
+                <div class="activity-attendees" id="activity-attendees" aria-label="Deelnemers"></div>
+                <p class="activity-facilities"><span>❄ Koelmotorvriendelijke plek</span><strong id="activity-cooling-status">Onbekend</strong><span>⚡ Stroompaal</span><strong id="activity-power-status">Onbekend</strong></p>
+                <div class="activity-sheet-actions">
+                  <button class="activity-join-button" id="activity-join-button" type="button" disabled>Deel je locatie om mee te doen</button>
+                  <button class="activity-voice-button" id="activity-voice-button" type="button" aria-label="Voicechat (demo)">🎙 Voicechat</button>
+                </div>
+                <p class="activity-demo-note">Demo: aanmelden en voicechat zijn niet verbonden met echte chauffeurs.</p>
+              </article>
+
+              <nav class="activity-bottom-nav" id="activity-bottom-nav" aria-label="Activiteitennavigatie">
+                <button type="button" class="active" data-activity-nav="map"><span aria-hidden="true">⌖</span>Kaart</button>
+                <button type="button" data-activity-nav="add"><span aria-hidden="true">＋</span>Toevoegen</button>
+                <button type="button" data-activity-nav="messages"><span aria-hidden="true">☏</span>Berichten</button>
+              </nav>
+            </div>
+          </section>
+
           <section class="view" id="view-chats" data-panel="chats" hidden>
             <div class="chat-layout">
               <div class="chat-list">
@@ -107,12 +156,22 @@
                 <button class="chat-choice" type="button" data-chat="frisian"><img class="avatar frisian-flag" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Frisian_flag.svg" alt="Friese vlag" loading="lazy" /><span><strong>Fryse Pieper riiders</strong><small>Klaas: Wie rijdt er richting Utrecht?</small></span><span class="unread"></span></button>
               </div>
               <section class="conversation whatsapp-chat" aria-label="AB Texel B.V. vraagbaak groepschat">
-                <header class="conversation-header"><span class="avatar mentor-avatar" id="conversation-avatar">AB</span><span><strong id="conversation-name">AB Texel B.V. - Vraagbaak</strong><small id="conversation-status">Groepschat · Mentors online</small></span><button class="conversation-menu" type="button" aria-label="Gespreksopties">···</button></header>
-                <div class="messages" id="messages" aria-live="polite"></div>
-                <form class="message-form" id="message-form"><label class="visually-hidden" for="message-input">Typ een bericht</label><input id="message-input" type="text" placeholder="Waar kan je hulp bij gebruiken?" autocomplete="off" required /><button type="submit" aria-label="Verstuur bericht">↑</button></form>
+                <header class="conversation-header"><span class="avatar mentor-avatar" data-chat-avatar>AB</span><span><strong data-chat-name>AB Texel B.V. - Vraagbaak</strong><small data-chat-status>Groepschat · Mentors online</small></span><button class="conversation-menu" type="button" aria-label="Gespreksopties">···</button></header>
+                <div class="messages" data-chat-messages aria-live="polite"></div>
+                <form class="message-form" data-chat-form><label class="visually-hidden" for="message-input">Typ een bericht</label><input id="message-input" data-chat-input type="text" placeholder="Waar kan je hulp bij gebruiken?" autocomplete="off" required /><button type="submit" aria-label="Verstuur bericht">↑</button></form>
                 <p class="demo-note chat-note">Demo: berichten blijven alleen in deze browser open.</p>
               </section>
             </div>
+          </section>
+
+          <section class="view" id="view-planning" data-panel="planning" hidden>
+            <div class="page-heading"><div><p class="eyebrow">VASTE PLANNINGSCHAT</p><h1>Planning</h1><p>Je ritinformatie en berichten van Planning Texel op één plek.</p></div></div>
+            <section class="conversation whatsapp-chat planning-conversation" aria-label="Vaste chat met Planning Texel">
+              <header class="conversation-header"><span class="avatar planning-avatar" data-chat-avatar>PT</span><span><strong data-chat-name>Planning Texel</strong><small data-chat-status>Vaste chat · Ritupdates</small></span><button class="conversation-menu" type="button" aria-label="Gespreksopties">···</button></header>
+              <div class="messages" data-chat-messages aria-live="polite"></div>
+              <form class="message-form" data-chat-form><label class="visually-hidden" for="planning-message-input">Typ een bericht aan Planning Texel</label><input id="planning-message-input" data-chat-input type="text" placeholder="Bericht aan Planning Texel..." autocomplete="off" required /><button type="submit" aria-label="Verstuur bericht aan Planning Texel">↑</button></form>
+              <p class="demo-note chat-note">Voorbeeldgesprek: de planning is niet gekoppeld aan echte ritten of een planningssysteem.</p>
+            </section>
           </section>
 
           <section class="view" id="view-groups" data-panel="groups" hidden>
@@ -132,11 +191,26 @@
     <nav class="mobile-nav" aria-label="Mobiele navigatie">
       <a class="active" href="#overview" data-view="overview"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span>Mijn overzicht</a>
       <a href="#roadmap" data-view="roadmap"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>RoadMap</a>
+      <a href="#activities" data-view="activities"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>Activiteiten</a>
       <a class="mobile-chat-link" href="#chats" data-view="chats"><span class="mobile-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Vragen en advies</a>
       <a class="mobile-group-link" href="#groups" data-view="groups"><span class="mobile-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Chat-groepen</a>
+      <a class="mobile-group-link planning-mobile-link" href="#planning" data-view="planning"><span class="mobile-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Planning</a>
     </nav>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog class="activity-dialog" id="activity-dialog" aria-labelledby="activity-dialog-title">
+      <form id="activity-form">
+        <div class="activity-dialog-heading"><div><p class="activity-eyebrow">SAMEN ONDERWEG</p><h2 id="activity-dialog-title">Activiteit toevoegen</h2></div><button class="activity-sheet-close" id="activity-dialog-close" type="button" aria-label="Sluit formulier">×</button></div>
+        <label>Wat ga je doen?<input name="activity" type="text" maxlength="100" required placeholder="Bijvoorbeeld: samen een rondje wandelen" /></label>
+        <label>Activiteitstype<select name="type" required><option value="Outdoor & Active">Buiten & actief</option><option value="Eten & Drinken">Eten & drinken</option><option value="Social & Nightlife">Sociaal</option></select></label>
+        <label>Locatie<select name="location" id="activity-location-select" required></select></label>
+        <label>Wanneer?<input name="time" type="text" maxlength="70" required placeholder="Bijvoorbeeld: vanavond vanaf 19:30" /></label>
+        <label>Emoji<input name="emoji" type="text" maxlength="8" value="☕" aria-label="Activiteitsemoji" /></label>
+        <label class="activity-approval-option"><input name="requiresApproval" type="checkbox" /> Deelnemers eerst goedkeuren (verzoek om mee te doen)</label>
+        <p class="activity-dialog-note">Je locatie wordt niet aan je activiteit gekoppeld. De parkeer- en stroomstatus blijft onbekend tenzij die gegevens worden bevestigd.</p>
+        <button class="activity-join-button" type="submit">Activiteit plaatsen</button>
+      </form>
+    </dialog>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="chauffeur.js?v=roadmap-all-netherlands"></script>
+    <script src="chauffeur.js?v=truckertable-activities"></script>
   </body>
 </html>

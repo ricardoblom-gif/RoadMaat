@@ -109,7 +109,84 @@ document.addEventListener("DOMContentLoaded", () => {
         { author: "Jan", text: "Ik ben onderweg naar Barneveld, misschien later!", time: "09:08", mine: true },
       ],
     },
+    planning: {
+      name: "Planning Texel",
+      avatar: "PT",
+      avatarClass: "planning-avatar",
+      status: "Vaste chat · Ritupdates",
+      messages: [
+        { author: "Planning Texel", text: "Goedemorgen Jan, hierbij een voorbeeld van je ritplanning voor vandaag:", time: "06:15" },
+        { author: "Planning Texel", text: "08:00 · Laden bij AB Texel, Oudeschild\n11:30 · Lossen bij klant in Alkmaar\nDaarna: neem contact op met de planning voor je volgende rit.", time: "06:15" },
+        { author: "Jan", text: "Ontvangen, dank je. Ik laat het weten als ik geladen ben.", time: "06:18", mine: true },
+        { author: "Planning Texel", text: "Helemaal goed. Veilige rit!", time: "06:19" },
+      ],
+    },
   };
+
+  const activities = [
+    {
+      id: 1, host: { name: "Henk", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100", role: "Internationaal Chauffeur" },
+      activity: "Rondje wandelen na het lossen", location: { name: "Aviko Lelystad", address: "Lelystad, Nederland", lat: 52.5185, lng: 5.4372, facilities: { coolingSpaces: null, powerPosts: null } },
+      time: "Vanavond vanaf 19:30", type: "Outdoor & Active", emoji: "🥾", status: "active",
+      attendees: [
+        { name: "Henk", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" },
+        { name: "Mo", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" },
+      ],
+    },
+    {
+      id: 2, host: { name: "Willem", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100", role: "Bulktransporteur" },
+      activity: "Gezellig samen avondeten", location: { name: "Chauffeurs café De Zingende Wielen", address: "Akkerweg 39, 1779 GJ Den Oever", lat: 52.9248, lng: 5.0189, facilities: { coolingSpaces: null, powerPosts: null } },
+      time: "Vanavond vanaf 19:00", type: "Eten & Drinken", emoji: "🍲", status: "active",
+      attendees: [{ name: "Willem", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" }],
+    },
+    {
+      id: 3, host: { name: "Bram", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100", role: "Distributie" },
+      activity: "Hapje eten en een bakkie doen", location: { name: "Baak Café Restaurant Herfens", address: "Rijksstraatweg, Baak", lat: 52.0886, lng: 6.2231, facilities: { coolingSpaces: null, powerPosts: null } },
+      time: "Vanavond vanaf 19:00", type: "Eten & Drinken", emoji: "☕", status: "too_far",
+      attendees: [
+        { name: "Bram", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100" },
+        { name: "Dirk", avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100" },
+        { name: "Arjan", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100" },
+      ],
+    },
+    {
+      id: 4, host: { name: "Marco", avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100", role: "Geconditioneerd Vervoer" },
+      activity: "Benen strekken rond het terrein", location: { name: "Lamb Weston / Meijer (LWM) Kruiningen", address: "Kruiningen, Nederland", lat: 51.4428, lng: 4.0289, facilities: { coolingSpaces: null, powerPosts: null } },
+      time: "Vanavond vanaf 20:00", type: "Outdoor & Active", emoji: "🚶‍♂️", status: "active",
+      attendees: [{ name: "Marco", avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100" }],
+    },
+    {
+      id: 5, host: { name: "Stefan", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100", role: "Zwaar Transport" },
+      activity: "Avondwandeling industriegebied", location: { name: "PepsiCo Broek op Langedijk", address: "Broek op Langedijk, Nederland", lat: 52.6732, lng: 4.8105, facilities: { coolingSpaces: null, powerPosts: null } },
+      time: "Vanavond vanaf 19:00", type: "Outdoor & Active", emoji: "👟", status: "active",
+      attendees: [
+        { name: "Stefan", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100" },
+        { name: "Luc", avatar: "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=100" },
+      ],
+    },
+    {
+      id: 6, host: { name: "Gerrit", avatar: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=100", role: "Container Transport" },
+      activity: "Darts en sterke verhalen in de kantine", location: { name: "Truckstop Nobis Asten", address: "Nobisweg 1, 5721 VA Asten", lat: 51.4055, lng: 5.7601, facilities: { coolingSpaces: null, powerPosts: null } },
+      time: "Vrijdag vanaf 20:30", type: "Social & Nightlife", emoji: "🎯", status: "active",
+      attendees: [{ name: "Gerrit", avatar: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=100" }],
+    },
+    {
+      id: 7, host: { name: "Jan", avatar: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=100", role: "Tanktransport" },
+      activity: "Bakje koffie doen bij de pomp", location: { name: "Routiers Truckstop Hazeldonk", address: "Hazeldonk 6001, 4836 LA Breda", lat: 51.4984, lng: 4.7431, facilities: { coolingSpaces: null, powerPosts: null } },
+      time: "Morgen vanaf 07:00", type: "Eten & Drinken", emoji: "☕", status: "active",
+      attendees: [{ name: "Jan", avatar: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=100" }],
+    },
+  ];
+
+  const activityStorageKey = "roadmaat.truckertable.activities";
+  const joinedActivityIds = new Set();
+  const requestedActivityIds = new Set();
+  const activityMarkers = new Map();
+  let activitiesMap;
+  let selectedActivityId = null;
+  let activityFilter = "all";
+  let activitySearch = "";
+  let driverPosition = null;
 
   function showToast(message) {
     toast.textContent = message;
@@ -172,6 +249,404 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (markers.length) window.L.featureGroup(markers).addTo(leafletMap);
+  }
+
+  function activityCategory(activity) {
+    if (activity.type === "Outdoor & Active") return "outdoor";
+    if (activity.type === "Eten & Drinken") return "food";
+    return "social";
+  }
+
+  function facilityAvailability(value) {
+    if (value === true) return "Beschikbaar";
+    if (value === false) return "Niet beschikbaar";
+    return "Onbekend";
+  }
+
+  function activityDistanceKm(activity) {
+    if (!driverPosition) return null;
+    const toRadians = (degrees) => (degrees * Math.PI) / 180;
+    const latitudeDelta = toRadians(activity.location.lat - driverPosition.latitude);
+    const longitudeDelta = toRadians(activity.location.lng - driverPosition.longitude);
+    const startLatitude = toRadians(driverPosition.latitude);
+    const endLatitude = toRadians(activity.location.lat);
+    const haversine = Math.sin(latitudeDelta / 2) ** 2
+      + Math.cos(startLatitude) * Math.cos(endLatitude) * Math.sin(longitudeDelta / 2) ** 2;
+    return 6371 * 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine));
+  }
+
+  function activityIsTooFar(activity) {
+    const distance = activityDistanceKm(activity);
+    return distance === null ? activity.status === "too_far" : distance > 25;
+  }
+
+  function makeAvatar(name, url, className = "") {
+    const wrapper = document.createElement("span");
+    wrapper.className = `activity-avatar ${className}`.trim();
+    const image = document.createElement("img");
+    image.src = url;
+    image.alt = name;
+    image.loading = "lazy";
+    image.addEventListener("error", () => {
+      const initials = document.createElement("span");
+      initials.textContent = name.slice(0, 1).toUpperCase();
+      wrapper.replaceChildren(initials);
+    }, { once: true });
+    wrapper.append(image);
+    return wrapper;
+  }
+
+  function visibleActivities() {
+    const query = activitySearch.trim().toLocaleLowerCase("nl-NL");
+    return activities.filter((activity) => {
+      const matchesCategory = activityFilter === "all" || activityCategory(activity) === activityFilter;
+      const searchable = `${activity.activity} ${activity.host.name} ${activity.location.name} ${activity.location.address}`.toLocaleLowerCase("nl-NL");
+      return matchesCategory && (!query || searchable.includes(query));
+    });
+  }
+
+  function renderActivityCards() {
+    const rail = document.getElementById("activity-card-rail");
+    rail.replaceChildren();
+    const visible = visibleActivities();
+    if (!visible.length) {
+      const empty = document.createElement("p");
+      empty.className = "activity-empty-state";
+      empty.textContent = "Geen activiteiten gevonden. Pas je zoekopdracht of filter aan.";
+      rail.append(empty);
+    }
+    visible.forEach((activity) => {
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = `activity-preview-card${activity.id === selectedActivityId ? " selected" : ""}`;
+      card.setAttribute("aria-pressed", String(activity.id === selectedActivityId));
+      card.dataset.activityId = String(activity.id);
+      const emoji = document.createElement("span");
+      emoji.className = "activity-preview-emoji";
+      emoji.textContent = activity.emoji;
+      const content = document.createElement("span");
+      content.className = "activity-preview-copy";
+      const title = document.createElement("strong");
+      title.textContent = activity.activity;
+      const meta = document.createElement("small");
+      meta.textContent = `${activity.host.name} · ${activity.location.name}`;
+      content.append(title, meta);
+      card.append(emoji, content, makeAvatar(activity.host.name, activity.host.avatar));
+      card.addEventListener("click", () => selectActivity(activity.id, true));
+      rail.append(card);
+    });
+    document.querySelectorAll(".activity-count").forEach((node) => {
+      node.textContent = String(visible.length);
+    });
+  }
+
+  function renderActivityMarkers() {
+    if (!activitiesMap) return;
+    activityMarkers.forEach((marker) => marker.remove());
+    activityMarkers.clear();
+    visibleActivities().forEach((activity) => {
+      const markerContent = document.createElement("span");
+      markerContent.className = `activity-map-marker${activity.id === selectedActivityId ? " selected" : ""}`;
+      const emoji = document.createElement("span");
+      emoji.className = "activity-marker-emoji";
+      emoji.textContent = activity.emoji;
+      markerContent.append(emoji, makeAvatar(activity.host.name, activity.host.avatar, "activity-marker-avatar"));
+      const marker = window.L.marker([activity.location.lat, activity.location.lng], {
+        icon: window.L.divIcon({
+          html: markerContent,
+          className: "activity-leaflet-marker",
+          iconSize: [58, 58],
+          iconAnchor: [29, 29],
+        }),
+        title: `${activity.activity} · ${activity.host.name}`,
+        alt: `${activity.emoji} ${activity.activity}, georganiseerd door ${activity.host.name}`,
+      }).addTo(activitiesMap);
+      marker.on("click", () => selectActivity(activity.id));
+      activityMarkers.set(activity.id, marker);
+    });
+  }
+
+  function renderActivitySheet(activity) {
+    const sheet = document.getElementById("activity-sheet");
+    sheet.hidden = !activity;
+    document.querySelector(".activity-experience").classList.toggle("activity-sheet-open", Boolean(activity));
+    if (!activity) return;
+
+    document.getElementById("activity-sheet-emoji").textContent = activity.emoji;
+    document.getElementById("activity-sheet-type").textContent = activity.type.toLocaleUpperCase("nl-NL");
+    document.getElementById("activity-sheet-title").textContent = activity.activity;
+    document.getElementById("activity-sheet-host").textContent = `${activity.host.name} · ${activity.host.role || "Chauffeur"}`;
+    document.getElementById("activity-sheet-place").textContent = `${activity.location.name} · ${activity.location.address}`;
+    document.getElementById("activity-sheet-time").textContent = `◷ ${activity.time}`;
+    document.getElementById("activity-cooling-status").textContent = facilityAvailability(activity.location.facilities?.coolingSpaces);
+    document.getElementById("activity-power-status").textContent = facilityAvailability(activity.location.facilities?.powerPosts);
+
+    const distance = activityDistanceKm(activity);
+    const distanceNode = document.getElementById("activity-distance");
+    distanceNode.textContent = distance === null
+      ? activity.status === "too_far"
+        ? "Deze activiteit is in de voorbeelddata als te ver gemarkeerd. Deel je locatie voor een actuele controle."
+        : "Deel je locatie om de afstand te controleren."
+      : `Ongeveer ${Math.round(distance)} km bij je vandaan${distance > 25 ? " · buiten bereik" : ""}.`;
+
+    const attendees = document.getElementById("activity-attendees");
+    attendees.replaceChildren();
+    activity.attendees.forEach((attendee) => attendees.append(makeAvatar(attendee.name, attendee.avatar)));
+    const attendeeCount = document.createElement("span");
+    attendeeCount.textContent = `${activity.attendees.length} ${activity.attendees.length === 1 ? "deelnemer" : "deelnemers"}`;
+    attendees.append(attendeeCount);
+
+    const joinButton = document.getElementById("activity-join-button");
+    if (activityIsTooFar(activity)) {
+      joinButton.textContent = "Too Far Away";
+      joinButton.disabled = true;
+    } else if (!driverPosition) {
+      joinButton.textContent = "Deel je locatie om mee te doen";
+      joinButton.disabled = true;
+    } else if (joinedActivityIds.has(activity.id)) {
+      joinButton.textContent = "Chat openen";
+      joinButton.disabled = false;
+    } else if (requestedActivityIds.has(activity.id)) {
+      joinButton.textContent = "Verzoek verstuurd";
+      joinButton.disabled = true;
+    } else {
+      joinButton.textContent = activity.requiresApproval ? "Request to Join" : "Join Chat";
+      joinButton.disabled = false;
+    }
+    document.getElementById("activity-voice-button").disabled = !joinedActivityIds.has(activity.id);
+    document.getElementById("activity-share-button").dataset.activityId = String(activity.id);
+    document.getElementById("activity-report-button").dataset.activityId = String(activity.id);
+  }
+
+  function selectActivity(activityId, panToMarker = false) {
+    const activity = activities.find((item) => item.id === activityId);
+    if (!activity) return;
+    selectedActivityId = activity.id;
+    renderActivitySheet(activity);
+    renderActivityCards();
+    renderActivityMarkers();
+    if (panToMarker && activitiesMap) {
+      activitiesMap.panTo([activity.location.lat, activity.location.lng], { animate: true });
+    }
+  }
+
+  function initializeActivitiesMap() {
+    const mapElement = document.getElementById("activities-map");
+    if (!window.L) {
+      mapElement.textContent = "De kaart is niet beschikbaar. Je kunt de activiteitenlijst wel gebruiken.";
+      mapElement.classList.add("activities-map-unavailable");
+      renderActivityCards();
+      return;
+    }
+    activitiesMap = window.L.map(mapElement, { scrollWheelZoom: false }).setView([52.15, 5.25], 7);
+    window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(activitiesMap);
+    renderActivityMarkers();
+    renderActivityCards();
+  }
+
+  function updateActivityFilters() {
+    document.querySelectorAll(".activity-filter").forEach((button) => {
+      const active = button.dataset.activityFilter === activityFilter;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    renderActivityCards();
+    renderActivityMarkers();
+    if (selectedActivityId && !visibleActivities().some((activity) => activity.id === selectedActivityId)) {
+      selectedActivityId = null;
+      renderActivitySheet(null);
+    }
+  }
+
+  function requestActivityLocation() {
+    const status = document.getElementById("activity-location-status");
+    const button = document.getElementById("activity-location-button");
+    driverPosition = null;
+    if (selectedActivityId) renderActivitySheet(activities.find((activity) => activity.id === selectedActivityId));
+    if (!navigator.geolocation) {
+      status.textContent = "Deze browser ondersteunt geen locatietoegang. Deelname kan niet op afstand worden gecontroleerd.";
+      return;
+    }
+    button.disabled = true;
+    status.textContent = "Je locatie wordt opgehaald…";
+    navigator.geolocation.getCurrentPosition((position) => {
+      driverPosition = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      };
+      status.textContent = "Locatie alleen gebruikt om afstand tot activiteiten te controleren.";
+      button.querySelector("span:last-child").textContent = "Locatie bijgewerkt";
+      button.disabled = false;
+      if (selectedActivityId) renderActivitySheet(activities.find((activity) => activity.id === selectedActivityId));
+    }, (error) => {
+      const reason = error.code === error.PERMISSION_DENIED
+        ? "Locatietoegang geweigerd. Sta locatie toe om afstand en deelname te controleren."
+        : "Je locatie kon niet worden bepaald. Probeer het opnieuw.";
+      status.textContent = reason;
+      button.disabled = false;
+      if (selectedActivityId) renderActivitySheet(activities.find((activity) => activity.id === selectedActivityId));
+    }, { enableHighAccuracy: false, maximumAge: 300000, timeout: 12000 });
+  }
+
+  function loadCreatedActivities() {
+    let stored;
+    try {
+      stored = window.localStorage.getItem(activityStorageKey);
+    } catch (error) {
+      console.error("Opgeslagen demo-activiteiten konden niet worden gelezen.", error);
+      showToast("Lokaal opgeslagen activiteiten konden niet worden gelezen.");
+      return;
+    }
+    if (!stored) return;
+    try {
+      const savedActivities = JSON.parse(stored);
+      if (!Array.isArray(savedActivities)) throw new Error("Opgeslagen activiteiten moeten een lijst zijn.");
+      savedActivities.forEach((activity) => {
+        if (activity && Number.isInteger(activity.id) && activity.userCreated === true
+          && typeof activity.activity === "string" && activity.host?.name
+          && typeof activity.location?.lat === "number" && typeof activity.location?.lng === "number") {
+          activities.push(activity);
+        }
+      });
+    } catch (error) {
+      console.error("Opgeslagen demo-activiteiten bevatten ongeldige gegevens.", error);
+      showToast("Opgeslagen activiteiten konden niet worden geladen.");
+    }
+  }
+
+  function saveCreatedActivities() {
+    const created = activities.filter((activity) => activity.userCreated);
+    try {
+      window.localStorage.setItem(activityStorageKey, JSON.stringify(created));
+      return true;
+    } catch (error) {
+      console.error("Demo-activiteit kon niet lokaal worden opgeslagen.", error);
+      return false;
+    }
+  }
+
+  function createActivityFromForm(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (!form.reportValidity()) return;
+    const formData = new FormData(form);
+    const locationTemplate = activities.find((activity) => activity.id === Number(formData.get("location")));
+    if (!locationTemplate) {
+      showToast("Kies een geldige locatie.");
+      return;
+    }
+    const activity = {
+      id: Math.max(0, ...activities.map((item) => item.id)) + 1,
+      host: { name: "Jan", avatar: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=100", role: "Chauffeur" },
+      activity: String(formData.get("activity")).trim(),
+      location: { ...locationTemplate.location },
+      time: String(formData.get("time")).trim(),
+      type: String(formData.get("type")),
+      emoji: String(formData.get("emoji")).trim() || "☕",
+      status: "active",
+      attendees: [{ name: "Jan", avatar: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=100" }],
+      requiresApproval: formData.get("requiresApproval") === "on",
+      userCreated: true,
+    };
+    activities.push(activity);
+    const saved = saveCreatedActivities();
+    updateActivityFilters();
+    selectActivity(activity.id, true);
+    form.reset();
+    document.getElementById("activity-dialog").close();
+    showToast(saved
+      ? "Je activiteit staat op de kaart en is lokaal opgeslagen."
+      : "Je activiteit staat op de kaart, maar is niet lokaal opgeslagen.");
+  }
+
+  function initializeActivityFeatures() {
+    loadCreatedActivities();
+    const locationSelect = document.getElementById("activity-location-select");
+    activities.filter((activity) => !activity.userCreated).forEach((activity) => {
+      const option = document.createElement("option");
+      option.value = String(activity.id);
+      option.textContent = `${activity.location.name} · ${activity.location.address}`;
+      locationSelect.append(option);
+    });
+    initializeActivitiesMap();
+    document.querySelectorAll(".activity-filter").forEach((button) => {
+      button.addEventListener("click", () => {
+        activityFilter = button.dataset.activityFilter;
+        updateActivityFilters();
+      });
+    });
+    document.getElementById("activity-search").addEventListener("input", (event) => {
+      activitySearch = event.currentTarget.value;
+      updateActivityFilters();
+    });
+    document.getElementById("activity-location-button").addEventListener("click", requestActivityLocation);
+    document.getElementById("activity-sheet-close").addEventListener("click", () => {
+      selectedActivityId = null;
+      renderActivitySheet(null);
+      renderActivityCards();
+      renderActivityMarkers();
+    });
+    document.getElementById("activity-join-button").addEventListener("click", () => {
+      const activity = activities.find((item) => item.id === selectedActivityId);
+      if (!activity || activityIsTooFar(activity) || !driverPosition) return;
+      if (activity.requiresApproval) {
+        requestedActivityIds.add(activity.id);
+        renderActivitySheet(activity);
+        showToast("Je verzoek is in deze demo verstuurd.");
+      } else if (joinedActivityIds.has(activity.id)) {
+        showToast("Chat is een demo en niet verbonden met echte chauffeurs.");
+      } else {
+        joinedActivityIds.add(activity.id);
+        activity.attendees.push({
+          name: "Jan",
+          avatar: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=100",
+        });
+        renderActivitySheet(activity);
+        renderActivityCards();
+        showToast("Je bent aangemeld. De chat is alleen een demo.");
+      }
+    });
+    document.getElementById("activity-voice-button").addEventListener("click", () => {
+      showToast("Voicechat is alleen een demo-interface; er wordt geen audio verstuurd.");
+    });
+    document.getElementById("activity-report-button").addEventListener("click", () => {
+      showToast("Melden is niet gekoppeld in deze demo.");
+    });
+    document.getElementById("activity-share-button").addEventListener("click", async () => {
+      const activity = activities.find((item) => item.id === Number(document.getElementById("activity-share-button").dataset.activityId));
+      if (!activity) return;
+      const shareText = `${activity.activity} bij ${activity.location.name} · ${activity.time}`;
+      if (!navigator.clipboard?.writeText) {
+        showToast("Delen is niet beschikbaar in deze browser.");
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(shareText);
+        showToast("Activiteitstekst gekopieerd.");
+      } catch (error) {
+        console.error("Activiteit kon niet worden gedeeld.", error);
+        showToast("Activiteit kon niet worden gekopieerd.");
+      }
+    });
+    document.getElementById("activity-bottom-nav").querySelectorAll("[data-activity-nav]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (button.dataset.activityNav === "add") {
+          document.getElementById("activity-dialog").showModal();
+        } else if (button.dataset.activityNav === "messages") {
+          openView("chats");
+          renderChat("abQuestion");
+        } else if (activitiesMap) {
+          window.setTimeout(() => activitiesMap.invalidateSize(), 0);
+        }
+      });
+    });
+    document.getElementById("activity-dialog-close").addEventListener("click", () => {
+      document.getElementById("activity-dialog").close();
+    });
+    document.getElementById("activity-form").addEventListener("submit", createActivityFromForm);
   }
 
   function showAllOverview() {
@@ -488,6 +963,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function openView(name) {
     const validName = panels.some((panel) => panel.dataset.panel === name) ? name : "overview";
+    document.body.classList.toggle("activities-open", validName === "activities");
     panels.forEach((panel) => {
       const active = panel.dataset.panel === validName;
       panel.hidden = !active;
@@ -495,6 +971,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     navigation.forEach((link) => link.classList.toggle("active", link.dataset.view === validName));
     if (validName === "roadmap") setLocationFilter("all");
+    if (validName === "activities" && activitiesMap) window.setTimeout(() => activitiesMap.invalidateSize(), 0);
     history.replaceState(null, "", `#${validName === "overview" ? "overview" : validName}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -505,7 +982,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".chat-choice").forEach((choice) => {
       choice.classList.toggle("active", choice.dataset.chat === chatId);
     });
-    const avatar = document.getElementById("conversation-avatar");
+    const targetPanel = chatId === "planning"
+      ? document.getElementById("view-planning")
+      : document.getElementById("view-chats");
+    const avatar = targetPanel.querySelector("[data-chat-avatar]");
     avatar.replaceChildren();
     avatar.className = `avatar ${chat.avatarClass}`;
     if (chat.avatarImage) {
@@ -517,14 +997,15 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       avatar.textContent = chat.avatar;
     }
-    document.getElementById("conversation-name").textContent = chat.name;
-    document.getElementById("conversation-status").innerHTML = chat.status;
-    const messageList = document.getElementById("messages");
+    targetPanel.querySelector("[data-chat-name]").textContent = chat.name;
+    targetPanel.querySelector("[data-chat-status]").textContent = chat.status;
+    const messageList = targetPanel.querySelector("[data-chat-messages]");
     messageList.replaceChildren();
     chat.messages.forEach((message) => appendMessage(messageList, message));
     messageList.scrollTop = messageList.scrollHeight;
-    document.getElementById("message-input").placeholder = `Bericht aan ${chat.name}...`;
-    document.getElementById("message-input").dataset.chat = chatId;
+    const input = targetPanel.querySelector("[data-chat-input]");
+    input.placeholder = `Bericht aan ${chat.name}...`;
+    input.dataset.chat = chatId;
   }
 
   function appendMessage(messageList, message) {
@@ -549,7 +1030,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("hashchange", () => {
     const requested = window.location.hash.slice(1);
-    const view = requested === "chats" || requested === "groups" || requested === "roadmap" ? requested : "overview";
+    const view = ["activities", "chats", "groups", "planning", "roadmap"].includes(requested) ? requested : "overview";
     if (!document.getElementById(`view-${view}`).classList.contains("active")) openView(view);
   });
 
@@ -667,26 +1148,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.getElementById("message-form").addEventListener("submit", (event) => {
-    event.preventDefault();
-    const input = document.getElementById("message-input");
-    const text = input.value.trim();
-    const chat = chats[input.dataset.chat];
-    if (!text || !chat) return;
-    const message = { author: "Jan", text, time: new Intl.DateTimeFormat("nl-NL", { hour: "2-digit", minute: "2-digit" }).format(new Date()), mine: true };
-    chat.messages.push(message);
-    appendMessage(document.getElementById("messages"), message);
-    input.value = "";
-    document.getElementById("messages").scrollTop = document.getElementById("messages").scrollHeight;
+  document.querySelectorAll("[data-chat-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const input = form.querySelector("[data-chat-input]");
+      const text = input.value.trim();
+      const chat = chats[input.dataset.chat];
+      if (!text || !chat) return;
+      const message = { author: "Jan", text, time: new Intl.DateTimeFormat("nl-NL", { hour: "2-digit", minute: "2-digit" }).format(new Date()), mine: true };
+      chat.messages.push(message);
+      const messageList = form.closest(".conversation").querySelector("[data-chat-messages]");
+      appendMessage(messageList, message);
+      input.value = "";
+      messageList.scrollTop = messageList.scrollHeight;
+    });
   });
 
-  document.querySelector(".conversation-menu").addEventListener("click", () => showToast("Gespreksopties zijn in deze demo nog niet gekoppeld."));
+  document.querySelectorAll(".conversation-menu").forEach((button) => {
+    button.addEventListener("click", () => showToast("Gespreksopties zijn in deze demo nog niet gekoppeld."));
+  });
 
   const today = new Intl.DateTimeFormat("nl-NL", { weekday: "long", day: "numeric", month: "long" }).format(new Date());
   document.getElementById("today-label").textContent = today.toLocaleUpperCase("nl-NL");
   renderLocations();
   initializeAbTexelMap();
+  initializeActivityFeatures();
   renderChat("abQuestion");
+  renderChat("planning");
   const initialView = window.location.hash.slice(1);
-  openView(initialView === "roadmap" || initialView === "chats" || initialView === "groups" ? initialView : "overview");
+  openView(["activities", "roadmap", "chats", "groups", "planning"].includes(initialView) ? initialView : "overview");
 });
