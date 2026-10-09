@@ -123,9 +123,30 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
+  const currentCompany = document.querySelector(".account-selector strong").textContent.trim();
+  const activityCompanies = [
+    "AB Texel B.V.",
+    "AB Texel Silo B.V.",
+    "AB Texel Distribution B.V.",
+    "AB Texel Zuiveltransporten B.V.",
+    "AB Texel Fresh Transport B.V.",
+    "AB Texel Feed Deutschland GmbH",
+    "AB Texel France s.a.r.l",
+    "AB Transport Group B.V.",
+    "AB Texel GmbH",
+    "G. Bosman Transport Nisse B.V.",
+    "AB Texel België B.V.",
+    "AB Texel Special Transport B.V.",
+    "AB Texel Feed België B.V.",
+    "AB Texel Zuivel België B.V.",
+    "AB Texel Spezialtransporte GmbH",
+    "May Reparatur Service GmbH",
+    "AB Texel Silo B.V. - afdeling Dry Food",
+    "AB Texel Silo B.V. - afd ForFarmers Group",
+  ];
   const activities = [
     {
-      id: 1, host: { name: "Henk", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100", role: "Internationaal Chauffeur" },
+      id: 1, company: "AB Texel B.V.", host: { name: "Henk", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100", role: "Internationaal Chauffeur" },
       activity: "Rondje wandelen na het lossen", location: { name: "Aviko Lelystad", address: "Lelystad, Nederland", lat: 52.5185, lng: 5.4372, facilities: { coolingSpaces: null, powerPosts: null } },
       time: "Vanavond vanaf 19:30", type: "Outdoor & Active", emoji: "🥾", status: "active",
       attendees: [
@@ -134,13 +155,13 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
     },
     {
-      id: 2, host: { name: "Willem", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100", role: "Bulktransporteur" },
+      id: 2, company: "AB Texel Silo B.V.", host: { name: "Willem", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100", role: "Bulktransporteur" },
       activity: "Gezellig samen avondeten", location: { name: "Chauffeurs café De Zingende Wielen", address: "Akkerweg 39, 1779 GJ Den Oever", lat: 52.9248, lng: 5.0189, facilities: { coolingSpaces: null, powerPosts: null } },
       time: "Vanavond vanaf 19:00", type: "Eten & Drinken", emoji: "🍲", status: "active",
       attendees: [{ name: "Willem", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" }],
     },
     {
-      id: 3, host: { name: "Bram", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100", role: "Distributie" },
+      id: 3, company: "AB Texel Distribution B.V.", host: { name: "Bram", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100", role: "Distributie" },
       activity: "Hapje eten en een bakkie doen", location: { name: "Baak Café Restaurant Herfens", address: "Rijksstraatweg, Baak", lat: 52.0886, lng: 6.2231, facilities: { coolingSpaces: null, powerPosts: null } },
       time: "Vanavond vanaf 19:00", type: "Eten & Drinken", emoji: "☕", status: "too_far",
       attendees: [
@@ -150,13 +171,13 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
     },
     {
-      id: 4, host: { name: "Marco", avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100", role: "Geconditioneerd Vervoer" },
+      id: 4, company: "AB Texel Fresh Transport B.V.", host: { name: "Marco", avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100", role: "Geconditioneerd Vervoer" },
       activity: "Benen strekken rond het terrein", location: { name: "Lamb Weston / Meijer (LWM) Kruiningen", address: "Kruiningen, Nederland", lat: 51.4428, lng: 4.0289, facilities: { coolingSpaces: null, powerPosts: null } },
       time: "Vanavond vanaf 20:00", type: "Outdoor & Active", emoji: "🚶‍♂️", status: "active",
       attendees: [{ name: "Marco", avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100" }],
     },
     {
-      id: 5, host: { name: "Stefan", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100", role: "Zwaar Transport" },
+      id: 5, company: "G. Bosman Transport Nisse B.V.", host: { name: "Stefan", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100", role: "Zwaar Transport" },
       activity: "Avondwandeling industriegebied", location: { name: "PepsiCo Broek op Langedijk", address: "Broek op Langedijk, Nederland", lat: 52.6732, lng: 4.8105, facilities: { coolingSpaces: null, powerPosts: null } },
       time: "Vanavond vanaf 19:00", type: "Outdoor & Active", emoji: "👟", status: "active",
       attendees: [
@@ -165,13 +186,13 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
     },
     {
-      id: 6, host: { name: "Gerrit", avatar: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=100", role: "Container Transport" },
+      id: 6, company: "AB Texel Special Transport B.V.", host: { name: "Gerrit", avatar: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=100", role: "Container Transport" },
       activity: "Darts en sterke verhalen in de kantine", location: { name: "Truckstop Nobis Asten", address: "Nobisweg 1, 5721 VA Asten", lat: 51.4055, lng: 5.7601, facilities: { coolingSpaces: null, powerPosts: null } },
       time: "Vrijdag vanaf 20:30", type: "Social & Nightlife", emoji: "🎯", status: "active",
       attendees: [{ name: "Gerrit", avatar: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=100" }],
     },
     {
-      id: 7, host: { name: "Jan", avatar: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=100", role: "Tanktransport" },
+      id: 7, company: "AB Texel B.V.", host: { name: "Jan", avatar: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=100", role: "Tanktransport" },
       activity: "Bakje koffie doen bij de pomp", location: { name: "Routiers Truckstop Hazeldonk", address: "Hazeldonk 6001, 4836 LA Breda", lat: 51.4984, lng: 4.7431, facilities: { coolingSpaces: null, powerPosts: null } },
       time: "Morgen vanaf 07:00", type: "Eten & Drinken", emoji: "☕", status: "active",
       attendees: [{ name: "Jan", avatar: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=100" }],
@@ -186,6 +207,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let selectedActivityId = null;
   let activityFilter = "all";
   let activitySearch = "";
+  let activityCompanyFilter = "mine";
+  let selectedActivityCompany = "";
   let driverPosition = null;
 
   function showToast(message) {
@@ -300,8 +323,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const query = activitySearch.trim().toLocaleLowerCase("nl-NL");
     return activities.filter((activity) => {
       const matchesCategory = activityFilter === "all" || activityCategory(activity) === activityFilter;
-      const searchable = `${activity.activity} ${activity.host.name} ${activity.location.name} ${activity.location.address}`.toLocaleLowerCase("nl-NL");
-      return matchesCategory && (!query || searchable.includes(query));
+      const matchesCompany = activityCompanyFilter === "all"
+        || (activityCompanyFilter === "mine" && activity.company === currentCompany)
+        || (activityCompanyFilter === "company" && activity.company === selectedActivityCompany);
+      const searchable = `${activity.activity} ${activity.host.name} ${activity.company} ${activity.location.name} ${activity.location.address}`.toLocaleLowerCase("nl-NL");
+      return matchesCategory && matchesCompany && (!query || searchable.includes(query));
     });
   }
 
@@ -312,7 +338,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!visible.length) {
       const empty = document.createElement("p");
       empty.className = "activity-empty-state";
-      empty.textContent = "Geen activiteiten gevonden. Pas je zoekopdracht of filter aan.";
+      empty.textContent = activityCompanyFilter === "company" && !selectedActivityCompany
+        ? "Kies een bedrijf om de activiteiten te bekijken."
+        : "Geen activiteiten gevonden. Pas je zoekopdracht of filter aan.";
       rail.append(empty);
     }
     visible.forEach((activity) => {
@@ -330,7 +358,11 @@ document.addEventListener("DOMContentLoaded", () => {
       title.textContent = activity.activity;
       const meta = document.createElement("small");
       meta.textContent = `${activity.host.name} · ${activity.location.name}`;
+      const company = document.createElement("span");
+      company.className = "activity-company-label";
+      company.textContent = activity.company;
       content.append(title, meta);
+      content.append(company);
       card.append(emoji, content, makeAvatar(activity.host.name, activity.host.avatar));
       card.addEventListener("click", () => selectActivity(activity.id, true));
       rail.append(card);
@@ -376,6 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("activity-sheet-type").textContent = activity.type.toLocaleUpperCase("nl-NL");
     document.getElementById("activity-sheet-title").textContent = activity.activity;
     document.getElementById("activity-sheet-host").textContent = `${activity.host.name} · ${activity.host.role || "Chauffeur"}`;
+    document.getElementById("activity-sheet-company").textContent = `Bedrijf · ${activity.company}`;
     document.getElementById("activity-sheet-place").textContent = `${activity.location.name} · ${activity.location.address}`;
     document.getElementById("activity-sheet-time").textContent = `◷ ${activity.time}`;
     document.getElementById("activity-cooling-status").textContent = facilityAvailability(activity.location.facilities?.coolingSpaces);
@@ -508,7 +541,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (activity && Number.isInteger(activity.id) && activity.userCreated === true
           && typeof activity.activity === "string" && activity.host?.name
           && typeof activity.location?.lat === "number" && typeof activity.location?.lng === "number") {
-          activities.push(activity);
+          activities.push({ ...activity, company: currentCompany });
         }
       });
     } catch (error) {
@@ -544,6 +577,7 @@ document.addEventListener("DOMContentLoaded", () => {
       activity: String(formData.get("activity")).trim(),
       location: { ...locationTemplate.location },
       time: String(formData.get("time")).trim(),
+      company: currentCompany,
       type: String(formData.get("type")),
       emoji: String(formData.get("emoji")).trim() || "☕",
       status: "active",
@@ -565,6 +599,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function initializeActivityFeatures() {
     loadCreatedActivities();
     const locationSelect = document.getElementById("activity-location-select");
+    const specificCompanySelect = document.getElementById("activity-specific-company");
+    activityCompanies.forEach((company) => {
+      const option = document.createElement("option");
+      option.value = company;
+      option.textContent = company;
+      specificCompanySelect.append(option);
+    });
     activities.filter((activity) => !activity.userCreated).forEach((activity) => {
       const option = document.createElement("option");
       option.value = String(activity.id);
@@ -580,6 +621,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     document.getElementById("activity-search").addEventListener("input", (event) => {
       activitySearch = event.currentTarget.value;
+      updateActivityFilters();
+    });
+    document.getElementById("activity-company-filter").addEventListener("change", (event) => {
+      activityCompanyFilter = event.currentTarget.value;
+      selectedActivityCompany = "";
+      specificCompanySelect.value = "";
+      specificCompanySelect.hidden = activityCompanyFilter !== "company";
+      updateActivityFilters();
+    });
+    specificCompanySelect.addEventListener("change", (event) => {
+      selectedActivityCompany = event.currentTarget.value;
       updateActivityFilters();
     });
     document.getElementById("activity-location-button").addEventListener("click", requestActivityLocation);
@@ -1175,6 +1227,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeActivityFeatures();
   renderChat("abQuestion");
   renderChat("planning");
-  const initialView = window.location.hash.slice(1);
-  openView(["activities", "roadmap", "chats", "groups", "planning"].includes(initialView) ? initialView : "overview");
+  const initialView = window.location.hash.slice(1) || "roadmap";
+  openView(["activities", "roadmap", "chats", "groups", "planning", "overview"].includes(initialView) ? initialView : "roadmap");
 });

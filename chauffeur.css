@@ -589,7 +589,181 @@ body { background: radial-gradient(ellipse at 68% 0, #f8fcff 0, var(--paper) 62%
   .dashboard-selectors > .weather-card .weather-icon { grid-column: 1; grid-row: 1; }
   .dashboard-selectors > .weather-card .weather-copy { min-width: 0; grid-column: 2 / 4; grid-row: 1; }
   .dashboard-selectors > .weather-card .wind-flag { min-width: 0; grid-column: 1 / 3; grid-row: 2; justify-self: start; }
-  .dashboard-selectors > .weather-card .weather-button { min-height: 24px; grid-column: 3; grid-row: 2; justify-self: end; }
+  .dashboard-selectors > .weather-card .weather-button { min-height: 24px; grid-column: 3; grid-row: 2; justify-self: end;
+}
+}
+
+:root {
+  color-scheme: dark;
+  --ink: #f5f5f5;
+  --muted: #b3b3b3;
+  --paper: #1e1e1e;
+  --white: #181818;
+  --line: #3a3a3a;
+  --green: #22c55e;
+  --green-dark: #15803d;
+  --mint: #2a2a2a;
+  --shadow: 0 8px 26px rgba(0, 0, 0, .38);
+}
+
+body { color: var(--ink); background: #1e1e1e; }
+.demo-banner { color: #e5e5e5; background: #111; }
+.demo-banner a { color: #b9eac8; }
+.sidebar, .topbar { border-color: var(--line); background: #181818; }
+.company, .helper-card, .welcome-card, .account-selector, .weather-card,
+.quick-card, .locations-panel, .location-detail, .chat-list, .conversation,
+.group-card, .chat-inbox, .activity-sheet, .activity-preview-card,
+.activity-empty-state, .factory-instructions, .factory-info-editor {
+  border-color: var(--line);
+  background: #2a2a2a;
+  color: var(--ink);
+}
+.nav-link { color: #b3b3b3; }
+.nav-link:hover, .location-card:hover, .location-card.selected,
+.chat-choice:hover, .chat-choice.active, .inbox-row:hover { background: #333; color: var(--ink); }
+.nav-link.active { background: #303030; color: #facc15; }
+.nav-link.chat-nav-link.active, .nav-link.group-nav-link.active { background: #203528; color: #22c55e; }
+.nav-link b, .chat-nav-link b, .group-nav-link b { background: #333; color: #d4d4d4; }
+.chat-nav-link, .group-nav-link, .chat-nav-link b, .group-nav-link b { color: #22c55e; }
+.profile, .topbar, .page-footer { border-color: var(--line); }
+.company small, .profile small, .topbar-company small, .page-heading > div > p:last-child,
+.quick-card small, .location-copy small, .detail-info, .demo-note, .group-card small,
+.group-card p, .chat-choice small, .inbox-copy small, .inbox-meta time {
+  color: #b3b3b3;
+}
+.eyebrow, .activity-eyebrow { color: #facc15; }
+.demo-label { border-color: var(--line); background: #242424; color: #d4d4d4; }
+.welcome-quote { border-color: #383838; background: #242424; color: #d4d4d4 !important; }
+.welcome-quote::before { border-color: #383838; background: #242424; }
+.quote-mark, .quote-close { color: #22c55e; }
+.helper-card > span, .map-icon, .welcome-symbol { background: #303030; color: #facc15; }
+.quick-card:hover, .group-card:hover { border-color: #555; }
+.chat-quick-icon, .chat-feature-tag { border-color: #31573c; background: #203528; color: #22c55e; }
+.chat-quick-card, .group-quick-card { border-color: #31573c; background: #202820; }
+.chat-quick-card:hover, .group-quick-card:hover { border-color: #22c55e; }
+.quick-arrow, .group-arrow, .text-link { color: #22c55e; }
+.account-indicator { background: #22c55e; box-shadow: 0 0 0 3px #23412c; }
+.account-selector small, .weather-copy small { color: #b3b3b3; }
+.account-selector strong, .weather-copy strong { color: #f5f5f5; }
+.account-check, .weather-credit a { color: #22c55e; }
+.weather-icon { background: #303030; }
+.wind-flag { border-color: #424242; background: #202020; }
+.wind-flag strong { color: #f5f5f5; }
+.wind-flag small { color: #b3b3b3; }
+.weather-button { border-color: #31573c; background: #203528; color: #b9eac8; }
+.weather-button:hover { background: #294a32; }
+.filter-button { border-color: #444; background: #242424; color: #ddd; }
+.filter-button:hover { border-color: #777; }
+.filter-button.active { border-color: #facc15; background: #facc15; color: #1e1e1e; }
+.map-frame { border-color: #444; background: #242424; }
+.map-caption { background: #181818; color: #f5f5f5; }
+.list-heading, .location-copy strong, .inbox-copy strong, .chat-choice strong { color: #f5f5f5; }
+.location-card { border-color: #383838; }
+.detail-info { border-color: #444; }
+.button { background: #22c55e; color: #102116; }
+.button:hover { background: #16a34a; }
+.chat-choice:hover, .chat-choice.active { color: #f5f5f5; }
+.mentor-avatar, .pieter-avatar, .monique-avatar, .friends-avatar, .group-ab {
+  background: #303030;
+  color: #f5f5f5;
+}
+.conversation-header, .message-form, .whatsapp-chat .conversation-header,
+.whatsapp-chat .message-form, .whatsapp-chat .chat-note {
+  border-color: #383838;
+  background: #202020;
+}
+.conversation-header strong, .whatsapp-chat .conversation-header strong { color: #f5f5f5; }
+.conversation-header small, .conversation-menu, .whatsapp-chat .conversation-header small,
+.whatsapp-chat .conversation-menu { color: #b3b3b3; }
+.messages, .whatsapp-chat .messages { background: #171717; }
+.message, .whatsapp-chat .message { border-color: #383838; background: #2a2a2a; }
+.message.mine, .whatsapp-chat .message.mine { border-color: #31573c; background: #203528; }
+.message strong, .whatsapp-chat .message strong { color: #22c55e; }
+.message p, .whatsapp-chat .message p { color: #f0f0f0; }
+.message time, .whatsapp-chat .message time { color: #b3b3b3; }
+.message-form input, .factory-field input, .factory-field select {
+  border-color: #444;
+  background: #181818;
+  color: #f5f5f5;
+}
+.message-form input::placeholder { color: #999; }
+.message-form button { background: #16a34a; }
+.factory-instructions { border-color: #444; background: #202020; }
+.factory-instructions summary, .factory-info-editor h3 { color: #f5f5f5; }
+.factory-instructions[open] summary { border-color: #444; }
+.factory-info-editor h3, .factory-field > span { color: #ddd; }
+.factory-info-notice { color: #facc15; }
+.factory-save-status { color: #b3b3b3; }
+.chat-inbox { background: #2a2a2a; }
+.inbox-row { border-color: #383838; }
+.frisian-flag, .frisian-avatar { border-color: #444; background: #181818; }
+.daf-avatar { border-color: #444; background: #181818; }
+.mobile-nav { border-color: #383838; background: rgba(24, 24, 24, .97); }
+.mobile-nav a { color: #a3a3a3; }
+.mobile-nav a.active { color: #facc15; }
+.mobile-nav .mobile-chat-link.active, .mobile-nav .mobile-group-link.active { color: #22c55e; }
+.toast { background: #203528; color: #f5f5f5; }
+.activity-experience, .activities-map { background: #1e1e1e; }
+.activity-search, .activity-filter, .activity-location-button, .activity-location-status {
+  border-color: #444;
+  background: rgba(34, 34, 34, .96);
+  color: #f5f5f5;
+}
+.activity-search input { color: #f5f5f5; }
+.activity-search input::placeholder { color: #aaa; }
+.activity-search > span:first-child, .activity-location-button { color: #22c55e; }
+.activity-filter.active { border-color: #22c55e; background: #22c55e; color: #102116; }
+.activity-company-filters { display: grid; grid-template-columns: auto minmax(160px, 1fr) minmax(210px, 1.4fr); align-items: center; gap: 8px; }
+.activity-company-filters label { color: #f5f5f5; font-size: 11px; font-weight: 700; }
+.activity-company-filters select { width: 100%; min-width: 0; min-height: 38px; padding: 0 10px; border: 1px solid #444; border-radius: 12px; background: #222; color: #f5f5f5; font: 700 10px "DM Sans", sans-serif; }
+.activity-company-label { width: fit-content; max-width: 100%; margin-top: 4px; padding: 2px 6px; overflow: hidden; border: 1px solid #31573c; border-radius: 999px; background: #203528; color: #9ee6b3; font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
+.activity-preview-copy strong { color: #f5f5f5; }
+.activity-preview-copy small { color: #b3b3b3; }
+.activity-avatar { border-color: #333; background: #303030; color: #f5f5f5; }
+.activity-empty-state { background: #2a2a2a; color: #f5f5f5; }
+.activity-map-marker { border-color: #22c55e; background: #222; }
+.activity-map-marker:hover, .activity-map-marker.selected { border-color: #facc15; }
+.activity-sheet-handle { background: #555; }
+.activity-tool, .activity-sheet-close { background: #333; color: #ddd; }
+.activity-sheet h2 { color: #f5f5f5; }
+.activity-sheet-host, .activity-sheet-company { color: #22c55e; font-size: 11px; font-weight: 700; }
+.activity-sheet-place, .activity-sheet-time, .activity-distance, .activity-attendees > span:last-child,
+.activity-facilities { color: #b3b3b3; }
+.activity-facilities { border-color: #444; }
+.activity-facilities strong { color: #ddd; }
+.activity-join-button { background: #22c55e; color: #102116; }
+.activity-join-button:hover:not(:disabled) { background: #16a34a; }
+.activity-join-button:disabled { background: #444; color: #aaa; }
+.activity-voice-button { border-color: #444; background: #222; color: #eee; }
+.activity-demo-note, .activity-dialog-note { color: #b3b3b3; }
+.activity-bottom-nav { border-color: #383838; background: rgba(24, 24, 24, .97); }
+.activity-bottom-nav button { color: #aaa; }
+.activity-bottom-nav button.active { color: #22c55e; }
+.activity-dialog { border: 1px solid #444; border-radius: 24px; background: #222; color: #f5f5f5; box-shadow: 0 15px 50px rgba(0, 0, 0, .65); }
+.activity-dialog::backdrop { background: rgba(0, 0, 0, .72); }
+.activity-dialog-heading h2 { color: #f5f5f5; }
+.activity-dialog form > label { color: #f5f5f5; }
+.activity-dialog input:not([type="checkbox"]), .activity-dialog select {
+  border: 1px solid #444;
+  background: #181818;
+  color: #f5f5f5;
+}
+.activity-location-status { color: #ddd; }
+::selection { background: #22c55e; color: #102116; }
+
+@media (max-width: 760px) {
+  .activity-company-filters { grid-template-columns: 1fr 1fr; }
+  .activity-company-filters > label:first-child { grid-column: 1 / -1; }
+  .activity-location-button { top: 185px; }
+  .activity-location-status { top: 225px; }
+}
+@media (max-width: 560px) {
+  .activity-company-filters { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .activity-company-filters label { font-size: 10px; }
+  .activity-company-filters select { min-height: 35px; padding: 0 7px; font-size: 9px; }
+  .activity-location-button { top: 180px; }
+  .activity-location-status { top: 220px; } }
+@media (max-width: 560px) {
   .welcome-quote { min-height: 46px; margin-top: 10px !important; padding: 10px 34px 10px 13px; font-size: 10px !important; }
   .chat-feature-tag { grid-column: 2; grid-row: 3; justify-self: start; margin-top: 3px; }
   .chat-quick-card { min-height: 82px; grid-template-rows: auto auto auto; }
@@ -609,4 +783,16 @@ body { background: radial-gradient(ellipse at 68% 0, #f8fcff 0, var(--paper) 62%
   .mobile-group-link .mobile-nav-icon { color: #06745f; }
   .mobile-nav-icon { width: 20px; height: 21px; display: grid; place-items: center; }
   .mobile-nav-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+}
+
+@media (max-width: 760px) {
+  .mobile-nav { border-color: #383838; background: rgba(24, 24, 24, .97); }
+  .mobile-nav a { color: #a3a3a3; }
+  .mobile-nav a.active { color: #facc15; }
+  .mobile-nav .mobile-chat-link, .mobile-nav .mobile-group-link,
+  .mobile-nav .mobile-chat-link.active, .mobile-nav .mobile-group-link.active,
+  .mobile-nav .mobile-chat-icon, .mobile-nav .mobile-nav-icon { color: #22c55e !important; }
+  .activity-bottom-nav { border-color: #383838; background: rgba(24, 24, 24, .97); }
+  .activity-bottom-nav button { color: #aaa; }
+  .activity-bottom-nav button.active { color: #22c55e; }
 }
