@@ -601,3 +601,53 @@ body {
   background: #8ccbe7;
   color: #12344b;
 }
+
+:root {
+  color-scheme: dark;
+  --bg: #1e1e1e;
+  --bg-soft: #242424;
+  --panel: #181818;
+  --panel-alt: #242424;
+  --card: #2a2a2a;
+  --text: #f5f5f5;
+  --muted: #b3b3b3;
+  --primary: #22c55e;
+  --primary-strong: #16a34a;
+  --secondary: #facc15;
+  --border: #383838;
+  --shadow: 0 18px 42px rgba(0, 0, 0, .38);
+}
+body {
+  background:
+    radial-gradient(circle at 8% 4%, rgba(34, 197, 94, .08), transparent 35%),
+    linear-gradient(180deg, #222 0%, #1e1e1e 100%);
+}
+.site-header { background: rgba(24, 24, 24, .94); border-color: #383838; }
+.brand, .nav a:hover { color: #f5f5f5; }
+.nav { color: #b3b3b3; }
+.button-primary { background: linear-gradient(135deg, #22c55e, #16a34a); color: #102116; box-shadow: 0 14px 28px rgba(34, 197, 94, .18); }
+.button-primary:hover { background: #16a34a; }
+.button-secondary { border-color: #383838; background: #2a2a2a; color: #f5f5f5; }
+.eyebrow { color: #facc15; }
+.mini-stats li, .hero-card, .list-item, .feature-card, .role-panel {
+  border-color: #383838;
+  background: #2a2a2a;
+  color: #f5f5f5;
+}
+.hero-card { box-shadow: 0 18px 42px rgba(0, 0, 0, .38); }
+.pill.live { background: #203528; color: #9ee6b3; }
+.pill.neutral { background: #303030; color: #ddd; }
+.map-box {
+  border-color: #3a3a3a;
+  background: linear-gradient(135deg, rgba(34, 197, 94, .12), rgba(250, 204, 21, .06)), #181818;
+}
+.map-box::before, .map-box::after {
+  background-image: linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+}
+.route { border-color: rgba(250, 204, 21, .9) transparent transparent transparent; }
+.pin { background: #22c55e; box-shadow: 0 0 0 8px rgba(34, 197, 94, .16); }
+.icon, .feature-icon { background: #303030; }
+.section.muted { background: #181818; }
+.cta-box { border-color: #31573c; background: linear-gradient(135deg, #203528, #232823); }
+.site-footer { border-color: #383838; color: #b3b3b3; }
+::selection { background: #22c55e; color: #102116; }
