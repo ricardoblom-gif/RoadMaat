@@ -1,0 +1,13 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; color: #edf4ef; background: radial-gradient(circle at 70% -20%, rgba(124,214,127,.08), transparent 36rem), #111713; font: 16px/1.5 "DM Sans", system-ui, sans-serif; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid #91d49a; outline-offset: 3px; }
+.home { min-height: 100vh; padding: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 36px; }
+.home-brand { display: flex; align-items: center; gap: 12px; font-size: 28px; font-weight: 800; letter-spacing: -.04em; }
+.home-brand img { width: 44px; height: 44px; }
+.home-buttons { width: min(420px, 100%); display: grid; gap: 12px; }
+.home-button { min-height: 54px; padding: 0 20px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(221,239,224,.14); border-radius: 10px; color: #c9d8cc; background: #19221c; font-weight: 700; transition: background .15s, border-color .15s, color .15s; }
+.home-button:hover { color: #fff; border-color: #5f8a66; background: #23352a; }
+.home-button.active { color: #102014; border-color: #91d49a; background: #91d49a; }
+.home-button.active:hover { background: #a5e5ac; }

@@ -14,7 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="chauffeur.css?v=business-filter-dark-theme" />
-  </head>
+    <link rel="stylesheet" href="rdw-lookup.css" />
+    <link rel="stylesheet" href="pin-gate.css" />
+</head>
   <body>
     <a class="skip-link" href="#main">Ga naar de inhoud</a>
     <div class="demo-banner">
@@ -27,7 +29,6 @@
         <a class="logo" href="#roadmap"><img class="brand-mark" src="roadmaat-icon.svg" alt="" />RoadMaat</a>
         <div class="company"><span><strong>AB Texel B.V.</strong><small>Actief bedrijfsaccount</small></span></div>
         <nav class="side-nav">
-          <a class="nav-link" href="#overview" data-view="overview"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span>Mijn overzicht</a>
           <a class="nav-link active" href="#roadmap" data-view="roadmap"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>RoadMap</a>
           <a class="nav-link activity-nav-link" href="#activities" data-view="activities"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>Activiteiten <b class="activity-count">7</b></a>
           <a class="nav-link chat-nav-link" href="#chats" data-view="chats"><span class="nav-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Vragen en advies <b>3</b></a>
@@ -42,35 +43,17 @@
       <main class="main-area" id="main">
         <header class="topbar">
           <div class="mobile-brand"><img class="brand-mark" src="roadmaat-icon.svg" alt="" />RoadMaat</div>
-          <div class="topbar-company"><span><strong>AB Texel B.V.</strong><small>Actief bedrijfsaccount</small></span></div>
+          <div class="topbar-left">
+            <div class="topbar-company"><span><strong>AB Texel B.V.</strong><small>Actief bedrijfsaccount</small></span></div>
+            <form id="rdw-search" class="rdw-search" role="search"><div class="rdw-search-row"><span class="plate-country" aria-hidden="true"><span class="eu-stars">✦</span><span>NL</span></span><input id="rdw-plate" name="kenteken" maxlength="8" autocomplete="off" placeholder="1-KBB-00" aria-label="Nederlands kenteken" required /><button type="submit" aria-label="Zoek kenteken"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"></circle><path d="m16 16 5 5"></path></svg></button></div></form>
+          </div>
           <span class="demo-label"><i></i> Demo</span>
         </header>
 
         <div class="content-wrap">
-          <section class="view" id="view-overview" data-panel="overview" hidden>
-            <div class="page-heading">
-              <div><p class="eyebrow" id="today-label">VANDAAG</p><h1>Goedemorgen, Jan</h1><blockquote class="welcome-quote"><span class="quote-mark" aria-hidden="true">“</span><span>Kilometers maken we alleen. Kennis delen we samen.</span><span class="quote-close" aria-hidden="true">”</span></blockquote>
-                <div class="dashboard-selectors">
-                  <div class="account-selector" aria-label="Geselecteerd bedrijfsaccount"><span class="account-indicator" aria-hidden="true"></span><span><small>Je bent actief bij</small><strong>AB Texel B.V.</strong></span><span class="account-check" aria-label="geselecteerd">✓</span></div>
-                  <section class="weather-card" aria-label="Lokaal weer">
-                    <span class="weather-icon" id="weather-icon" aria-hidden="true">☀</span>
-                    <span class="weather-copy"><strong id="weather-temperature">Lokaal weer</strong><small id="weather-description">Deel je locatie om het weer te zien.</small><small class="weather-credit"><a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Weer via Open-Meteo</a></small></span>
-                    <span class="wind-flag" aria-label="Windkracht wordt getoond zodra het weer geladen is"><svg id="wind-flag-icon" viewBox="0 0 32 32" role="img" aria-label="Windrichting"><path d="M9 28V5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M10 6h15l-5 6 5 6H10z" fill="#e66d54" stroke="#ffb2a1" stroke-width="1"/><circle cx="9" cy="28" r="2" fill="currentColor"/></svg><span><strong id="wind-strength">Windkracht —</strong><small id="wind-direction">Windrichting —</small></span></span>
-                    <button class="weather-button" id="weather-button" type="button"><span id="weather-button-label">Toon weer</span><span class="account-check" aria-hidden="true">✓</span></button>
-                  </section>
-                </div>
-              </div>
-            </div>
-            <h2 class="section-heading">Snel naar</h2>
-            <div class="quick-grid">
-              <a class="quick-card" href="#roadmap" data-view="roadmap"><span class="quick-icon map-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><strong>RoadMap</strong><small>Locaties langs je route</small><span class="quick-arrow">→</span></a>
-              <a class="quick-card chat-quick-card" href="#chats" data-view="chats"><span class="quick-icon help-icon chat-quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span><strong>Vragen en advies</strong><small>Vraagbaak, privéchat en chauffeursgroepen</small><span class="chat-feature-tag">VRAAGBAAK · CHAT</span><span class="quick-arrow">→</span></a>
-              <a class="quick-card group-quick-card" href="#groups" data-view="groups"><span class="quick-icon group-icon chat-quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span><strong>Chat-groepen</strong><small>Groepsgesprekken met collega-chauffeurs</small><span class="chat-feature-tag">GROEPSCHAT</span><span class="quick-arrow">→</span></a>
-            </div>
-          </section>
-
           <section class="view active" id="view-roadmap" data-panel="roadmap">
             <div class="page-heading"><div><p class="eyebrow">HANDIGE PLEKKEN ONDERWEG</p><h1>RoadMap</h1><p>Bekijk AB Texel-vestigingen in West-Europa of kies een andere locatietab.</p></div></div>
+            <div id="rdw-result" class="rdw-result" role="status" hidden></div>
             <div class="map-layout">
               <div class="map-column">
                 <div class="map-filters" role="group" aria-label="Filter locaties">
@@ -202,7 +185,6 @@
     </div>
 
     <nav class="mobile-nav" aria-label="Mobiele navigatie">
-      <a href="#overview" data-view="overview"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span>Mijn overzicht</a>
       <a class="active" href="#roadmap" data-view="roadmap"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>RoadMap</a>
       <a href="#activities" data-view="activities"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>Activiteiten</a>
       <a class="mobile-chat-link" href="#chats" data-view="chats"><span class="mobile-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Vragen en advies</a>
@@ -224,6 +206,8 @@
       </form>
     </dialog>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="rdw-lookup.js"></script>
     <script src="chauffeur.js?v=business-filter-dark-theme"></script>
-  </body>
+    <script src="pin-gate.js"></script>
+</body>
 </html>

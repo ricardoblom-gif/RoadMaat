@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111713" />
+    <meta name="description" content="RoadMaat Wagenparkbeheer demo." />
+    <link rel="icon" type="image/svg+xml" href="roadmaat-icon.svg" />
+    <title>Wagenparkbeheer | RoadMaat demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="fleetmanagement.css" />
+    <link rel="stylesheet" href="rdw-lookup.css" />
+  </head>
+  <body>
+    <div class="fleet-demo-banner"><span><i></i> Voorbeeldomgeving · geen live bedrijfsgegevens</span><a href="index.html">← RoadMaat overzicht</a></div>
+    <div class="fleet-app">
+      <aside class="fleet-sidebar">
+        <a class="fleet-brand" href="fleetmanagement.html"><img src="roadmaat-icon.svg" alt="" /><span>RoadMaat<small>FLEET WORKSPACE</small></span></a>
+        <nav class="fleet-nav" aria-label="Wagenparkbeheer navigatie">
+          <span class="nav-heading">WERKPLEK</span>
+          <button class="nav-item active" data-view="roadmap"><span class="nav-icon">⌖</span>RoadMap</button>
+          <button class="nav-item" data-view="maps"><span class="nav-icon">◉</span>Google Maps</button>
+          <button class="nav-item" data-view="suppliers"><span class="nav-icon">▤</span>Leveranciers</button>
+          <button class="nav-item" data-view="suppliers-map"><span class="nav-icon">◎</span>Leveranciers kaart</button>
+          <button class="nav-item" data-view="whatsapp"><span class="nav-icon whatsapp-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.51 2 2.01 6.5 2 12.03c0 1.77.46 3.5 1.34 5.02L2 22l5.09-1.33a10.1 10.1 0 0 0 4.94 1.3h.01c5.53 0 10.03-4.5 10.04-10.03A9.98 9.98 0 0 0 19.14 4.85 9.98 9.98 0 0 0 12.04 2Zm0 18.25a8.43 8.43 0 0 1-4.3-1.18l-.31-.18-3.02.79.81-2.94-.2-.32a8.4 8.4 0 0 1-1.29-4.39 8.31 8.31 0 0 1 8.32-8.31c2.22 0 4.3.86 5.87 2.44a8.24 8.24 0 0 1 2.43 5.87 8.32 8.32 0 0 1-8.31 8.22Zm4.56-6.22c-.25-.12-1.47-.73-1.7-.81-.23-.09-.39-.12-.56.12-.16.25-.64.81-.78.98-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-.1-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.39.11-.52.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.12.17 1.76 2.68 4.26 3.76.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29Z"/></svg></span>WhatsApp <span class="nav-count">DEMO</span></button>
+          <span class="nav-heading nav-heading-gap">MODULES</span>
+          <a class="nav-item nav-anchor" href="chauffeur.html"><span class="nav-icon">◫</span>Chauffeurs</a>
+          <span class="nav-heading nav-heading-gap">BEHEER</span>
+          <button class="nav-item" data-view="admin"><span class="nav-icon">⚙</span>Beheer demo</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="profile"><span class="profile-avatar">RM</span><span><b>RoadMaat</b></span></div>
+        </div>
+      </aside>
+
+      <main class="fleet-main">
+        <header class="fleet-topbar">
+          <div class="breadcrumb"><span class="mobile-brand">RoadMaat</span></div>
+          <nav class="external-links" aria-label="Snelle externe links">
+<a href="https://auth0.eu1.scalar.zf.com/login?state=hKFo2SA3WTllRDVWOFBEX2JoV0NucVBxRE0yOHFOTDVFckZ4X6FupWxvZ2luo3RpZNkgYTZ5eHdZVTRhTEl1S1BmQzlvSkpoVXZhUTdTbzZOWVSjY2lk2SA3V2ZxMzZKbm1RamtpZzZRenA1aTdKdVhzMnNsYWhlRA&amp;client=7Wfq36JnmQjkig6Qzp5i7JuXs2slaheD&amp;protocol=oauth2&amp;audience=UM&amp;scope=openid%20profile%20email%20offline_access&amp;started_at=1791644367658&amp;redirect_uri=https%3A%2F%2Fmy-portal.eu1.scalar.zf.com%2Fcallback&amp;response_type=code&amp;response_mode=query&amp;nonce=fjZXR3lDS0JHdms0RVFafncwaHNIa05ubUJHZFZod3hScEpHSVF2MEpjYQ%3D%3D&amp;code_challenge=ykUn_28op439dbYaV0U10DNNWbOANI8zbhNQ4Uy2vA8&amp;code_challenge_method=S256&amp;auth0Client=eyJuYW1lIjoiYXV0aDAtcmVhY3QiLCJ2ZXJzaW9uIjoiMS4xMi4xIn0%3D" target="_blank" rel="noreferrer"><img class="official-logo" data-brand-logo src="https://my-portal.eu1.scalar.zf.com/assets/images/zf192.png" alt="Scalar-logo" loading="lazy" /> Scalar <i>↗</i></a>
+                        <a href="https://truck-tyre-assist-eu.odoo.com/en_GB/breakdown-report" target="_blank" rel="noreferrer"><img class="official-logo" data-brand-logo src="https://truck-tyre-assist-eu.odoo.com/web/image/website/1/favicon" alt="TTA Truck Tyre Assistant-logo" loading="lazy" /> TTA Truck Tyre Assistant <i>↗</i></a>
+            <a href="https://ab-connect.nl/login" target="_blank" rel="noreferrer"><img class="official-logo" data-brand-logo src="https://ab-connect.nl/assets/icon/favicon.png" alt="AB-Connect-logo" loading="lazy" /> AB-Connect <i>↗</i></a>
+            <a href="https://auth.eu.kc.platformscience.com/realms/production/protocol/openid-connect/auth?client_id=feu-telematics-fleetworks-web-prd&amp;redirect_uri=https%3A%2F%2Ffleetcockpit.trimbletl.com%2Fdispatcher%2Fauthcallback&amp;response_type=code&amp;scope=openid%20email&amp;state=" target="_blank" rel="noreferrer"><img class="official-logo" data-brand-logo src="https://www.trimble.com/favicons/android-chrome-192x192.png" alt="Trimble-logo" loading="lazy" /> Trimble <i>↗</i></a>
+            <a href="https://abtexelgroup.ultimo.net/#screen/76e29766-eec5-452a-b273-989e6b8ee5ac?forceLoad=true" target="_blank" rel="noreferrer"><img class="official-logo" data-brand-logo src="https://abtexelgroup.ultimo.net/favicon-96x96.png" alt="Ultimo-logo" loading="lazy" /> Ultimo <i>↗</i></a>
+            <a href="https://login.trailerconnect.de/login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fresponse_type%3Dcode%26client_id%3Dangular_spa%26state%3DNldBZ0dURWEtRlN0WEF5ZFlkYnBZeWVoOGlvSDM5VlctZXBKUGpjV0NkMFVw;%25252Fstatus%26redirect_uri%3Dhttps%253A%252F%252Ftrailerconnect.de%252Fsignin-oidc%26scope%3Dopenid%2520offline_access%2520api%26code_challenge%3Dro8d295NDkzrwhu8W09YJkaKmzJbMJNEmufl9hn3eYE%26code_challenge_method%3DS256%26nonce%3DNldBZ0dURWEtRlN0WEF5ZFlkYnBZeWVoOGlvSDM5VlctZXBKUGpjV0NkMFVw" target="_blank" rel="noreferrer"><img class="official-logo" data-brand-logo src="https://www.cargobull.com/-/media/bookmarks/apple-icon-144x144.png" alt="Schmitz Track-logo" loading="lazy" /> Schmitz Track <i>↗</i></a>
+            <a href="https://www.ilovepdf.com/" target="_blank" rel="noreferrer"><img class="official-logo ilovepdf-logo" data-brand-logo src="https://www.ilovepdf.com/img/app-icon.png" alt="iLovePDF-logo" loading="lazy" /> iLovePDF <i>↗</i></a>
+            <a href="https://outlook.office.com/mail/" target="_blank" rel="noreferrer"><span class="outlook-logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#0a64ad" d="M13.4 3.2h7.1c.8 0 1.5.7 1.5 1.5v14.6c0 .8-.7 1.5-1.5 1.5h-7.1z"/><path fill="#0078d4" d="M13.4 3.2v17.6L4 18.4V5.6z"/><path fill="#28a8ea" d="M13.4 6.1h6.1v11.8h-6.1z"/><path fill="#fff" d="M7.9 8.1c-2.1 0-3.5 1.6-3.5 3.9s1.4 3.9 3.5 3.9 3.5-1.6 3.5-3.9-1.4-3.9-3.5-3.9m0 1.5c1.1 0 1.8.9 1.8 2.4s-.7 2.4-1.8 2.4-1.8-.9-1.8-2.4.7-2.4 1.8-2.4"/></svg></span> Outlook 365 <i>↗</i></a>
+            <a href="https://ovi.rdw.nl/" target="_blank" rel="noreferrer"><img class="official-logo rdw-logo" data-brand-logo src="https://ovi.rdw.nl/assets/images/logo-rdw.svg" alt="RDW-logo" /> OVI RDW <i>↗</i></a>
+            <a href="https://www.rdw.nl/kopen-of-verkopen/kenteken-overschrijven-op-bedrijfsnaam" target="_blank" rel="noreferrer"><img class="official-logo rdw-logo" data-brand-logo src="https://ovi.rdw.nl/assets/images/logo-rdw.svg" alt="RDW-logo" /> RDW overschrijven <i>↗</i></a>
+            <a href="https://www.rdw.nl/schorsen/schorsing-aanvragen" target="_blank" rel="noreferrer"><img class="official-logo rdw-logo" data-brand-logo src="https://ovi.rdw.nl/assets/images/logo-rdw.svg" alt="RDW-logo" /> RDW schorsen <i>↗</i></a>
+          </nav>
+        </header>
+
+        <div class="demo-notice"><span>i</span><p><b>Statische demo.</b> Berichten, leveranciers, uploads en beheer zijn voorbeelden. Er is geen echte inbox, login of gedeelde opslag.</p><button aria-label="Melding sluiten" data-dismiss>×</button></div>
+
+        <div class="content">
+          <section class="view active" data-panel="roadmap">
+            <div class="page-heading roadmap-page-heading">
+              <form id="rdw-search" class="rdw-search" role="search">
+                <label for="rdw-plate">Vul hier uw kenteken in</label>
+                <div class="rdw-search-row"><span class="plate-country" aria-hidden="true"><span class="eu-stars">✦</span><span>NL</span></span><input id="rdw-plate" name="kenteken" maxlength="8" autocomplete="off" placeholder="1-KBB-00" aria-label="Nederlands kenteken" required /><button type="submit" aria-label="Zoek kenteken"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"></circle><path d="m16 16 5 5"></path></svg></button></div>
+              </form>
+            </div>
+            <div id="rdw-result" class="rdw-result" role="status" hidden></div>
+            <div class="panel roadmap-panel"><div class="roadmap-tabs" id="roadmap-tabs" role="tablist" aria-label="RoadMap categorieën"></div><div class="roadmap-content"><div class="roadmap-list"><div class="list-heading"><div><h2 id="roadmap-category-title"></h2><p>Locaties en servicepunten</p></div><span id="location-count"></span></div><div id="locations-list"></div></div></div></div>
+          </section>
+
+          <section class="view" data-panel="maps" hidden>
+            <div class="panel map-panel"><form id="map-search" class="search-form"><span>⌕</span><input id="map-query" value="Nederland" maxlength="160" placeholder="Zoek een locatie..." aria-label="Zoek in Google Maps" /><button class="primary-button">Zoeken</button></form><iframe id="map-frame" title="Google Maps kaart" src="https://maps.google.com/maps?q=Nederland&z=7&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+          </section>
+
+          <section class="view" data-panel="suppliers" hidden>
+            <div class="page-heading"><div><p class="eyebrow">NETWERK &amp; SERVICE</p><h1>Leveranciers</h1><p>Zoek op naam, plaats, postcode, regio of telefoonnummer.</p></div></div>
+            <div class="panel suppliers-panel"><div class="sup-toolbar"><form id="supplier-search" class="search-form"><span>⌕</span><input id="supplier-query" maxlength="160" placeholder="Zoek op naam, plaats, postcode, regio of telefoon" aria-label="Zoek leveranciers" autocomplete="off" /></form><select id="supplier-country" aria-label="Filter op land"><option value="">Alle landen</option></select><div class="view-toggle" role="group" aria-label="Weergave"><button type="button" class="active" data-sup-view="tiles">▦ Tegels</button><button type="button" data-sup-view="list">☰ Lijst</button></div></div><p class="sup-count" id="supplier-count" aria-live="polite"></p><div id="supplier-results" class="supplier-results"></div><button type="button" id="supplier-more" class="primary-button sup-more" hidden>Toon meer</button></div>
+          </section>
+          <section class="view" data-panel="suppliers-map" hidden>
+            <div class="page-heading"><div><p class="eyebrow">NETWERK &amp; SERVICE</p><h1>Leveranciers kaart</h1><p>Alle leveranciers op een kaart (OpenStreetMap). Klik op een punt voor de details.</p></div></div>
+            <div class="panel suppliers-panel"><div class="sup-toolbar"><form id="supmap-search" class="search-form"><span>⌕</span><input id="supmap-query" maxlength="160" placeholder="Filter op naam, plaats, postcode of regio" aria-label="Filter leveranciers op kaart" autocomplete="off" /></form><select id="supmap-country" aria-label="Filter op land"><option value="">Alle landen</option></select></div><p class="sup-count" id="supmap-count" aria-live="polite"></p><div class="supmap-wrap"><div id="supmap" class="supmap" role="application" aria-label="Kaart met leveranciers"></div><div class="supmap-zoom"><button type="button" data-zoom="1" aria-label="Inzoomen">+</button><button type="button" data-zoom="-1" aria-label="Uitzoomen">−</button><button type="button" data-zoom="0" aria-label="Alles tonen">⌂</button></div><div class="supmap-info" id="supmap-info" hidden></div><div class="supmap-notice" id="supmap-notice" role="alert" hidden></div><div class="supmap-attrib">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>-bijdragers</div></div></div>
+          </section>
+
+          <section class="view" data-panel="whatsapp" hidden>
+            <div class="page-heading"><div><p class="eyebrow">CHAUFFEURS CONTACT</p><h1>WhatsApp inbox</h1><p>Voorbeeldgesprekken; geen echte WhatsApp-koppeling.</p></div><span class="demo-status"><i></i> Niet gekoppeld</span></div>
+            <div class="panel inbox"><aside class="conversation-list"><div class="inbox-title"><b>Gesprekken</b><span>2 demo's</span></div><button class="conversation active" data-chat="0"><span class="chat-avatar">JD</span><span class="conversation-copy"><b>Voorbeeldchauffeur 01</b><small>Waar kan ik tanken?</small></span><time>09:42</time></button><button class="conversation" data-chat="1"><span class="chat-avatar avatar-alt">MK</span><span class="conversation-copy"><b>Voorbeeldchauffeur 02</b><small>Bedankt voor de tip!</small></span><time>08:15</time></button></aside><div class="chat-panel"><div class="chat-heading"><span class="chat-avatar">JD</span><span><b>Voorbeeldchauffeur 01</b><small>Voorbeeldgesprek</small></span></div><div class="chat-messages" id="chat-messages"></div><form id="chat-form" class="reply-form"><input id="chat-reply" placeholder="Demo: typen is niet gekoppeld" disabled /><button type="button" disabled>Versturen</button></form></div></div>
+          </section>
+
+          <section class="view" data-panel="admin" hidden>
+            <form class="pin-gate" id="pin-gate" autocomplete="off"><h2>Beheer</h2><p>Voer de pincode in om verder te gaan.</p><input id="pin-input" type="password" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="••••" aria-label="Pincode" required /><button class="primary-button" type="submit">Ontgrendel</button><p class="pin-error" id="pin-error" role="alert" hidden>Onjuiste pincode.</p></form>
+            <div id="admin-content" hidden>
+            <div class="page-heading"><div><p class="eyebrow">BEHEER &amp; INSTELLINGEN</p><h1>Beheer</h1><p>Alleen een interface-demo. Er is geen beveiligde admin-login.</p></div><span class="small-badge">NIET BEVEILIGD</span></div>
+            <div class="admin-warning"><b>Let op:</b> GitHub Pages is statisch. Deze demo heeft geen gebruikersbeheer, database of serveropslag. Gebruik hier geen echte adressen, persoonsgegevens of API-sleutels.</div>
+            <div class="admin-grid"><article class="panel admin-card"><span class="admin-icon">⌖</span><h2>RoadMap</h2><p>Voeg voorbeeldadressen toe in het RoadMap-scherm. Ze zijn alleen tijdelijk in deze pagina beschikbaar.</p><button class="primary-button" data-open="roadmap">RoadMap openen →</button></article><article class="panel admin-card"><span class="admin-icon">▤</span><h2>Leveranciersbestand</h2><p>Excel import is niet ingeschakeld: GitHub Pages kan de leverancierslijst niet veilig of gedeeld opslaan.</p><label class="fake-upload">Excel kiezen (demo)<input type="file" accept=".xlsx,.xls" disabled /></label></article><article class="panel admin-card"><span class="admin-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.51 2 2.01 6.5 2 12.03c0 1.77.46 3.5 1.34 5.02L2 22l5.09-1.33a10.1 10.1 0 0 0 4.94 1.3h.01c5.53 0 10.03-4.5 10.04-10.03A9.98 9.98 0 0 0 19.14 4.85 9.98 9.98 0 0 0 12.04 2Z"/></svg></span><h2>WhatsApp Business</h2><p>De inbox toont alleen voorbeeldberichten. Cloud API, webhook en tokens vereisen een serverbackend.</p><label class="number-label">06-nummer voor WhatsApp openen<input id="whatsapp-number" type="tel" inputmode="tel" maxlength="20" placeholder="06 12345678" /></label><button class="primary-button" type="button" data-open-whatsapp>WhatsApp openen ↗</button><p class="muted-note">Opent een chat in WhatsApp; berichten komen niet in deze demo-inbox.</p><span class="integration-off">Inbox niet gekoppeld</span></article></div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="rdw-lookup.js"></script>
+    <script src="suppliers-data.js"></script>
+    <script src="suppliers.js"></script>
+    <script src="map-outline.js"></script>
+    <script src="suppliers-map.js"></script>
+    <script src="fleetmanagement.js"></script>
+  </body>
+</html>

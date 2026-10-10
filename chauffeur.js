@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navigation = [...document.querySelectorAll("[data-view]")];
   const toast = document.getElementById("toast");
   let toastTimer;
-  const factoryMapUrl = "https://www.google.com/maps/dir/?api=1&origin=Lamb+Weston+Kruiningen&destination=Agristo+Tilburg&waypoints=Lamb+Weston+Bergen+op+Zoom%7CLamb+Weston+Oosterbierum%7CAviko+Steenderen&output=embed";
+  const factoryMapUrl = "https://maps.google.com/maps?saddr=Lamb+Weston+Kruiningen&daddr=Lamb+Weston+Bergen+op+Zoom+to:Lamb+Weston+Oosterbierum+to:Aviko+Steenderen+to:Agristo+Tilburg&output=embed";
   const factoryDirectionsUrl = "https://www.google.com/maps/dir/?api=1&origin=Lamb+Weston+Kruiningen&destination=Agristo+Tilburg&waypoints=Lamb+Weston+Bergen+op+Zoom%7CLamb+Weston+Oosterbierum%7CAviko+Steenderen";
 
   const locations = [
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  const currentCompany = document.querySelector(".account-selector strong").textContent.trim();
+  const currentCompany = document.querySelector(".company strong").textContent.trim();
   const activityCompanies = [
     "AB Texel B.V.",
     "AB Texel Silo B.V.",
@@ -1014,7 +1014,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function openView(name) {
-    const validName = panels.some((panel) => panel.dataset.panel === name) ? name : "overview";
+    const validName = panels.some((panel) => panel.dataset.panel === name) ? name : "roadmap";
     document.body.classList.toggle("activities-open", validName === "activities");
     panels.forEach((panel) => {
       const active = panel.dataset.panel === validName;
@@ -1024,7 +1024,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navigation.forEach((link) => link.classList.toggle("active", link.dataset.view === validName));
     if (validName === "roadmap") setLocationFilter("all");
     if (validName === "activities" && activitiesMap) window.setTimeout(() => activitiesMap.invalidateSize(), 0);
-    history.replaceState(null, "", `#${validName === "overview" ? "overview" : validName}`);
+    history.replaceState(null, "", `#${validName}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -1082,8 +1082,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("hashchange", () => {
     const requested = window.location.hash.slice(1);
-    const view = ["activities", "chats", "groups", "planning", "roadmap"].includes(requested) ? requested : "overview";
-    if (!document.getElementById(`view-${view}`).classList.contains("active")) openView(view);
+    const view = ["activities", "chats", "groups", "planning", "roadmap"].includes(requested) ? requested : "roadmap";
+    if (requested !== view || !document.getElementById(`view-${view}`).classList.contains("active")) openView(view);
   });
 
   document.querySelectorAll(".filter-button").forEach((filter) => {
@@ -1187,8 +1187,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { enableHighAccuracy: false, maximumAge: 600000, timeout: 12000 });
   }
 
-  document.getElementById("weather-button").addEventListener("click", loadLocalWeather);
-
   document.querySelectorAll(".chat-choice").forEach((choice) => {
     choice.addEventListener("click", () => renderChat(choice.dataset.chat));
   });
@@ -1220,13 +1218,11 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => showToast("Gespreksopties zijn in deze demo nog niet gekoppeld."));
   });
 
-  const today = new Intl.DateTimeFormat("nl-NL", { weekday: "long", day: "numeric", month: "long" }).format(new Date());
-  document.getElementById("today-label").textContent = today.toLocaleUpperCase("nl-NL");
   renderLocations();
   initializeAbTexelMap();
   initializeActivityFeatures();
   renderChat("abQuestion");
   renderChat("planning");
   const initialView = window.location.hash.slice(1) || "roadmap";
-  openView(["activities", "roadmap", "chats", "groups", "planning", "overview"].includes(initialView) ? initialView : "roadmap");
+  openView(["activities", "roadmap", "chats", "groups", "planning"].includes(initialView) ? initialView : "roadmap");
 });
