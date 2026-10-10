@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="RoadMaat chauffeursdemo met RoadMap, activiteiten, handige locaties en chauffeurschats." />
+    <meta name="theme-color" content="#1e1e1e" />
+    <meta name="apple-mobile-web-app-title" content="RoadMaat" />
+    <link rel="icon" type="image/svg+xml" href="roadmaat-icon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="roadmaat-touch-icon.png" />
+    <title>RoadMaat voor chauffeurs | Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="chauffeur.css?v=business-filter-dark-theme" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Ga naar de inhoud</a>
+    <div class="demo-banner">
+      <span><i></i> Voorbeeldomgeving · AB Texel</span>
+      <a href="index.html">Terug naar RoadMaat informatie <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Hoofdnavigatie">
+        <a class="logo" href="#roadmap"><img class="brand-mark" src="roadmaat-icon.svg" alt="" />RoadMaat</a>
+        <div class="company"><span><strong>AB Texel B.V.</strong><small>Actief bedrijfsaccount</small></span></div>
+        <nav class="side-nav">
+          <a class="nav-link" href="#overview" data-view="overview"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span>Mijn overzicht</a>
+          <a class="nav-link active" href="#roadmap" data-view="roadmap"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>RoadMap</a>
+          <a class="nav-link activity-nav-link" href="#activities" data-view="activities"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>Activiteiten <b class="activity-count">7</b></a>
+          <a class="nav-link chat-nav-link" href="#chats" data-view="chats"><span class="nav-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Vragen en advies <b>3</b></a>
+          <a class="nav-link group-nav-link" href="#groups" data-view="groups"><span class="nav-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Chat-groepen <b>CHAT</b></a>
+          <a class="nav-link group-nav-link planning-nav-link" href="#planning" data-view="planning"><span class="nav-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Planning <b>CHAT</b></a>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="profile"><span class="avatar avatar-jan">JD</span><span><strong>Jan de Vries</strong><small>Chauffeur · AB Texel B.V.</small></span></div>
+        </div>
+      </aside>
+
+      <main class="main-area" id="main">
+        <header class="topbar">
+          <div class="mobile-brand"><img class="brand-mark" src="roadmaat-icon.svg" alt="" />RoadMaat</div>
+          <div class="topbar-company"><span><strong>AB Texel B.V.</strong><small>Actief bedrijfsaccount</small></span></div>
+          <span class="demo-label"><i></i> Demo</span>
+        </header>
+
+        <div class="content-wrap">
+          <section class="view" id="view-overview" data-panel="overview" hidden>
+            <div class="page-heading">
+              <div><p class="eyebrow" id="today-label">VANDAAG</p><h1>Goedemorgen, Jan</h1><blockquote class="welcome-quote"><span class="quote-mark" aria-hidden="true">“</span><span>Kilometers maken we alleen. Kennis delen we samen.</span><span class="quote-close" aria-hidden="true">”</span></blockquote>
+                <div class="dashboard-selectors">
+                  <div class="account-selector" aria-label="Geselecteerd bedrijfsaccount"><span class="account-indicator" aria-hidden="true"></span><span><small>Je bent actief bij</small><strong>AB Texel B.V.</strong></span><span class="account-check" aria-label="geselecteerd">✓</span></div>
+                  <section class="weather-card" aria-label="Lokaal weer">
+                    <span class="weather-icon" id="weather-icon" aria-hidden="true">☀</span>
+                    <span class="weather-copy"><strong id="weather-temperature">Lokaal weer</strong><small id="weather-description">Deel je locatie om het weer te zien.</small><small class="weather-credit"><a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Weer via Open-Meteo</a></small></span>
+                    <span class="wind-flag" aria-label="Windkracht wordt getoond zodra het weer geladen is"><svg id="wind-flag-icon" viewBox="0 0 32 32" role="img" aria-label="Windrichting"><path d="M9 28V5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M10 6h15l-5 6 5 6H10z" fill="#e66d54" stroke="#ffb2a1" stroke-width="1"/><circle cx="9" cy="28" r="2" fill="currentColor"/></svg><span><strong id="wind-strength">Windkracht —</strong><small id="wind-direction">Windrichting —</small></span></span>
+                    <button class="weather-button" id="weather-button" type="button"><span id="weather-button-label">Toon weer</span><span class="account-check" aria-hidden="true">✓</span></button>
+                  </section>
+                </div>
+              </div>
+            </div>
+            <h2 class="section-heading">Snel naar</h2>
+            <div class="quick-grid">
+              <a class="quick-card" href="#roadmap" data-view="roadmap"><span class="quick-icon map-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><strong>RoadMap</strong><small>Locaties langs je route</small><span class="quick-arrow">→</span></a>
+              <a class="quick-card chat-quick-card" href="#chats" data-view="chats"><span class="quick-icon help-icon chat-quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span><strong>Vragen en advies</strong><small>Vraagbaak, privéchat en chauffeursgroepen</small><span class="chat-feature-tag">VRAAGBAAK · CHAT</span><span class="quick-arrow">→</span></a>
+              <a class="quick-card group-quick-card" href="#groups" data-view="groups"><span class="quick-icon group-icon chat-quick-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span><strong>Chat-groepen</strong><small>Groepsgesprekken met collega-chauffeurs</small><span class="chat-feature-tag">GROEPSCHAT</span><span class="quick-arrow">→</span></a>
+            </div>
+          </section>
+
+          <section class="view active" id="view-roadmap" data-panel="roadmap">
+            <div class="page-heading"><div><p class="eyebrow">HANDIGE PLEKKEN ONDERWEG</p><h1>RoadMap</h1><p>Bekijk AB Texel-vestigingen in West-Europa of kies een andere locatietab.</p></div></div>
+            <div class="map-layout">
+              <div class="map-column">
+                <div class="map-filters" role="group" aria-label="Filter locaties">
+                  <button class="filter-button active" type="button" data-filter="all">Alles</button>
+                  <button class="filter-button" type="button" data-filter="abtexel">AB Texel-locaties</button>
+                  <button class="filter-button" type="button" data-filter="truckstop">Truckstops</button>
+                  <button class="filter-button" type="button" data-filter="factory">Fabrieken</button>
+                  <button class="filter-button" type="button" data-filter="tire">Bandenservice</button>
+                  <button class="filter-button" type="button" data-filter="workshop">Werkplaatsen on the road</button>
+                </div>
+                <div class="map-frame">
+                  <iframe id="google-map" title="Google Maps met RoadMaat-locaties" src="https://maps.google.com/maps?q=Netherlands&z=7&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen hidden></iframe>
+                  <div id="roadmap-map" class="roadmap-map" role="region" aria-label="Kaart met AB Texel-vestigingen in West-Europa"></div>
+                  <p class="map-unavailable" id="map-unavailable" hidden></p>
+                  <span class="map-caption" id="map-caption">Alle locaties · Nederland · OpenStreetMap</span>
+                </div>
+                <div class="locations-panel">
+                  <div class="list-heading"><strong>Locaties onderweg</strong><span class="location-list-actions"><span id="location-count">Locaties laden…</span><button class="show-factories" id="show-factories" type="button" hidden>Toon alle fabrieken</button></span></div>
+                  <div id="location-list" class="location-list"></div>
+                </div>
+              </div>
+              <aside class="location-detail" id="location-detail" aria-live="polite">
+                <div class="detail-placeholder"><span class="location-symbol abtexel-symbol" id="detail-symbol">A</span><p class="eyebrow" id="detail-kind">ALLE LOCATIES</p><h2 id="detail-name">Nederland</h2><p id="detail-description">RoadMap opent met alle locatietypen in de lijst en de kaart ingezoomd op Nederland. Kies een tab om alleen dat type locaties te bekijken.</p><div class="detail-info" id="detail-info">AB Texel-vestigingen in West-Europa zijn als kaartmarkeringen weergegeven.</div><section class="factory-info-editor" id="factory-info-editor" aria-label="Fabrieksinstructies" hidden></section><a class="button button-dark map-open" id="maps-link" href="https://www.google.com/maps/search/?api=1&amp;query=Netherlands" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a><a class="source-link" id="source-link" href="https://abtexel.com/locaties" target="_blank" rel="noopener noreferrer">Bron en actuele adressen: AB Texel ↗</a></div>
+                <p class="demo-note">Controleer fabrieksgegevens bij de planning en check trucktoegang en openingstijden voor vertrek.</p>
+              </aside>
+            </div>
+          </section>
+
+          <section class="view activities-view" id="view-activities" data-panel="activities" hidden>
+            <div class="activity-experience">
+              <div id="activities-map" class="activities-map" role="region" aria-label="Kaart met chauffeursactiviteiten in Nederland"></div>
+              <div class="activity-top-controls">
+                <label class="activity-search"><span aria-hidden="true">⌕</span><span class="visually-hidden">Zoek activiteiten of locaties</span><input id="activity-search" type="search" placeholder="Zoek activiteit of locatie" autocomplete="off" /></label>
+                <div class="activity-company-filters">
+                  <label for="activity-company-filter">Bedrijfsfilter</label>
+                  <select id="activity-company-filter">
+                    <option value="mine">Mijn bedrijf</option>
+                    <option value="all">Toon alle bedrijven</option>
+                    <option value="company">Specifiek bedrijf kiezen</option>
+                  </select>
+                  <label class="visually-hidden" for="activity-specific-company">Kies een bedrijf</label>
+                  <select id="activity-specific-company" hidden>
+                    <option value="" selected disabled>Kies een bedrijf</option>
+                  </select>
+                </div>
+                <div class="activity-filter-row" role="group" aria-label="Filter activiteiten">
+                  <button class="activity-filter active" type="button" data-activity-filter="all" aria-pressed="true">Alles</button>
+                  <button class="activity-filter" type="button" data-activity-filter="outdoor" aria-pressed="false">🥾 Buiten</button>
+                  <button class="activity-filter" type="button" data-activity-filter="food" aria-pressed="false">🍲 Eten</button>
+                  <button class="activity-filter" type="button" data-activity-filter="social" aria-pressed="false">🎯 Sociaal</button>
+                </div>
+              </div>
+              <button class="activity-location-button" id="activity-location-button" type="button"><span aria-hidden="true">◎</span><span>Deel locatie</span></button>
+              <p class="activity-location-status" id="activity-location-status" role="status" aria-live="polite">Locatie wordt pas gebruikt als je daarvoor kiest.</p>
+              <div class="activity-card-rail" id="activity-card-rail" aria-label="Activiteiten op de kaart"></div>
+
+              <article class="activity-sheet" id="activity-sheet" aria-labelledby="activity-sheet-title" aria-live="polite" hidden>
+                <div class="activity-sheet-handle" aria-hidden="true"></div>
+                <div class="activity-sheet-tools">
+                  <button class="activity-tool" id="activity-report-button" type="button" aria-label="Meld activiteit">⚑</button>
+                  <button class="activity-tool" id="activity-share-button" type="button" aria-label="Deel activiteit">↗</button>
+                  <span class="activity-sheet-emoji" id="activity-sheet-emoji" aria-hidden="true">🥾</span>
+                  <button class="activity-sheet-close" id="activity-sheet-close" type="button" aria-label="Sluit activiteit">×</button>
+                </div>
+                <p class="activity-eyebrow" id="activity-sheet-type">ACTIVITEIT</p>
+                <h2 id="activity-sheet-title"></h2>
+                <p class="activity-sheet-host" id="activity-sheet-host"></p>
+                <p class="activity-sheet-company" id="activity-sheet-company"></p>
+                <p class="activity-sheet-place" id="activity-sheet-place"></p>
+                <p class="activity-sheet-time" id="activity-sheet-time"></p>
+                <p class="activity-distance" id="activity-distance"></p>
+                <div class="activity-attendees" id="activity-attendees" aria-label="Deelnemers"></div>
+                <p class="activity-facilities"><span>❄ Koelmotorvriendelijke plek</span><strong id="activity-cooling-status">Onbekend</strong><span>⚡ Stroompaal</span><strong id="activity-power-status">Onbekend</strong></p>
+                <div class="activity-sheet-actions">
+                  <button class="activity-join-button" id="activity-join-button" type="button" disabled>Deel je locatie om mee te doen</button>
+                  <button class="activity-voice-button" id="activity-voice-button" type="button" aria-label="Voicechat (demo)">🎙 Voicechat</button>
+                </div>
+                <p class="activity-demo-note">Demo: aanmelden en voicechat zijn niet verbonden met echte chauffeurs.</p>
+              </article>
+
+              <nav class="activity-bottom-nav" id="activity-bottom-nav" aria-label="Activiteitennavigatie">
+                <button type="button" class="active" data-activity-nav="map"><span aria-hidden="true">⌖</span>Kaart</button>
+                <button type="button" data-activity-nav="add"><span aria-hidden="true">＋</span>Toevoegen</button>
+                <button type="button" data-activity-nav="messages"><span aria-hidden="true">☏</span>Berichten</button>
+              </nav>
+            </div>
+          </section>
+
+          <section class="view" id="view-chats" data-panel="chats" hidden>
+            <div class="chat-layout">
+              <div class="chat-list">
+                <p class="list-heading">GESPREKKEN <span>4</span></p>
+                <button class="chat-choice active" type="button" data-chat="abQuestion"><span class="avatar mentor-avatar">AB</span><span><strong>AB Texel B.V. - Vraagbaak</strong><small>Monique: Stel je vraag maar, Jan.</small></span><span class="unread"></span></button>
+                <button class="chat-choice" type="button" data-chat="pieter"><span class="avatar pieter-avatar">PV</span><span><strong>Pieter van Dijk</strong><small>Dank je, dat helpt!</small></span></button>
+                <button class="chat-choice" type="button" data-chat="klaas"><img class="avatar daf-avatar" src="https://upload.wikimedia.org/wikipedia/commons/1/12/DAF_logo.svg" alt="DAF-logo" loading="lazy" /><span><strong>Klaas Smit</strong><small>Tot bij de volgende stop 👋</small></span></button>
+                <button class="chat-choice" type="button" data-chat="frisian"><img class="avatar frisian-flag" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Frisian_flag.svg" alt="Friese vlag" loading="lazy" /><span><strong>Fryse Pieper riiders</strong><small>Klaas: Wie rijdt er richting Utrecht?</small></span><span class="unread"></span></button>
+              </div>
+              <section class="conversation whatsapp-chat" aria-label="AB Texel B.V. vraagbaak groepschat">
+                <header class="conversation-header"><span class="avatar mentor-avatar" data-chat-avatar>AB</span><span><strong data-chat-name>AB Texel B.V. - Vraagbaak</strong><small data-chat-status>Groepschat · Mentors online</small></span><button class="conversation-menu" type="button" aria-label="Gespreksopties">···</button></header>
+                <div class="messages" data-chat-messages aria-live="polite"></div>
+                <form class="message-form" data-chat-form><label class="visually-hidden" for="message-input">Typ een bericht</label><input id="message-input" data-chat-input type="text" placeholder="Waar kan je hulp bij gebruiken?" autocomplete="off" required /><button type="submit" aria-label="Verstuur bericht">↑</button></form>
+                <p class="demo-note chat-note">Demo: berichten blijven alleen in deze browser open.</p>
+              </section>
+            </div>
+          </section>
+
+          <section class="view" id="view-planning" data-panel="planning" hidden>
+            <div class="page-heading"><div><p class="eyebrow">VASTE PLANNINGSCHAT</p><h1>Planning</h1><p>Je ritinformatie en berichten van Planning Texel op één plek.</p></div></div>
+            <section class="conversation whatsapp-chat planning-conversation" aria-label="Vaste chat met Planning Texel">
+              <header class="conversation-header"><span class="avatar planning-avatar" data-chat-avatar>PT</span><span><strong data-chat-name>Planning Texel</strong><small data-chat-status>Vaste chat · Ritupdates</small></span><button class="conversation-menu" type="button" aria-label="Gespreksopties">···</button></header>
+              <div class="messages" data-chat-messages aria-live="polite"></div>
+              <form class="message-form" data-chat-form><label class="visually-hidden" for="planning-message-input">Typ een bericht aan Planning Texel</label><input id="planning-message-input" data-chat-input type="text" placeholder="Bericht aan Planning Texel..." autocomplete="off" required /><button type="submit" aria-label="Verstuur bericht aan Planning Texel">↑</button></form>
+              <p class="demo-note chat-note">Voorbeeldgesprek: de planning is niet gekoppeld aan echte ritten of een planningssysteem.</p>
+            </section>
+          </section>
+
+          <section class="view" id="view-groups" data-panel="groups" hidden>
+            <div class="page-heading"><div><p class="eyebrow">JOUW GESPREKKEN</p><h1>Chats</h1><p>Berichten met collega-chauffeurs en je groepen.</p></div></div>
+            <div class="chat-inbox">
+              <button class="inbox-row" type="button" data-open-chat="abQuestion"><span class="inbox-avatar mentor-avatar">AB</span><span class="inbox-copy"><strong>AB Texel B.V. - Vraagbaak</strong><small>Monique: Stel je vraag maar, Jan.</small></span><span class="inbox-meta"><time>09:15</time><i class="unread"></i></span></button>
+              <button class="inbox-row" type="button" data-open-chat="pieter"><span class="inbox-avatar pieter-avatar">PV</span><span class="inbox-copy"><strong>Pieter van Dijk</strong><small>Dank je, dat helpt!</small></span><span class="inbox-meta"><time>08:51</time></span></button>
+              <button class="inbox-row" type="button" data-open-chat="klaas"><img class="inbox-avatar daf-avatar" src="https://upload.wikimedia.org/wikipedia/commons/1/12/DAF_logo.svg" alt="DAF-logo" loading="lazy" /><span class="inbox-copy"><strong>Klaas Smit</strong><small>Tot bij de volgende stop 👋</small></span><span class="inbox-meta"><time>Gisteren</time></span></button>
+              <button class="inbox-row" type="button" data-open-chat="frisian"><img class="inbox-avatar frisian-flag" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Frisian_flag.svg" alt="Friese vlag" loading="lazy" /><span class="inbox-copy"><strong>Fryse Pieper riiders</strong><small>Klaas: Wie rijdt er richting Utrecht?</small></span><span class="inbox-meta"><time>08:08</time><i class="unread"></i></span></button>
+            </div>
+          </section>
+          <footer class="page-footer"><span>© RoadMaat · Een digitale collega voor onderweg</span><span>Demo omgeving · Geen echte gegevens</span></footer>
+        </div>
+      </main>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Mobiele navigatie">
+      <a href="#overview" data-view="overview"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span>Mijn overzicht</a>
+      <a class="active" href="#roadmap" data-view="roadmap"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>RoadMap</a>
+      <a href="#activities" data-view="activities"><span class="mobile-nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>Activiteiten</a>
+      <a class="mobile-chat-link" href="#chats" data-view="chats"><span class="mobile-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Vragen en advies</a>
+      <a class="mobile-group-link" href="#groups" data-view="groups"><span class="mobile-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Chat-groepen</a>
+      <a class="mobile-group-link planning-mobile-link" href="#planning" data-view="planning"><span class="mobile-chat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.5-.8L4 20l1.7-3.4A7.2 7.2 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/><path d="M8.5 11.5h7M8.5 14.5h4"/></svg></span>Planning</a>
+    </nav>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog class="activity-dialog" id="activity-dialog" aria-labelledby="activity-dialog-title">
+      <form id="activity-form">
+        <div class="activity-dialog-heading"><div><p class="activity-eyebrow">SAMEN ONDERWEG</p><h2 id="activity-dialog-title">Activiteit toevoegen</h2></div><button class="activity-sheet-close" id="activity-dialog-close" type="button" aria-label="Sluit formulier">×</button></div>
+        <label>Wat ga je doen?<input name="activity" type="text" maxlength="100" required placeholder="Bijvoorbeeld: samen een rondje wandelen" /></label>
+        <label>Activiteitstype<select name="type" required><option value="Outdoor & Active">Buiten & actief</option><option value="Eten & Drinken">Eten & drinken</option><option value="Social & Nightlife">Sociaal</option></select></label>
+        <label>Locatie<select name="location" id="activity-location-select" required></select></label>
+        <label>Wanneer?<input name="time" type="text" maxlength="70" required placeholder="Bijvoorbeeld: vanavond vanaf 19:30" /></label>
+        <label>Emoji<input name="emoji" type="text" maxlength="8" value="☕" aria-label="Activiteitsemoji" /></label>
+        <label class="activity-approval-option"><input name="requiresApproval" type="checkbox" /> Deelnemers eerst goedkeuren (verzoek om mee te doen)</label>
+        <p class="activity-dialog-note">Je locatie wordt niet aan je activiteit gekoppeld. De parkeer- en stroomstatus blijft onbekend tenzij die gegevens worden bevestigd.</p>
+        <button class="activity-join-button" type="submit">Activiteit plaatsen</button>
+      </form>
+    </dialog>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="chauffeur.js?v=business-filter-dark-theme"></script>
+  </body>
+</html>
