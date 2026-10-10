@@ -4,85 +4,19 @@ RoadMaat is een white-label digitaal platform voor chauffeurs in de transportsec
 
 Deze versie is opnieuw opgebouwd als moderne Next.js-app met Next.js API-routes, Prisma en PostgreSQL.
 
-## Deployen naar Vercel met GoDaddy domein
+## Publiceren via GitHub Pages
 
-Deze app is gebouwd voor deploys op Vercel. Dat is de juiste keuze voor een Next.js-app met auth, API-routes en database.
+De statische demo-pagina's (`index.html`, `fleetmanagement.html`, `chauffeur.html`) draaien op GitHub Pages vanaf de `main`-branch en zijn bereikbaar op https://www.roadmaat.nl (domein via het `CNAME`-bestand en een DNS-CNAME `www` -> `ricardoblom-gif.github.io`). Er is geen build nodig.
 
-### 1. Code naar GitHub
-
-```bash
-git init
-git add .
-git commit -m "RoadMaat app foundation"
-git branch -M main
-git remote add origin https://github.com/<jouw-gebruikersnaam>/<jouw-repo>.git
-git push -u origin main
-```
-
-### 2. Deploy op Vercel
-
-1. Ga naar https://vercel.com
-2. Klik op "Add New Project"
-3. Kies je GitHub repo
-4. Vercel detecteert automatisch Next.js
-5. Klik op "Deploy"
-
-### 3. Domein koppelen via GoDaddy
-
-In Vercel:
-- Ga naar je project
-- Open "Settings" > "Domains"
-- Voeg toe: `roadmaat.nl`
-- Voeg ook toe: `www.roadmaat.nl`
-
-Vercel geeft je daarna de DNS-records. Voor de meest gangbare setup:
-
-- `A` record voor `@` -> `76.76.21.21`
-- `CNAME` record voor `www` -> `cname.vercel-dns.com`
-
-In GoDaddy:
-1. Open je domein
-2. Ga naar "DNS Management"
-3. Verwijder eventuele oude records die conflicteren
-4. Voeg bovenstaande records toe
-5. Sla op
-
-Na enkele minuten tot 48 uur is de domain doorgegaan.
-
-### 4. Production environment variables
-
-Maak in Vercel een Environment Variable aan met:
-
-```env
-DATABASE_URL="postgresql://..."
-SESSION_SECRET="een-lang-random-geheim"
-NEXT_PUBLIC_APP_URL="https://roadmaat.nl"
-```
-
-De Vercel Prisma Postgres-database levert `DATABASE_URL`. De sessiesleutel moet een geheime willekeurige waarde van minstens 32 tekens zijn. Stel beide alleen in Vercel in; commit geen geheimen.
-
-### 5. Lokale ontwikkeling
+Lokaal bekijken (nodig voor de OpenStreetMap-kaart):
 
 ```bash
-npm install
-npx prisma generate
-npx prisma migrate dev
-npm run prisma:seed
-npm run dev
+py serve.py
 ```
 
-Maak voor lokaal gebruik eerst een PostgreSQL-database en zet de connection string in `.env.local` als `DATABASE_URL`. Productieschema-migraties worden vóór de Vercel-production-build uitgevoerd. Preview builds draaien geen productiemigraties.
+Open daarna http://localhost:8000/fleetmanagement.html.
 
-Open daarna:
-
-```text
-http://localhost:3000
-```
-
-### 6. Alternatief: GitHub Pages
-
-GitHub Pages werkt alleen voor statische websites. Voor deze app is Vercel de juiste keuze, omdat Next.js API-routes, auth en backend-logic niet goed op GitHub Pages draaien.
-
+De Next.js-bestanden (`app/`, `lib/`, `prisma/`) zijn niet onderdeel van de gepubliceerde site. Lokaal draaien kan met `npm install`, `npx prisma generate` en `npm run dev`, met een eigen PostgreSQL-database in `.env.local` (`DATABASE_URL`, `SESSION_SECRET`).
 Tagline: “Onderweg sta je er nooit alleen voor.”
 
 ## Doel
