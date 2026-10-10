@@ -3,7 +3,7 @@ import { verifySessionToken } from '@/lib/session-token';
 
 const protectedPaths = ['/dashboard'];
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const isProtectedRoute = protectedPaths.some((path) => pathname === path || pathname.startsWith(`${path}/`));
 
