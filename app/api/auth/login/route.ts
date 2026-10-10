@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Ongeldige inloggegevens' }, { status: 401 });
     }
 
-    setSessionCookie({
+    await setSessionCookie({
       id: user.id,
       email: user.email,
       name: user.name,

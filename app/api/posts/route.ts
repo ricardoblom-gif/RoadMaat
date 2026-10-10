@@ -18,7 +18,7 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const session = getSessionFromCookies();
+  const session = await getSessionFromCookies();
 
   if (!session) {
     return NextResponse.json({ error: 'Niet ingelogd' }, { status: 401 });

@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma';
 import { getSessionFromCookies } from '@/lib/session';
 
 export async function requireUser() {
-  const session = getSessionFromCookies();
+  const session = await getSessionFromCookies();
 
   if (!session) {
     redirect('/login');

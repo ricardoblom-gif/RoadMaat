@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifySessionToken } from '@/lib/session';
+import { verifySessionToken } from '@/lib/session-token';
 
 const protectedPaths = ['/dashboard'];
 
@@ -17,7 +17,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
-  const session = verifySessionToken(token);
+  const session = await verifySessionToken(token);
 
   if (!session) {
     const response = NextResponse.redirect(new URL('/login', request.url));
