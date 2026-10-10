@@ -2,6 +2,85 @@
 
 RoadMaat is een white-label digitaal platform voor chauffeurs in de transportsector. Het platform combineert een sociaal netwerk, kennisdeling, begeleiding en praktische locatie-informatie in één centrale ervaring.
 
+Deze versie is opnieuw opgebouwd als moderne Next.js-app met een echte backend-structuur via Next.js API-routes en Prisma + SQLite.
+
+## Deployen naar Vercel met GoDaddy domein
+
+Deze app is gebouwd voor deploys op Vercel. Dat is de juiste keuze voor een Next.js-app met auth, API-routes en database.
+
+### 1. Code naar GitHub
+
+```bash
+git init
+git add .
+git commit -m "RoadMaat app foundation"
+git branch -M main
+git remote add origin https://github.com/<jouw-gebruikersnaam>/<jouw-repo>.git
+git push -u origin main
+```
+
+### 2. Deploy op Vercel
+
+1. Ga naar https://vercel.com
+2. Klik op "Add New Project"
+3. Kies je GitHub repo
+4. Vercel detecteert automatisch Next.js
+5. Klik op "Deploy"
+
+### 3. Domein koppelen via GoDaddy
+
+In Vercel:
+- Ga naar je project
+- Open "Settings" > "Domains"
+- Voeg toe: `roadmaat.nl`
+- Voeg ook toe: `www.roadmaat.nl`
+
+Vercel geeft je daarna de DNS-records. Voor de meest gangbare setup:
+
+- `A` record voor `@` -> `76.76.21.21`
+- `CNAME` record voor `www` -> `cname.vercel-dns.com`
+
+In GoDaddy:
+1. Open je domein
+2. Ga naar "DNS Management"
+3. Verwijder eventuele oude records die conflicteren
+4. Voeg bovenstaande records toe
+5. Sla op
+
+Na enkele minuten tot 48 uur is de domain doorgegaan.
+
+### 4. Production environment variables
+
+Maak in Vercel een Environment Variable aan met:
+
+```env
+DATABASE_URL="postgresql://..."
+SESSION_SECRET="een-lang-random-geheim"
+NEXT_PUBLIC_APP_URL="https://roadmaat.nl"
+```
+
+Gebruik voor productie een managed PostgreSQL-database, niet SQLite. SQLite is geschikt voor lokaal ontwikkelwerk, maar niet voor productie.
+
+### 5. Lokale ontwikkeling
+
+```bash
+npm install
+npx prisma generate
+npx prisma db push
+npm run prisma:seed
+npm run dev
+```
+
+Open daarna:
+
+```text
+http://localhost:3000
+```
+
+### 6. Alternatief: GitHub Pages
+
+GitHub Pages werkt alleen voor statische websites. Voor deze app is Vercel de juiste keuze, omdat Next.js API-routes, auth en backend-logic niet goed op GitHub Pages draaien.
+
 Tagline: “Onderweg sta je er nooit alleen voor.”
 
 ## Doel
