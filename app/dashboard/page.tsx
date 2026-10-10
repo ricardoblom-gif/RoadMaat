@@ -24,9 +24,13 @@ export default async function DashboardPage() {
         </nav>
       </div>
 
+      <div className="container demo-notice" role="note">
+        Demo-omgeving: berichten, locaties en groepen hieronder zijn voorbeelddata, geen live chauffeursinformatie.
+      </div>
+
       <div className="dashboard-grid container">
         <aside className="sidebar panel">
-          <h3>Mijn overzicht</h3>
+          <h3>Demo-overzicht</h3>
           <div className="profile-card">
             <div className="avatar">{user.name.slice(0, 2).toUpperCase()}</div>
             <div>
@@ -37,16 +41,16 @@ export default async function DashboardPage() {
 
           <div className="metrics">
             <div>
-              <span>Open vragen</span>
-              <strong>17</strong>
+              <span>Voorbeeldberichten</span>
+              <strong>{feed.length}</strong>
             </div>
             <div>
-              <span>Mijn groepen</span>
-              <strong>4</strong>
+              <span>Voorbeeldgroepen</span>
+              <strong>{groups.length}</strong>
             </div>
             <div>
-              <span>Vervolgacties</span>
-              <strong>6</strong>
+              <span>Voorbeeldlocaties</span>
+              <strong>{locations.length}</strong>
             </div>
           </div>
         </aside>
@@ -54,24 +58,24 @@ export default async function DashboardPage() {
         <section className="main-content panel">
           <div className="panel-header">
             <div>
-              <p className="eyebrow">Community</p>
-              <h1>RoadMap &amp; status</h1>
+              <p className="eyebrow">Voorbeeldomgeving</p>
+              <h1>Dashboard demo</h1>
             </div>
             <button className="button button-primary">Nieuwe update</button>
           </div>
 
           <div className="stats-row">
             <article className="mini-panel">
-              <span>Locaties</span>
-              <strong>124</strong>
+              <span>Voorbeeldlocaties</span>
+              <strong>{locations.length}</strong>
             </article>
             <article className="mini-panel">
-              <span>Berichten</span>
-              <strong>8.4k</strong>
+              <span>Voorbeeldberichten</span>
+              <strong>{feed.length}</strong>
             </article>
             <article className="mini-panel">
-              <span>Teams</span>
-              <strong>12</strong>
+              <span>Voorbeeldgroepen</span>
+              <strong>{groups.length}</strong>
             </article>
           </div>
 

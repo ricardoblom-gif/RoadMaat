@@ -29,9 +29,9 @@ const features = [
 ];
 
 const stats = [
-  { label: 'Actieve teams', value: '120+' },
-  { label: 'Praktische tips', value: '4.8k' },
-  { label: 'Gemeenschap', value: '24/7' },
+  { label: 'platform', value: '1' },
+  { label: 'kernonderdelen', value: '5' },
+  { label: 'productstatus', value: 'Demo' },
 ];
 
 export default function HomePage() {
