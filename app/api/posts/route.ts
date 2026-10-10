@@ -9,8 +9,26 @@ const createPostSchema = z.object({
 });
 
 export async function GET() {
+  const session = await getSessionFromCookies();
+
+  if (!session) {
+    return NextResponse.json({ error: 'Niet ingelogd' }, { status: 401 });
+  }
+
   const posts = await prisma.post.findMany({
-    include: { author: true },
+    select: {
+      id: true,
+      title: true,
+      content: true,
+      createdAt: true,
+      author: {
+        select: {
+          id: true,
+          name: true,
+          role: true,
+        },
+      },
+    },
     orderBy: { createdAt: 'desc' },
   });
 
@@ -44,7 +62,19 @@ export async function POST(request: Request) {
         content: parsed.data.content,
         authorId: user.id,
       },
-      include: { author: true },
+      select: {
+        id: true,
+        title: true,
+        content: true,
+        createdAt: true,
+        author: {
+          select: {
+            id: true,
+            name: true,
+            role: true,
+          },
+        },
+      },
     });
 
     return NextResponse.json(post, { status: 201 });

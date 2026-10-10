@@ -4,13 +4,24 @@ import bcrypt from 'bcryptjs';
 const prisma = new PrismaClient();
 
 async function main() {
-  const passwordHash = await bcrypt.hash('roadmaat123', 10);
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error('Seeding production is disabled');
+  }
+
+  const email = process.env.ROADMAAT_SEED_EMAIL?.trim().toLowerCase();
+  const password = process.env.ROADMAAT_SEED_PASSWORD;
+
+  if (!email || !password || password.length < 12) {
+    throw new Error('Set ROADMAAT_SEED_EMAIL and a ROADMAAT_SEED_PASSWORD of at least 12 characters');
+  }
+
+  const passwordHash = await bcrypt.hash(password, 12);
 
   const user = await prisma.user.upsert({
-    where: { email: 'klaas@roadmaat.app' },
+    where: { email },
     update: {},
     create: {
-      email: 'klaas@roadmaat.app',
+      email,
       name: 'Klaas Smit',
       role: 'Mentor',
       password: passwordHash,

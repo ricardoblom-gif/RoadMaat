@@ -2,7 +2,7 @@
 
 RoadMaat is een white-label digitaal platform voor chauffeurs in de transportsector. Het platform combineert een sociaal netwerk, kennisdeling, begeleiding en praktische locatie-informatie in één centrale ervaring.
 
-Deze versie is opnieuw opgebouwd als moderne Next.js-app met een echte backend-structuur via Next.js API-routes en Prisma + SQLite.
+Deze versie is opnieuw opgebouwd als moderne Next.js-app met Next.js API-routes, Prisma en PostgreSQL.
 
 ## Deployen naar Vercel met GoDaddy domein
 
@@ -59,17 +59,19 @@ SESSION_SECRET="een-lang-random-geheim"
 NEXT_PUBLIC_APP_URL="https://roadmaat.nl"
 ```
 
-Gebruik voor productie een managed PostgreSQL-database, niet SQLite. SQLite is geschikt voor lokaal ontwikkelwerk, maar niet voor productie.
+De Vercel Prisma Postgres-database levert `DATABASE_URL`. De sessiesleutel moet een geheime willekeurige waarde van minstens 32 tekens zijn. Stel beide alleen in Vercel in; commit geen geheimen.
 
 ### 5. Lokale ontwikkeling
 
 ```bash
 npm install
 npx prisma generate
-npx prisma db push
+npx prisma migrate dev
 npm run prisma:seed
 npm run dev
 ```
+
+Maak voor lokaal gebruik eerst een PostgreSQL-database en zet de connection string in `.env.local` als `DATABASE_URL`. Productieschema-migraties worden vóór de Vercel-production-build uitgevoerd. Preview builds draaien geen productiemigraties.
 
 Open daarna:
 
